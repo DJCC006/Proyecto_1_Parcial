@@ -53,8 +53,18 @@ public class Carcamo_David_ProyectoTienda {
             lea.next();
         }
         }
-                
         
+       
+       //Ingreso de efectivo inicial
+       boolean primeraApertura= true;
+       double efectivoCaja=0;
+       
+       if(primeraApertura=true){
+           System.out.println("Ingrese cantidad de efectivo inicial a guardar en caja: ");
+           efectivoCaja= lea.nextDouble();
+           System.out.println("Efectivo guardado exitosamente");
+       }
+       
     
        
        //Estructura para realizar procedimientos

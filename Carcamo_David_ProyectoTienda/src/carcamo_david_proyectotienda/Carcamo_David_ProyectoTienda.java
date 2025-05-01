@@ -36,8 +36,6 @@ public class Carcamo_David_ProyectoTienda {
         
         int opcion=0;
         
-        
-        
        while (statusPrograma==true){
         // Creación de Menu Inicial y lectura
         System.out.print("****Menu Principal****");
@@ -108,7 +106,7 @@ public class Carcamo_David_ProyectoTienda {
        
        
      
-        //Aviso inicial de stock en 0
+        //Aviso inicial de stock en 0 se puede mover a ventas, para que no espamee
        if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
            System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
        }
@@ -136,9 +134,10 @@ public class Carcamo_David_ProyectoTienda {
                System.out.println("");
                System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
                int producto= lea.nextInt();
-               System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
-               double cantidad= lea.nextDouble(); 
+               
                if (producto==1){
+                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
+                   double cantidad= lea.nextDouble();
                    totalproducto= cantidad*25;
                    if(efectivoCaja>=totalproducto){
                        System.out.println("***Detalles de Compra***");
@@ -151,6 +150,8 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("No se puede pagar Compra");
                    }
                }else if(producto==4){
+                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
+                   double cantidad= lea.nextDouble(); 
                     totalproducto= cantidad*18;
                     if(efectivoCaja>=totalproducto){
                       System.out.println("***Detalles de Compra***");
@@ -162,6 +163,9 @@ public class Carcamo_David_ProyectoTienda {
                    }else{
                        System.out.println("No se puede pagar Compra");
                 }
+               }else{
+                   System.out.println("Proveedor no vende dicho Producto");
+                   System.out.println("");
                }
                
            }else if(proveedor.equals("b")){
@@ -172,9 +176,10 @@ public class Carcamo_David_ProyectoTienda {
                
                System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
                int producto= lea.nextInt();
-               System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
-               double cantidad= lea.nextDouble();
+               
                if (producto==2){
+                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
+                   double cantidad= lea.nextDouble();
                    totalproducto= cantidad*20;
                    if(efectivoCaja>=totalproducto){
                        System.out.println("***Detalles de Compra***");
@@ -187,6 +192,8 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("No se puede pagar Compra");
                    }
                }else if(producto==3){
+                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
+                   double cantidad= lea.nextDouble();
                     totalproducto= cantidad*30;
                     if(efectivoCaja>=totalproducto){
                       System.out.println("***Detalles de Compra***");
@@ -198,6 +205,9 @@ public class Carcamo_David_ProyectoTienda {
                    }else{
                        System.out.println("No se puede pagar Compra");
                 }
+               }else{
+                   System.out.println("Proveedor no vende dicho producto");
+                   System.out.println("");
                }
                
                
@@ -210,9 +220,10 @@ public class Carcamo_David_ProyectoTienda {
                
                System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
                int producto= lea.nextInt();
-               System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
-               double cantidad= lea.nextDouble();
+               
                if (producto==2){
+                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
+                   double cantidad= lea.nextDouble();
                    totalproducto= cantidad*22;
                    if(efectivoCaja>=totalproducto){
                        System.out.println("***Detalles de Compra***");
@@ -225,6 +236,9 @@ public class Carcamo_David_ProyectoTienda {
                    }else{
                        System.out.println("No se puede pagar Compra");
                    }
+               }else{
+                   System.out.println("Proveedor no vende dicho producto");
+                   System.out.println("");
                }
            }else {
                System.out.println("Opcion no valida. Porfavor vuelva a intentar");

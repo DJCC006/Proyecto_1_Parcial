@@ -19,25 +19,47 @@ public class Carcamo_David_ProyectoTienda {
         
         //Creación de variable que lleva seguimiento del estatus de la caja
         boolean statusCaja= false; 
+        boolean statusPrograma=true;
         
+        //Contadores de Stock
+        double stockAzucar=0;
+        double stockAvena=0;
+        double stockTrigo=0;
+        double stockMaiz=0;
+        
+        //Seguidor de Apertura
+        boolean primeraApertura= true;
+        boolean controladorApertura=true;
+        
+        //Almacenador de dinero
+        double efectivoCaja=0;
+        
+        int opcion=0;
+        
+        
+        
+       while (statusPrograma==true){
         // Creación de Menu Inicial y lectura
-        System.out.print("****Menu de Facturación****");
+        System.out.print("****Menu Principal****");
         System.out.println("\n 1. Abrir Caja"
         +"\n 2. Venta"+"\n 3. Compra"+"\n 4. Reporte"+"\n 5. Cierre Caja"+"\n 6.Salir");
         
+        //Mensaje de apertura caja al inicio de cada nuevo dia
+        if(statusCaja==false){
+            System.out.println("**Porfavor abrir caja antes de seleccionar alguna opcion del menu (seleccione opcion 1)***");
+        }
         
-        System.out.println("**Porfavor abrir caja antes de seleccionar alguna opcion del menu (seleccione opcion 1)***");
         Scanner lea= new Scanner(System.in);
         lea.useDelimiter("\n");
-        System.out.println("Porfavor ingrese una opción: ");
+        System.out.println("Porfavor ingrese una opción del menu: ");
         
         
-       //Estructura para evaluacion de estatus de caja y respuestas
+       //Estructura para evaluacion de estatus de caja y respuestas (Primera Apertura)
        while (statusCaja!=true){        
         if(lea.hasNextInt()){
            int opcionInicial = lea.nextInt();
             if(opcionInicial<1){
-           System.out.println("No se aceptan numeros negativos. Porfavor ignrese una opcion valida: ");
+           System.out.println("No se aceptan numeros negativos. Porfavor ingrese una opcion valida: ");
          }else if(opcionInicial>6){
              System.out.println("Numero fuera del limite establecido(1-6). Porfavor ingrese una opcion valida: ");
              
@@ -51,33 +73,49 @@ public class Carcamo_David_ProyectoTienda {
          }else{
             System.out.println("Valor invalido. Porfavor ingrese un numero como opcion: ");
             lea.next();
+          }
         }
-        }
-        
        
+       
+       while(controladorApertura==false){
+           if(lea.hasNextInt()){
+               int opcionInicial = lea.nextInt();
+               if(opcionInicial<1){
+                   System.out.println("No se aceptan numeros negativos. Porfavor ingrese una opcion valida: ");
+               }else if(opcionInicial>6){
+                   System.out.println("Numero fuera del limite establecido(1-6). Porfavor ingrese una opcion valida: ");
+               }else if(opcionInicial>=1 && opcionInicial<=6){
+                   controladorApertura=true;
+                   opcion=opcionInicial;
+               }
+           }else{
+               System.out.println("Valor invalid. Porfavor ingrese un numero como opcion: ");
+               lea.next();
+           }
+       }
+       
+       
+          
        //Ingreso de efectivo inicial
-       boolean primeraApertura= true;
-       double efectivoCaja=0;
-       
-       if(primeraApertura=true){
+       if(primeraApertura==true){
            System.out.println("Ingrese cantidad de efectivo inicial a guardar en caja: ");
            efectivoCaja= lea.nextDouble();
            System.out.println("Efectivo guardado exitosamente");
+           primeraApertura = false;
+           System.out.println("Porfavor seleccione una opcion del menu: ");
+           opcion = lea.nextInt();
        }
        
-       //Aviso inicial de stock en 0
-        System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
-    
-        
-        //Contadores de Stock
-        double stockAzucar=0;
-        double stockAvena=0;
-        double stockTrigo=0;
-        double stockMaiz=0;
+       
+     
+        //Aviso inicial de stock en 0
+       if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
+           System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
+       }
        
        //Estructura para realizar procedimientos
-       System.out.println("Porfavor seleccione una opcion del menu: ");
-       int opcion = lea.nextInt();
+      
+       //int opcion=opcionP;
        double totalproducto=0;
        
        if (opcion == 1){
@@ -99,7 +137,7 @@ public class Carcamo_David_ProyectoTienda {
                System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
                int producto= lea.nextInt();
                System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
-               double cantidad= lea.nextDouble(); //Se necesitaria verificar si se pueden dar casos de cantidades no exactas, tipo, medio kilo, un cuarto de kilo and so weiter
+               double cantidad= lea.nextDouble(); 
                if (producto==1){
                    totalproducto= cantidad*25;
                    if(efectivoCaja>=totalproducto){
@@ -108,6 +146,7 @@ public class Carcamo_David_ProyectoTienda {
                        stockAzucar=cantidad;
                        efectivoCaja=efectivoCaja-totalproducto;
                        System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                       System.out.println("");
                    }else{
                        System.out.println("No se puede pagar Compra");
                    }
@@ -119,6 +158,7 @@ public class Carcamo_David_ProyectoTienda {
                       stockMaiz=cantidad;
                       efectivoCaja=efectivoCaja-totalproducto;
                       System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                      System.out.println("");
                    }else{
                        System.out.println("No se puede pagar Compra");
                 }
@@ -142,6 +182,7 @@ public class Carcamo_David_ProyectoTienda {
                        stockAvena=cantidad;
                        efectivoCaja=efectivoCaja-totalproducto;
                        System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                       System.out.println("");
                    }else{
                        System.out.println("No se puede pagar Compra");
                    }
@@ -153,6 +194,7 @@ public class Carcamo_David_ProyectoTienda {
                       stockTrigo=cantidad;
                       efectivoCaja=efectivoCaja-totalproducto;
                       System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                      System.out.println("");
                    }else{
                        System.out.println("No se puede pagar Compra");
                 }
@@ -179,6 +221,7 @@ public class Carcamo_David_ProyectoTienda {
                        efectivoCaja=efectivoCaja-totalproducto;
                        System.out.println("");
                        System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                       System.out.println("");
                    }else{
                        System.out.println("No se puede pagar Compra");
                    }
@@ -193,11 +236,11 @@ public class Carcamo_David_ProyectoTienda {
            System.out.println("Aqui se inicia el procedimiento de cierre de caja");
        }else if (opcion ==6){
            System.out.println("Aqui se inicia el procedimiento de salir ");
-       }
+           break;
+       }   
        
-        
-        
-        
-    }
+       controladorApertura=false;
+     }
+    }  
+   }
     
-}

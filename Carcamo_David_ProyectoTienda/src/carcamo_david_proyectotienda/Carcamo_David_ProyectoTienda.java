@@ -79,8 +79,6 @@ public class Carcamo_David_ProyectoTienda {
        System.out.println("Porfavor seleccione una opcion del menu: ");
        int opcion = lea.nextInt();
        
-       //Scanner seleccion= new Scanner(System.in);
-       
        if (opcion == 1){
            System.out.println("Aqui se muestra la opcion de ingresar efectivo");
        }else if (opcion==2){
@@ -90,10 +88,21 @@ public class Carcamo_David_ProyectoTienda {
            System.out.println("Porfavor seleccione el proveedor al que desea comprar(A,B,C): ");
            System.out.println("1.Proveedor A"+"\n2.Proveedor B"+"\n3.Proveedor C");
            String seleccionProveedor= lea.next();
-           String proveedor= seleccionProveedor.toUpperCase();
-           if(proveedor == "A"){
+           String proveedor= seleccionProveedor.toLowerCase();
+           if(proveedor.equals("a")){
                System.out.println("***Productos Disponibles***");
                System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
+               System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.25 | ");
+               System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.18 | ");
+           }else if(proveedor.equals("b")){
+               System.out.println("***Productos Disponibles***");
+               System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
+               System.out.println("|   2    |"+" |  Avena   | "+" | Lps.20 | ");
+               System.out.println("|   3    |"+" |  Trigo   | "+" | Lps.30 | ");
+           }else if(proveedor.equals("c")){
+               System.out.println("***Productos Disponibles***");
+               System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
+               System.out.println("|   2    |"+" |  Avena   | "+" | Lps.22 | ");
            }
          
        }else if (opcion == 4){

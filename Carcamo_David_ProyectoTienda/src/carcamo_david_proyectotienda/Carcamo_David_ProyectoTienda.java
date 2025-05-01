@@ -70,14 +70,15 @@ public class Carcamo_David_ProyectoTienda {
     
         
         //Contadores de Stock
-        int stockAzucar=0;
-        int stockAvena=0;
-        int stockTrigo=0;
-        int stockMaiz=0;
+        double stockAzucar=0;
+        double stockAvena=0;
+        double stockTrigo=0;
+        double stockMaiz=0;
        
        //Estructura para realizar procedimientos
        System.out.println("Porfavor seleccione una opcion del menu: ");
        int opcion = lea.nextInt();
+       double totalproducto=0;
        
        if (opcion == 1){
            System.out.println("Aqui se muestra la opcion de ingresar efectivo");
@@ -94,15 +95,96 @@ public class Carcamo_David_ProyectoTienda {
                System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
                System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.25 | ");
                System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.18 | ");
+               System.out.println("");
+               System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
+               int producto= lea.nextInt();
+               System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
+               double cantidad= lea.nextDouble(); //Se necesitaria verificar si se pueden dar casos de cantidades no exactas, tipo, medio kilo, un cuarto de kilo and so weiter
+               if (producto==1){
+                   totalproducto= cantidad*25;
+                   if(efectivoCaja>=totalproducto){
+                       System.out.println("***Detalles de Compra***");
+                       System.out.println("Codigo Producto: 1"+"\nProducto: Azucar"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                       stockAzucar=cantidad;
+                       efectivoCaja=efectivoCaja-totalproducto;
+                       System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                   }else{
+                       System.out.println("No se puede pagar Compra");
+                   }
+               }else if(producto==4){
+                    totalproducto= cantidad*18;
+                    if(efectivoCaja>=totalproducto){
+                      System.out.println("***Detalles de Compra***");
+                      System.out.println("Codigo Producto: 4"+"\nProducto: Maiz"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                      stockMaiz=cantidad;
+                      efectivoCaja=efectivoCaja-totalproducto;
+                      System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                   }else{
+                       System.out.println("No se puede pagar Compra");
+                }
+               }
+               
            }else if(proveedor.equals("b")){
                System.out.println("***Productos Disponibles***");
                System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
                System.out.println("|   2    |"+" |  Avena   | "+" | Lps.20 | ");
                System.out.println("|   3    |"+" |  Trigo   | "+" | Lps.30 | ");
+               
+               System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
+               int producto= lea.nextInt();
+               System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
+               double cantidad= lea.nextDouble();
+               if (producto==2){
+                   totalproducto= cantidad*20;
+                   if(efectivoCaja>=totalproducto){
+                       System.out.println("***Detalles de Compra***");
+                       System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                       stockAvena=cantidad;
+                       efectivoCaja=efectivoCaja-totalproducto;
+                       System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                   }else{
+                       System.out.println("No se puede pagar Compra");
+                   }
+               }else if(producto==3){
+                    totalproducto= cantidad*30;
+                    if(efectivoCaja>=totalproducto){
+                      System.out.println("***Detalles de Compra***");
+                      System.out.println("Codigo Producto: 3"+"\nProducto: Trigo"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                      stockTrigo=cantidad;
+                      efectivoCaja=efectivoCaja-totalproducto;
+                      System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                   }else{
+                       System.out.println("No se puede pagar Compra");
+                }
+               }
+               
+               
+               
+               
            }else if(proveedor.equals("c")){
                System.out.println("***Productos Disponibles***");
                System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
                System.out.println("|   2    |"+" |  Avena   | "+" | Lps.22 | ");
+               
+               System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
+               int producto= lea.nextInt();
+               System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
+               double cantidad= lea.nextDouble();
+               if (producto==2){
+                   totalproducto= cantidad*22;
+                   if(efectivoCaja>=totalproducto){
+                       System.out.println("***Detalles de Compra***");
+                       System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                       stockAvena=cantidad;
+                       efectivoCaja=efectivoCaja-totalproducto;
+                       System.out.println("");
+                       System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                   }else{
+                       System.out.println("No se puede pagar Compra");
+                   }
+               }
+           }else {
+               System.out.println("Opcion no valida. Porfavor vuelva a intentar");
            }
          
        }else if (opcion == 4){

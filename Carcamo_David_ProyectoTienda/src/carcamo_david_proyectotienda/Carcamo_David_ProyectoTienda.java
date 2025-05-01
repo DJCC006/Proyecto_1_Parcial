@@ -65,18 +65,37 @@ public class Carcamo_David_ProyectoTienda {
            System.out.println("Efectivo guardado exitosamente");
        }
        
+       //Aviso inicial de stock en 0
+        System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
     
+        
+        //Contadores de Stock
+        int stockAzucar=0;
+        int stockAvena=0;
+        int stockTrigo=0;
+        int stockMaiz=0;
        
        //Estructura para realizar procedimientos
        System.out.println("Porfavor seleccione una opcion del menu: ");
        int opcion = lea.nextInt();
+       
+       //Scanner seleccion= new Scanner(System.in);
        
        if (opcion == 1){
            System.out.println("Aqui se muestra la opcion de ingresar efectivo");
        }else if (opcion==2){
            System.out.println("Aqui se inicia el procedimiento de venta");
        }else if (opcion ==3){
-           System.out.println("Aqui se inicia el procedimiento de compra");
+           //Seleccion de Proveedor
+           System.out.println("Porfavor seleccione el proveedor al que desea comprar(A,B,C): ");
+           System.out.println("1.Proveedor A"+"\n2.Proveedor B"+"\n3.Proveedor C");
+           String seleccionProveedor= lea.next();
+           String proveedor= seleccionProveedor.toUpperCase();
+           if(proveedor == "A"){
+               System.out.println("***Productos Disponibles***");
+               System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
+           }
+         
        }else if (opcion == 4){
            System.out.println("Aqui se inicia el procedimiento de reporte");
        }else if (opcion ==5){

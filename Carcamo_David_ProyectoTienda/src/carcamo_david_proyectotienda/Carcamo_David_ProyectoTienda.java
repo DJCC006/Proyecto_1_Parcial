@@ -119,6 +119,7 @@ public class Carcamo_David_ProyectoTienda {
            
            
        }else if (opcion==2){
+           double subtotalVenta=0;
            if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
            System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
            System.out.println("");
@@ -136,38 +137,65 @@ public class Carcamo_David_ProyectoTienda {
                System.out.println("|   3    |"+" |   Trigo  | "+" | Lps.32 | ");
                System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | ");
                System.out.println("");
+               boolean facturar =false;
+               //Ciclo que permite el reingreso de productos antes de facturar
+               while(facturar==false){
                 System.out.println("Porfavor ingrese el codigo del producto que desea vender: ");
-               int producto=lea.nextInt();
-               if(producto==1){
+                int producto=lea.nextInt();
+                if(producto==1){
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 2"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
-                   double subtotalVenta= cantidad*30;
-                           
-               }else if(producto==2){
+                   subtotalVenta= cantidad*30;
+                   //Pregunta para proseguir a facturar
+                    System.out.println("¿Desea agregar otro producto? Y/N");
+                    String selec= lea.next();
+                    String seleccion= selec.toLowerCase();
+                    //Evaluacion para proceder a facturar
+                    if(seleccion.equals("y")){
+                        System.out.println("");
+                    }else{
+                        System.out.println("Procede a facturar");
+                        facturar=true;
+                    }
+           
+                }else if(producto==2){
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
-                   double subtotalVenta= cantidad*25;
+                   subtotalVenta= cantidad*25;
                 }else if(producto==3){
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
-                   double subtotalVenta= cantidad*32;
+                   subtotalVenta= cantidad*32;
                 }else if(producto==4){
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
-                   double subtotalVenta= cantidad*20;
+                   subtotalVenta= cantidad*20;
                 }
+               
+                
+               }//Fin ciclo While
+               
+               //Procedimiento de facturacion
+                System.out.println("***Detalle de Factura***");
+                System.out.println("Numero de Factura: ");
+                System.out.println("---Productos--- ");
+                System.out.println("Detalles de productos");
+                System.out.println("Subtotal: Lps."+subtotalVenta);
+                //Evaluaciones de descuento1
+                
+               
                
            }else if(cliente.equals("b")){
                System.out.println("***Productos Disponibles Para Venta***");

@@ -107,9 +107,7 @@ public class Carcamo_David_ProyectoTienda {
        
      
         //Aviso inicial de stock en 0 se puede mover a ventas, para que no espamee
-       if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
-           System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
-       }
+       
        
        //Estructura para realizar procedimientos
       
@@ -118,8 +116,75 @@ public class Carcamo_David_ProyectoTienda {
        
        if (opcion == 1){
            System.out.println("Aqui se muestra la opcion de ingresar efectivo");
+           
+           
        }else if (opcion==2){
-           System.out.println("Aqui se inicia el procedimiento de venta");
+           if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
+           System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
+           System.out.println("");
+           }else{
+            System.out.println("Porfavor seleccione tipo de cliente al que desea vender(A,B,C): ");
+            System.out.println("1.cliente A"+"\n2.cliente B"+"\n3.cliente C");
+            String seleccionCliente= lea.next();
+            String cliente= seleccionCliente.toLowerCase();
+            
+            if(cliente.equals("a")){
+               System.out.println("***Productos Disponibles Para Venta***");
+               System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
+               System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.30 | ");
+               System.out.println("|   2    |"+" |   Avena  | "+" | Lps.25 | ");
+               System.out.println("|   3    |"+" |   Trigo  | "+" | Lps.32 | ");
+               System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | ");
+               System.out.println("");
+                System.out.println("Porfavor ingrese el codigo del producto que desea vender: ");
+               int producto=lea.nextInt();
+               if(producto==1){
+                   System.out.println("");
+                   System.out.println("**Informacion de producto**");
+                   System.out.println("Codigo: 2"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
+                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                   double cantidad= lea.nextDouble();
+                   double subtotalVenta= cantidad*30;
+                           
+               }else if(producto==2){
+                   System.out.println("");
+                   System.out.println("**Informacion de producto**");
+                   System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
+                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                   double cantidad= lea.nextDouble();
+                   double subtotalVenta= cantidad*25;
+                }else if(producto==3){
+                   System.out.println("");
+                   System.out.println("**Informacion de producto**");
+                   System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
+                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                   double cantidad= lea.nextDouble();
+                   double subtotalVenta= cantidad*32;
+                }else if(producto==4){
+                   System.out.println("");
+                   System.out.println("**Informacion de producto**");
+                   System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
+                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                   double cantidad= lea.nextDouble();
+                   double subtotalVenta= cantidad*20;
+                }
+               
+           }else if(cliente.equals("b")){
+               System.out.println("***Productos Disponibles Para Venta***");
+               System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
+               System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.30 | ");
+               System.out.println("|   2    |"+" |   Avena  | "+" | Lps.25 | ");
+               System.out.println("|   3    |"+" |   Trigo  | "+" | Lps.32 | ");
+               System.out.println("");
+           }else if(cliente.equals("c")){
+               System.out.println("***Productos Disponibles Para Venta***");
+               System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
+               System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | ");
+               System.out.println("");
+           }
+          }
+           
+           
        }else if (opcion ==3){
            //Seleccion de Proveedor
            System.out.println("Porfavor seleccione el proveedor al que desea comprar(A,B,C): ");
@@ -127,7 +192,7 @@ public class Carcamo_David_ProyectoTienda {
            String seleccionProveedor= lea.next();
            String proveedor= seleccionProveedor.toLowerCase();
            if(proveedor.equals("a")){
-               System.out.println("***Productos Disponibles***");
+               System.out.println("***Productos Disponibles Para Compra***");
                System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
                System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.25 | ");
                System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.18 | ");

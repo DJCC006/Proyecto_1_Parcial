@@ -293,7 +293,9 @@ public class Carcamo_David_ProyectoTienda {
                 System.out.println("Total a pagar: Lps."+totalVredondeado);
                 System.out.println("");
                 
-                
+                //Sumatoria a caja
+                efectivoCaja= efectivoCaja+totalVenta;
+                System.out.println("Dinero en caja: "+efectivoCaja);
                
                
            }else if(cliente.equals("b")){
@@ -427,7 +429,9 @@ public class Carcamo_David_ProyectoTienda {
                
                
                
-               
+                //Sumatoria a caja
+                efectivoCaja= efectivoCaja+totalVenta;
+                System.out.println("Dinero en caja: "+efectivoCaja);
                
                
                
@@ -516,7 +520,9 @@ public class Carcamo_David_ProyectoTienda {
             System.out.println("Total a pagar: Lps."+totalVredondeado);
             System.out.println("");
                
-            
+            //Sumatoria a caja
+            efectivoCaja= efectivoCaja+totalVenta;
+            System.out.println("Dinero en caja: "+efectivoCaja);
                
                
            }else{

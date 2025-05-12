@@ -122,13 +122,13 @@ public class Carcamo_David_ProyectoTienda {
        if (opcion == 1){
            System.out.println("Aqui se muestra la opcion de ingresar efectivo");
            
-           
-       }else if (opcion==2){
+           //Ventas
+       }else if (opcion==2){//Desarrollo de seccion ventas
            double subtotalVenta=0;
            numfacturas++;
            if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
            System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
-           System.out.println("");
+           System.out.println("");//Mensaje en caso que stock este vacio
            }else{
             System.out.println("Porfavor seleccione tipo de cliente al que desea vender(A,B,C): ");
             System.out.println("1.cliente A"+"\n2.cliente B"+"\n3.cliente C");
@@ -169,7 +169,7 @@ public class Carcamo_David_ProyectoTienda {
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 1| "+" |Nombre de Producto: Azucar| "+" |Cantidad: "+cantidad+" kg| "+" | Precio unitario: Lps.30|");//Anexion a lista de productos
                         productList= productList + ("\n---------------------------------------------------------------------------");
-                    }else{
+                    }else{//caso respuesta de n
                         
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 1| "+" |Nombre de Producto: Azucar| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.30|");
@@ -269,12 +269,16 @@ public class Carcamo_David_ProyectoTienda {
                }
                
                
+               
+               //Subtotal con descuento aplicado
+               double subtotalaplicado=(subtotalVenta-descuento);
+               
                //Evaluacion de impuesto
-               double impuesto=subtotalVenta*0.07;
+               double impuesto=subtotalaplicado*0.07;
                String impuestoRedondeado= String.format("%.2f",impuesto);
                
                //Evaluacion del total
-               double totalVenta=(subtotalVenta-descuento)+impuesto;
+               double totalVenta=subtotalaplicado+impuesto;
                String totalVredondeado= String.format("%.2f",totalVenta);
                
                //Procedimiento de facturacion
@@ -284,7 +288,8 @@ public class Carcamo_David_ProyectoTienda {
                 System.out.println(productList);
                 System.out.println("Subtotal: Lps."+subtotalVenta);
                 System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
-                System.out.println("Valor de impuesto: Lps."+impuestoRedondeado);
+                System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
+                System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
                 System.out.println("Total a pagar: Lps."+totalVredondeado);
                 System.out.println("");
                 
@@ -396,12 +401,15 @@ public class Carcamo_David_ProyectoTienda {
                }
                
                
+               //Subtotal con descuento aplicado
+               double subtotalaplicado=(subtotalVenta-descuento);
+               
                //Evaluacion de impuesto
-               double impuesto=subtotalVenta*0.07;
+               double impuesto=subtotalaplicado*0.07;
                String impuestoRedondeado= String.format("%.2f",impuesto);
                
                //Evaluacion del total
-               double totalVenta=(subtotalVenta-descuento)+impuesto;
+               double totalVenta=subtotalaplicado+impuesto;
                String totalVredondeado= String.format("%.2f",totalVenta);
                
                //Procedimiento de facturacion
@@ -411,10 +419,10 @@ public class Carcamo_David_ProyectoTienda {
                 System.out.println(productList);
                 System.out.println("Subtotal: Lps."+subtotalVenta);
                 System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
-                System.out.println("Valor de impuesto: Lps."+impuestoRedondeado);
+                System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
+                System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
                 System.out.println("Total a pagar: Lps."+totalVredondeado);
                 System.out.println("");
-               
                
                
                
@@ -435,8 +443,7 @@ public class Carcamo_David_ProyectoTienda {
                System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
                System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | ");
                System.out.println("");
-           }
-            
+               
             boolean facturar =false;
                
             String productList= "--Detalle de Productos--"; //Variable String que llevara registro de los productos seleccionados mediante la anexion de texto
@@ -486,12 +493,15 @@ public class Carcamo_David_ProyectoTienda {
             }
                
                
+            //Subtotal con descuento aplicado
+               double subtotalaplicado=(subtotalVenta-descuento);
+               
             //Evaluacion de impuesto
-            double impuesto=subtotalVenta*0.07;
+            double impuesto=subtotalaplicado*0.07;
             String impuestoRedondeado= String.format("%.2f",impuesto);
                
             //Evaluacion del total
-            double totalVenta=(subtotalVenta-descuento)+impuesto;
+            double totalVenta=subtotalaplicado+impuesto;
             String totalVredondeado= String.format("%.2f",totalVenta);
                
             //Procedimiento de facturacion
@@ -501,9 +511,19 @@ public class Carcamo_David_ProyectoTienda {
             System.out.println(productList);
             System.out.println("Subtotal: Lps."+subtotalVenta);
             System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
-            System.out.println("Valor de impuesto: Lps."+impuestoRedondeado);
+            System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
+            System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
             System.out.println("Total a pagar: Lps."+totalVredondeado);
             System.out.println("");
+               
+            
+               
+               
+           }else{
+                System.out.println("Valor no valido");
+           }
+            
+            
           
           }
            

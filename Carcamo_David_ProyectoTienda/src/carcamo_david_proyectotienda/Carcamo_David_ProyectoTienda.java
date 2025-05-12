@@ -164,6 +164,7 @@ public class Carcamo_David_ProyectoTienda {
                System.out.println("|   3    |"+" |   Trigo  | "+" | Lps.32 | ");
                System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | ");
                System.out.println("");
+               
                boolean facturar =false;
                
                
@@ -173,7 +174,13 @@ public class Carcamo_David_ProyectoTienda {
                while(facturar==false){
                 
                 System.out.println("Porfavor ingrese el codigo del producto que desea vender: ");
+                
+                
+                
+              if(lea.hasNextInt()){
+                    
                 int producto=lea.nextInt();
+                
                 if(producto==1){
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
@@ -270,7 +277,15 @@ public class Carcamo_David_ProyectoTienda {
                         facturar=true;
                    }
                    
+                }else if(producto<=0){
+                    System.out.println("Opcion Invalida");
+                    System.out.println("");
                 }
+               }else{
+                  System.out.println("Opcion Invalida");
+                  System.out.println("");
+                  lea.next();
+               } //Fin ciclo comprobador if
                
                 
                }//Fin ciclo While
@@ -332,7 +347,12 @@ public class Carcamo_David_ProyectoTienda {
                while(facturar==false){
                 
                 System.out.println("Porfavor ingrese el codigo del producto que desea vender: ");
+                
+               if(lea.hasNextInt()){
+                   
+               
                 int producto=lea.nextInt();
+                
                 if(producto==1){
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
@@ -404,7 +424,18 @@ public class Carcamo_David_ProyectoTienda {
                         productList= productList + ("\n---------------------------------------------------------------------------");
                         facturar=true;
                    }
+                }else if(producto<=0){
+                    System.out.println("Opcion invalida");
+                    System.out.println("");
+
                 }
+                
+               }else{
+                  System.out.println("Opcion Invalida");
+                  System.out.println("");
+                  lea.next();
+               }
+               
                 
                }//Fin Cilco While
                 
@@ -474,7 +505,11 @@ public class Carcamo_David_ProyectoTienda {
             String productList= "--Detalle de Productos--"; //Variable String que llevara registro de los productos seleccionados mediante la anexion de texto
             while(facturar==false){
                 
+                
+            
             System.out.println("Porfavor ingrese el codigo del producto que desea vender: ");
+            
+          if(lea.hasNextInt()){
             int producto=lea.nextInt();
             if(producto==4){
                 System.out.println("");
@@ -499,7 +534,15 @@ public class Carcamo_David_ProyectoTienda {
                     productList= productList + ("\n---------------------------------------------------------------------------");
                     facturar=true;
                     }
+            }else if(producto<=0){
+                System.out.println("Opcion Invalida");
             }
+            
+          }else{
+              System.out.println("Opcion Invalida");
+              System.out.println("");
+              lea.next();
+          }
             
             }//Fin de ciclo While
             
@@ -570,15 +613,25 @@ public class Carcamo_David_ProyectoTienda {
            System.out.println("1.Proveedor A"+"\n2.Proveedor B"+"\n3.Proveedor C");
            String seleccionProveedor= lea.next();
            String proveedor= seleccionProveedor.toLowerCase();
+           
            if(proveedor.equals("a")){
                System.out.println("***Productos Disponibles Para Compra***");
                System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
                System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.25 | ");
                System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.18 | ");
                System.out.println("");
+               
+               boolean checkcompra=false;
+               
+               
+               while(checkcompra!=true){
+                   
                System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
+               
+               if(lea.hasNextInt()){
                int producto= lea.nextInt();
                
+              
                if (producto==1){
                    System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
@@ -590,8 +643,10 @@ public class Carcamo_David_ProyectoTienda {
                        efectivoCaja=efectivoCaja-totalproducto;
                        System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                        System.out.println("");
+                       checkcompra=true;
                    }else{
                        System.out.println("No se puede pagar Compra");
+                       checkcompra=true;
                    }
                }else if(producto==4){
                    System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
@@ -604,13 +659,26 @@ public class Carcamo_David_ProyectoTienda {
                       efectivoCaja=efectivoCaja-totalproducto;
                       System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                       System.out.println("");
+                      checkcompra=true;
                    }else{
                        System.out.println("No se puede pagar Compra");
+                       checkcompra=true;
                 }
+               }else if(producto<=0){
+                   System.out.println("Opcion no Valida");
+                   System.out.println("");
                }else{
                    System.out.println("Proveedor no vende dicho Producto");
                    System.out.println("");
+                   checkcompra=true;
                }
+               
+               }else{
+                   System.out.println("Opcion no Valida");
+                   lea.next();
+               }//Fin evaluador
+               
+               }//Fin ciclo while
                
            }else if(proveedor.equals("b")){
                System.out.println("***Productos Disponibles***");
@@ -618,7 +686,13 @@ public class Carcamo_David_ProyectoTienda {
                System.out.println("|   2    |"+" |  Avena   | "+" | Lps.20 | ");
                System.out.println("|   3    |"+" |  Trigo   | "+" | Lps.30 | ");
                
+               boolean checkcompra=false;
+               
+               while(checkcompra!=true){
+                   
                System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
+               
+               if(lea.hasNextInt()){
                int producto= lea.nextInt();
                
                if (producto==2){
@@ -632,8 +706,10 @@ public class Carcamo_David_ProyectoTienda {
                        efectivoCaja=efectivoCaja-totalproducto;
                        System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                        System.out.println("");
+                       checkcompra=true;
                    }else{
                        System.out.println("No se puede pagar Compra");
+                       checkcompra=true;
                    }
                }else if(producto==3){
                    System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
@@ -646,13 +722,26 @@ public class Carcamo_David_ProyectoTienda {
                       efectivoCaja=efectivoCaja-totalproducto;
                       System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                       System.out.println("");
+                      checkcompra=true;
                    }else{
                        System.out.println("No se puede pagar Compra");
+                       checkcompra=true;
                 }
+               }else if(producto<=0){
+                   System.out.println("Opcion Invalida");
+                   System.out.println("");
                }else{
                    System.out.println("Proveedor no vende dicho producto");
                    System.out.println("");
                }
+               
+               }else{
+                   System.out.println("Opcion Invalida");
+                   System.out.println("");
+                   lea.next();
+               }//Fin comprobador
+               
+               }//Fin ciclo while
                
                
                
@@ -662,7 +751,13 @@ public class Carcamo_David_ProyectoTienda {
                System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
                System.out.println("|   2    |"+" |  Avena   | "+" | Lps.22 | ");
                
+               boolean checkcompra=false;
+               
+               
+               while(checkcompra!=true){
                System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
+               
+               if(lea.hasNextInt()){
                int producto= lea.nextInt();
                
                if (producto==2){
@@ -677,16 +772,30 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("");
                        System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                        System.out.println("");
+                       checkcompra=true;
                    }else{
                        System.out.println("No se puede pagar Compra");
+                       checkcompra=true;
                    }
+               }else if(producto<=0){
+                   System.out.println("Opcion Invalida");
+                   System.out.println("");
                }else{
                    System.out.println("Proveedor no vende dicho producto");
                    System.out.println("");
                }
+               }else{
+                   System.out.println("Opcion Invalida");
+                   System.out.println("");
+                   lea.next();
+               }//Fin ceccion validacion 
+               
+               }//Fin ciclo WHile
+               
+          
            }else {
                System.out.println("Opcion no valida. Porfavor vuelva a intentar");
-           }
+           }//Fin parte 3
          
        }else if (opcion == 4){
            System.out.println("Aqui se inicia el procedimiento de reporte");

@@ -35,8 +35,14 @@ public class Carcamo_David_ProyectoTienda {
         //Almacenador de dinero
         double efectivoCaja=0;
         
-        //Contador de Facturas
+        //Contadores
         int numfacturas=0;
+        int numCompras=0;
+        int numVentas=0;
+        double volCompras=0;
+        double volVentas=0;
+        double mayorCompra=0;
+        double mayorVenta=0;
         
         
         
@@ -230,11 +236,13 @@ public class Carcamo_David_ProyectoTienda {
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 1| "+" |Nombre de Producto: Azucar| "+" |Cantidad: "+cantidad+" kg| "+" | Precio unitario: Lps.30|");//Anexion a lista de productos
                         productList= productList + ("\n---------------------------------------------------------------------------");
+                        
                     }else{//caso respuesta de n
                         
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 1| "+" |Nombre de Producto: Azucar| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.30|");
                         productList= productList + ("\n---------------------------------------------------------------------------");
+                        
                         facturar=true;
                     }
            
@@ -254,11 +262,13 @@ public class Carcamo_David_ProyectoTienda {
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 2| "+" |Nombre de Producto: Avena| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.25|");//Anexion a lista de productos
                         productList= productList + ("\n---------------------------------------------------------------------------");
+                        
                    }else{
                         
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 2| "+" |Nombre de Producto: Avena| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.25|");
                         productList= productList + ("\n---------------------------------------------------------------------------");
+                        
                         facturar=true;
                     }
                    
@@ -278,11 +288,13 @@ public class Carcamo_David_ProyectoTienda {
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 3| "+" |Nombre de Producto: Trigo| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.32|");//Anexion a lista de productos
                         productList= productList + ("\n---------------------------------------------------------------------------");
+                        
                    }else{
                         
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 3| "+" |Nombre de Producto: Trigo| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.32|");
                         productList= productList + ("\n---------------------------------------------------------------------------");
+                        
                         facturar=true;
                    }
                    
@@ -302,11 +314,13 @@ public class Carcamo_David_ProyectoTienda {
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 4| "+" |Nombre de Producto: Maíz| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.20|");//Anexion a lista de productos
                         productList= productList + ("\n---------------------------------------------------------------------------");
+                        
                    }else{
                         
                         System.out.println("");
                         productList= productList + ("\n|Codigo: 4| "+" |Nombre de Producto: Maíz| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.20|");
                         productList= productList + ("\n---------------------------------------------------------------------------");
+                        
                         facturar=true;
                    }
                    
@@ -365,6 +379,7 @@ public class Carcamo_David_ProyectoTienda {
                 //Sumatoria a caja
                 efectivoCaja= efectivoCaja+totalVenta;
                 System.out.println("Dinero en caja: "+efectivoCaja);
+                numVentas++;
                
                
            }else if(cliente.equals("b")){
@@ -517,6 +532,7 @@ public class Carcamo_David_ProyectoTienda {
                 //Sumatoria a caja
                 efectivoCaja= efectivoCaja+totalVenta;
                 System.out.println("Dinero en caja: "+efectivoCaja);
+                numVentas++;
                
                
                
@@ -620,6 +636,7 @@ public class Carcamo_David_ProyectoTienda {
             //Sumatoria a caja
             efectivoCaja= efectivoCaja+totalVenta;
             System.out.println("Dinero en caja: "+efectivoCaja);
+            numVentas++;
                
                
            }else{
@@ -677,6 +694,8 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                        System.out.println("");
                        checkcompra=true;
+                       numCompras++;
+                       volCompras+=totalproducto;
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -693,6 +712,8 @@ public class Carcamo_David_ProyectoTienda {
                       System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                       System.out.println("");
                       checkcompra=true;
+                      numCompras++;
+                      volCompras+=totalproducto;
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -740,6 +761,8 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                        System.out.println("");
                        checkcompra=true;
+                       numCompras++;
+                       volCompras+=totalproducto;
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -756,6 +779,8 @@ public class Carcamo_David_ProyectoTienda {
                       System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                       System.out.println("");
                       checkcompra=true;
+                      numCompras++;
+                      volCompras+=totalproducto;
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -806,6 +831,8 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
                        System.out.println("");
                        checkcompra=true;
+                       numCompras++;
+                       volCompras+=totalproducto;
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -831,7 +858,23 @@ public class Carcamo_David_ProyectoTienda {
            }//Fin parte 3
          
        }else if (opcion == 4){
-           System.out.println("Aqui se inicia el procedimiento de reporte");
+           
+           System.out.println("******REPORTE******");
+           System.out.println("Cantidad Actual en Caja: "+efectivoCaja);
+           System.out.println("Numero de Ventas y Compras Efectuadas--");
+           System.out.println("Compras: "+numCompras);
+           System.out.println("Ventas: "+numVentas);
+           System.out.println("---------------------------------------");
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
        }else if (opcion ==5){
            System.out.println("Aqui se inicia el procedimiento de cierre de caja");
        }else if (opcion ==6){

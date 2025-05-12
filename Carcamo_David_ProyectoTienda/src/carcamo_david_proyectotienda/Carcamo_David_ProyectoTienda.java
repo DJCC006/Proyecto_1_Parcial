@@ -48,7 +48,7 @@ public class Carcamo_David_ProyectoTienda {
        while (statusPrograma==true){
         // Creación de Menu Inicial y lectura
         System.out.print("****Menu Principal****");
-        System.out.println("\n 1. Abrir Caja"
+        System.out.println("\n 1. Abrir Caja/Introducir Efectivo"
         +"\n 2. Venta"+"\n 3. Compra"+"\n 4. Reporte"+"\n 5. Cierre Caja"+"\n 6.Salir");
         
         //Mensaje de apertura caja al inicio de cada nuevo dia
@@ -141,9 +141,14 @@ public class Carcamo_David_ProyectoTienda {
        double totalproducto=0;
        
        if (opcion == 1){
-           System.out.println("Aqui se muestra la opcion de ingresar efectivo");
+           //Funcion para agregar efectivo extra
+           System.out.println("Ingrese la cantidad de efectivo extra que desea ingresar: ");
+           double dineroExtra=lea.nextDouble();
+           efectivoCaja= efectivoCaja+dineroExtra;
+           System.out.println("Efectivo Guardado Exitosamente");
+           System.out.println("Efectivo en Caja: "+efectivoCaja);
            
-           //Ventas
+          
        }else if (opcion==2){//Desarrollo de seccion ventas
            double subtotalVenta=0;
            numfacturas++;

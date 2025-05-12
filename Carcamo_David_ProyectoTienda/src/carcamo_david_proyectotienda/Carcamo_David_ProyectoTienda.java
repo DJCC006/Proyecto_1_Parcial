@@ -4,6 +4,7 @@
  */
 package carcamo_david_proyectotienda;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
         
 /**
@@ -40,6 +41,9 @@ public class Carcamo_David_ProyectoTienda {
         
         
         int opcion=0;
+        
+        
+        //-------------------------------------------------------
         
        while (statusPrograma==true){
         // Creación de Menu Inicial y lectura
@@ -80,6 +84,8 @@ public class Carcamo_David_ProyectoTienda {
         }
        
        
+       
+       //Ciclo que permitira la misma revision despues del primer ingreso
        while(controladorApertura==false){
            if(lea.hasNextInt()){
                int opcionInicial = lea.nextInt();
@@ -92,22 +98,37 @@ public class Carcamo_David_ProyectoTienda {
                    opcion=opcionInicial;
                }
            }else{
-               System.out.println("Valor invalid. Porfavor ingrese un numero como opcion: ");
+               System.out.println("Valor invalido. Porfavor ingrese un numero como opcion: ");
                lea.next();
            }
        }
        
        
-          
+       
+       
+       
        //Ingreso de efectivo inicial
-       if(primeraApertura==true){
-           System.out.println("Ingrese cantidad de efectivo inicial a guardar en caja: ");
-           efectivoCaja= lea.nextDouble();
-           System.out.println("Efectivo guardado exitosamente");
-           primeraApertura = false;
-           System.out.println("Porfavor seleccione una opcion del menu: ");
-           opcion = lea.nextInt();
+       while(primeraApertura==true){
+           System.out.println("Ingrese cantidad de fectivo inicial a guardar en caja:");
+           if(lea.hasNextInt()){
+               efectivoCaja=lea.nextDouble();
+               if(efectivoCaja<1){
+                   System.out.println("No se aceptan numeros negativos. Porfavor ingrese una opcion valida: ");
+                   System.out.println("");
+               }else if(efectivoCaja==0){
+                   System.out.println("Porfavor ingrese una cantidad valida.");
+                   System.out.println("");
+               }else if(efectivoCaja>=1){
+                   System.out.println("Efectivo guardado exitosamente");
+                   System.out.println("Porfavor seleccione una opcion del menu: ");
+                   primeraApertura = false;
+               }
+           }else{
+               System.out.println("Valor invalido. Porfavor ingrese un numero como opcion:");
+               lea.next();
+           }
        }
+       
        
        
      

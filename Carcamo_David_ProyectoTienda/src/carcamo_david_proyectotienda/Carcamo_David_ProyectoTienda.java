@@ -28,6 +28,18 @@ public class Carcamo_David_ProyectoTienda {
         double stockTrigo=0;
         double stockMaiz=0;
         
+        //Controladores de cantidades de cada producto
+        double cantAzucar=0;
+        double cantAvena=0;
+        double cantTrigo=0;
+        double cantMaiz=0;
+        
+        
+        //Controladores de producto estrella
+        String producto_Estrella="";
+        double cantEstrella=0;
+        
+        
         //Seguidor de Apertura
         boolean primeraApertura= true;
         boolean controladorApertura=true;
@@ -43,7 +55,8 @@ public class Carcamo_David_ProyectoTienda {
         double volVentas=0;
         double mayorCompra=0;
         double mayorVenta=0;
-        
+        String info_mayorCompra="****Detalles de mayor Compra****";
+        String info_mayorVenta="****Detalles de mayor Venta****";
         
         
         int opcion=0;
@@ -158,6 +171,7 @@ public class Carcamo_David_ProyectoTienda {
        }else if (opcion==2){//Desarrollo de seccion ventas
            double subtotalVenta=0;
            numfacturas++;
+           
            if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
            System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
            System.out.println("");//Mensaje en caso que stock este vacio
@@ -214,6 +228,11 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("");
                     }else if(cantidad>0){
                        subtotalVenta= subtotalVenta+(cantidad*30);
+                       
+                       //Suma a cantidad de producto
+                       cantAzucar+= cantidad;
+                       
+                       
                        checkkilograms=true;
                     }
                    
@@ -252,6 +271,12 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
+                   
+                   //Suma a cantidad de producto
+                   cantAzucar+= cantidad;
+                   
+                   
+                   
                    subtotalVenta= subtotalVenta+(cantidad*25);
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
@@ -278,6 +303,12 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
+                   
+                   
+                   //Suma a cantidad de producto
+                   cantTrigo+= cantidad;
+                   
+                   
                    subtotalVenta= subtotalVenta+ (cantidad*32);
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
@@ -304,6 +335,11 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
+                   
+                   //Suma a cantidad de producto
+                   cantMaiz+=cantidad;
+                   
+                   
                    subtotalVenta= subtotalVenta +(cantidad*20);
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
@@ -380,6 +416,14 @@ public class Carcamo_David_ProyectoTienda {
                 efectivoCaja= efectivoCaja+totalVenta;
                 System.out.println("Dinero en caja: "+efectivoCaja);
                 numVentas++;
+                volVentas+=(volVentas+totalVenta);
+                
+                
+                //Comprobador de mayor Venta
+                if(totalVenta>mayorVenta){
+                    mayorVenta=totalVenta;
+                    info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
+                }
                
                
            }else if(cliente.equals("b")){
@@ -407,6 +451,11 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("Codigo: 1"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
+                   
+                   //Suma a cantidad de producto
+                   cantAzucar+=cantidad;
+                   
+                   
                    subtotalVenta= subtotalVenta+(cantidad*30);
                    //Pregunta para proseguir a facturar
                     System.out.println("¿Desea agregar otro producto? Y/N");
@@ -431,6 +480,10 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
+                   
+                   //Suma a cantidad de producto
+                   cantAvena+=cantidad;
+                   
                    subtotalVenta= subtotalVenta+(cantidad*25);
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
@@ -455,6 +508,11 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
                    System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    double cantidad= lea.nextDouble();
+                   
+                   //Suma a cantidad de producto
+                   cantTrigo+= cantidad;
+                   
+                   
                    subtotalVenta= subtotalVenta+ (cantidad*32);
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
@@ -533,6 +591,14 @@ public class Carcamo_David_ProyectoTienda {
                 efectivoCaja= efectivoCaja+totalVenta;
                 System.out.println("Dinero en caja: "+efectivoCaja);
                 numVentas++;
+                volVentas+=(volVentas+totalVenta);
+                
+                
+                //Comprobador de mayor Venta
+                if(totalVenta>mayorVenta){
+                   mayorVenta=totalVenta;
+                   info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
+                }
                
                
                
@@ -566,6 +632,10 @@ public class Carcamo_David_ProyectoTienda {
                 System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
                 System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                 double cantidad= lea.nextDouble();
+                
+                //Suma a cantidad de producto
+                cantMaiz+= cantidad;
+                
                 subtotalVenta= subtotalVenta+(cantidad*20);
                 //Pregunta para proseguir a facturar
                 System.out.println("¿Desea agregar otro producto? Y/N");
@@ -637,7 +707,14 @@ public class Carcamo_David_ProyectoTienda {
             efectivoCaja= efectivoCaja+totalVenta;
             System.out.println("Dinero en caja: "+efectivoCaja);
             numVentas++;
+            volVentas+=(volVentas+totalVenta);
                
+            
+            //Comprobador de mayor Venta
+            if(totalVenta>mayorVenta){
+                mayorVenta=totalVenta;
+                info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
+            }
                
            }else{
                 System.out.println("Valor no valido");
@@ -696,6 +773,14 @@ public class Carcamo_David_ProyectoTienda {
                        checkcompra=true;
                        numCompras++;
                        volCompras+=totalproducto;
+                       
+                       //Comprobador de compra mayor
+                       if(totalproducto>mayorCompra){
+                           mayorCompra=totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 1"+"\nProducto: Azucar"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                       }
+                       
+                       
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -714,6 +799,15 @@ public class Carcamo_David_ProyectoTienda {
                       checkcompra=true;
                       numCompras++;
                       volCompras+=totalproducto;
+                      
+                      //Comprobador de compra mayor
+                       if(totalproducto>mayorCompra){
+                           mayorCompra=totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 4"+"\nProducto: Maiz"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                       }
+                      
+                      
+                      
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -763,6 +857,15 @@ public class Carcamo_David_ProyectoTienda {
                        checkcompra=true;
                        numCompras++;
                        volCompras+=totalproducto;
+                       
+                       //Comprobador de compra mayor
+                       if(totalproducto>mayorCompra){
+                           mayorCompra=totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                       }
+                       
+                       
+                       
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -781,6 +884,15 @@ public class Carcamo_David_ProyectoTienda {
                       checkcompra=true;
                       numCompras++;
                       volCompras+=totalproducto;
+                      
+                      
+                      //Comprobador de compra mayor
+                       if(totalproducto>mayorCompra){
+                           mayorCompra=totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 3"+"\nProducto: Trigo"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                       }
+                      
+                      
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -833,6 +945,15 @@ public class Carcamo_David_ProyectoTienda {
                        checkcompra=true;
                        numCompras++;
                        volCompras+=totalproducto;
+                       
+                       //Comprobador de compra mayor
+                       if(totalproducto>mayorCompra){
+                           mayorCompra=totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                       }
+                       
+                       
+                       
                    }else{
                        System.out.println("No se puede pagar Compra");
                        checkcompra=true;
@@ -859,12 +980,68 @@ public class Carcamo_David_ProyectoTienda {
          
        }else if (opcion == 4){
            
+           //Seccion reporte
+           
+           
+           //Calculo de margen de ganancias
+           double margenganancia=(volVentas-volCompras);
+           String margengananciaF= String.format("%.2f",margenganancia);
+           
+           //Calculo de promedios
+           double promedio_Ventas=(volVentas/numVentas);
+           double promedio_Compras=(volCompras/numCompras);
+           
+           String promedio_VentasF= String.format("%.2f",promedio_Ventas);
+           String promedio_ComprasF=String.format("%.2f",promedio_Compras);
+           
+           
+           
+           //Determinar lo que es el producto estrella
+           if(cantAzucar>cantEstrella){
+               cantEstrella=cantAzucar;
+               producto_Estrella=" Azucar con "+cantAzucar+" kg vendidos";
+           }else if(cantAvena>cantEstrella){
+               cantEstrella=cantAvena;
+               producto_Estrella=" Avena con "+cantAvena+" kg vendidos";;
+           }else if(cantTrigo>cantEstrella){
+               cantEstrella=cantTrigo;
+               producto_Estrella=" Trigo con "+cantTrigo+" kg vendidos";;
+           }else if(cantMaiz>cantEstrella){
+               cantEstrella=cantMaiz;
+               producto_Estrella=" Maiz con "+cantMaiz+" kg vendidos";;
+           }
+           
+           //Caso en el que el producto no sea mayor al producto estrella, pero si igual
+           if(cantAzucar==cantEstrella){
+               producto_Estrella+= "\nTambien producto estrella: Azucar";
+           }else if(cantAvena==cantEstrella){
+               producto_Estrella+= "\nTambien producto estrella: Avena";
+           }else if(cantTrigo == cantEstrella){
+               producto_Estrella+= "\nTambien producto estrella: Trigo";
+           }else if(cantMaiz==cantEstrella){
+               producto_Estrella+= "\nTambien producto estrella: Maiz";
+           }//Evaluar en caso que sea necesita el segundo comprobador
+           
            System.out.println("******REPORTE******");
            System.out.println("Cantidad Actual en Caja: "+efectivoCaja);
+           System.out.println("");
            System.out.println("Numero de Ventas y Compras Efectuadas--");
            System.out.println("Compras: "+numCompras);
            System.out.println("Ventas: "+numVentas);
            System.out.println("---------------------------------------");
+           System.out.println("");
+           System.out.println("Volumen de Compras: "+volCompras);
+           System.out.println("Volumen de Ventas: "+volVentas);
+           System.out.println("Margen de ganancia: "+margengananciaF);
+           System.out.println("");
+           System.out.println("Promedio Ventas: "+promedio_VentasF);
+           System.out.println("Promedio Compras: "+promedio_ComprasF);
+           System.out.println("");
+           System.out.println(info_mayorVenta);
+           System.out.println("");
+           System.out.println(info_mayorCompra);
+           System.out.println("");
+           System.out.println("Producto Estrella:"+producto_Estrella);
            
            
            

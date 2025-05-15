@@ -18,6 +18,33 @@ public class Carcamo_David_ProyectoTienda {
      */
     public static void main(String[] args) {
         
+        //Establecimiento de variables y contadores super generales---------
+        
+        boolean controladorDias=true;
+        
+        //Seguidor de Apertura
+        boolean primeraApertura= true;
+        
+        
+        
+        
+        //Almacenador de dinero
+        double efectivoCaja=0;
+        double efectivoBanco=0;
+        
+        
+         int numDia=0;
+        
+        //--------------------------------------------------------------
+        
+        
+        //Ciclo que permite el inicio de un nuevo dia con todo inicializado en cero
+        while(controladorDias==true){
+        
+            
+        //Controlador de Apertura local
+        boolean controladorApertura=true;
+        
         //Creación de variable que lleva seguimiento del estatus de la caja
         boolean statusCaja= false; 
         boolean statusPrograma=true;
@@ -40,12 +67,9 @@ public class Carcamo_David_ProyectoTienda {
         double cantEstrella=0;
         
         
-        //Seguidor de Apertura
-        boolean primeraApertura= true;
-        boolean controladorApertura=true;
+       
         
-        //Almacenador de dinero
-        double efectivoCaja=0;
+        
         
         //Contadores
         int numfacturas=0;
@@ -69,6 +93,7 @@ public class Carcamo_David_ProyectoTienda {
         System.out.print("****Menu Principal****");
         System.out.println("\n 1. Abrir Caja/Introducir Efectivo"
         +"\n 2. Venta"+"\n 3. Compra"+"\n 4. Reporte"+"\n 5. Cierre Caja"+"\n 6.Salir");
+        
         
         //Mensaje de apertura caja al inicio de cada nuevo dia
         if(statusCaja==false){
@@ -139,8 +164,8 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("");
                }else if(efectivoCaja>=1){
                    System.out.println("Efectivo guardado exitosamente");
-                   System.out.println("Porfavor seleccione una opcion del menu: ");
-                   primeraApertura = false;
+                   //System.out.println("Porfavor seleccione una opcion del menu: ");
+                   primeraApertura = false; 
                }
            }else{
                System.out.println("Valor invalido. Porfavor ingrese un numero como opcion:");
@@ -155,8 +180,7 @@ public class Carcamo_David_ProyectoTienda {
        
        
        //Estructura para realizar procedimientos
-      
-       //int opcion=opcionP;
+     
        double totalproducto=0;
        
        if (opcion == 1){
@@ -1053,14 +1077,75 @@ public class Carcamo_David_ProyectoTienda {
            
            
        }else if (opcion ==5){
-           System.out.println("Aqui se inicia el procedimiento de cierre de caja");
+           
+           //Incremento de dia
+           numDia++;
+           
+           //Calculo del tope de deposito a banco del 60%
+           double topeCaja=(efectivoCaja*0.6);
+           boolean statusDeposito=false;
+           
+           System.out.println("");
+           System.out.println("****Cierre de Dia "+numDia+"****");
+           System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCaja);
+           System.out.println("");
+           
+           
+           //Ciclo que lleva control del ingreso a banco
+           while(statusDeposito==false){
+           System.out.println("Ingrese en porcentaje la cantidad que desea guardar del efectivo en caja en banco (TOPE MAXIMO DEL 60%): ");
+           
+           //Agregar validacion asi 
+           if(lea.hasNextInt()){
+            double depositoIngreso=lea.nextDouble();
+           
+            if(depositoIngreso<=topeCaja){
+               double depositoReal=(efectivoCaja*(depositoIngreso/100));
+               efectivoBanco+=depositoReal;
+               efectivoCaja+=-depositoReal;
+               System.out.println("Deposito realizado con éxito");
+               System.out.println("");
+               statusDeposito=true;
+                
+            }else{
+               System.out.println("La cantidad excede el tope del 60%");
+               System.out.println("");
+            }
+            
+            }else{
+                System.out.println("Valor invalido. Porfavor ingrese un valor numerico");
+                System.out.println("");
+                lea.next();
+            }
+           
+           }//Fin ciclo while
+           System.out.println("");
+           System.out.println("Efectivo acumulado en Banco: Lps."+efectivoBanco);
+           System.out.println("Cantidad de efectivo en Caja: "+efectivoCaja);
+           
+           statusPrograma=false;
+           
+           
+           
+           
+           
+           
+           
+           
        }else if (opcion ==6){
            System.out.println("Aqui se inicia el procedimiento de salir ");
-           break;
+           controladorDias=false;
+           break; 
        }   
        
        controladorApertura=false;
+       
      }
-    }  
+    }//Final controlador de Dias  
+        
+        
+    }//Final Controlador de Dias
+    
+    
    }
     

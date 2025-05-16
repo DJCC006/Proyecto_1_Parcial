@@ -201,7 +201,7 @@ public class Carcamo_David_ProyectoTienda {
            System.out.println("");//Mensaje en caso que stock este vacio
            }else{
             System.out.println("Porfavor seleccione tipo de cliente al que desea vender(A,B,C): ");
-            System.out.println("1.cliente A"+"\n2.cliente B"+"\n3.cliente C");
+            System.out.println("Cliente A"+"\nCliente B"+"\nCliente C");
             String seleccionCliente= lea.next();
             String cliente= seleccionCliente.toLowerCase();
             
@@ -231,6 +231,14 @@ public class Carcamo_David_ProyectoTienda {
                 int producto=lea.nextInt();
                 
                 if(producto==1){
+                    
+                   //Comprobador de stock disponible
+                   if(stockAzucar==0){
+                       System.out.println("");
+                       System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                       System.out.println("");
+                   }else{
+                     
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 1"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
@@ -288,8 +296,20 @@ public class Carcamo_David_ProyectoTienda {
                         
                         facturar=true;
                     }
+                    
+                   }//Fin de If de control de stock
            
                 }else if(producto==2){
+                    
+                    
+                   //If controlador de stock 
+                   if(stockAvena==0){
+                       System.out.println("");
+                       System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                       System.out.println("");
+                   }else{
+                    
+                    
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
@@ -321,7 +341,17 @@ public class Carcamo_David_ProyectoTienda {
                         facturar=true;
                     }
                    
+                   }//Fin if comprobador de stock
+                   
                 }else if(producto==3){
+                    
+                    
+                   //If controlador de stock
+                   if(stockTrigo==0){
+                       System.out.println("");
+                       System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                       System.out.println("");
+                   }else{
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
@@ -353,7 +383,16 @@ public class Carcamo_David_ProyectoTienda {
                         facturar=true;
                    }
                    
+                   }//Fin If controlador de stock
+                   
                 }else if(producto==4){
+                    
+                   //If controlador de stock
+                   if(stockMaiz==0){
+                       System.out.println("");
+                       System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                       System.out.println("");
+                   }else{
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
@@ -383,6 +422,7 @@ public class Carcamo_David_ProyectoTienda {
                         
                         facturar=true;
                    }
+                   }//Fin If controlador de stock
                    
                 }else if(producto<=0){
                     System.out.println("Opcion Invalida");
@@ -470,6 +510,13 @@ public class Carcamo_David_ProyectoTienda {
                 int producto=lea.nextInt();
                 
                 if(producto==1){
+                    
+                   //If controlador de Stock
+                   if(stockAzucar==0){
+                       System.out.println("");
+                       System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                       System.out.println("");
+                   }else{
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 1"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
@@ -497,8 +544,17 @@ public class Carcamo_David_ProyectoTienda {
                         productList= productList + ("\n---------------------------------------------------------------------------");
                         facturar=true;
                     }
+                   }//Fin if controlador de stock
            
                 }else if(producto==2){
+                    
+                   //If controlador de Stock
+                   
+                   if(stockAvena==0){
+                       System.out.println("");
+                       System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                       System.out.println("");
+                   }else{
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
@@ -525,8 +581,16 @@ public class Carcamo_David_ProyectoTienda {
                         productList= productList + ("\n---------------------------------------------------------------------------");
                         facturar=true;
                     }
+                   }//Fin If controlador de Stock
                    
                 }else if(producto==3){
+                    
+                   //If controlador de stock
+                   if(stockTrigo==0){
+                       System.out.println("");
+                       System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                       System.out.println("");
+                   }else{
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
@@ -554,6 +618,8 @@ public class Carcamo_David_ProyectoTienda {
                         productList= productList + ("\n---------------------------------------------------------------------------");
                         facturar=true;
                    }
+                   }//Fin If controlador de stock
+                   
                 }else if(producto<=0){
                     System.out.println("Opcion invalida");
                     System.out.println("");
@@ -651,6 +717,13 @@ public class Carcamo_David_ProyectoTienda {
           if(lea.hasNextInt()){
             int producto=lea.nextInt();
             if(producto==4){
+                
+                //If controlador de Stock
+                if(stockMaiz==0){
+                    System.out.println("");
+                    System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                    System.out.println("");
+                }
                 System.out.println("");
                 System.out.println("**Informacion de producto**");
                 System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
@@ -801,7 +874,7 @@ public class Carcamo_David_ProyectoTienda {
                        //Comprobador de compra mayor
                        if(totalproducto>mayorCompra){
                            mayorCompra=totalproducto;
-                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 1"+"\nProducto: Azucar"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
                        }
                        
                        
@@ -827,7 +900,7 @@ public class Carcamo_David_ProyectoTienda {
                       //Comprobador de compra mayor
                        if(totalproducto>mayorCompra){
                            mayorCompra=totalproducto;
-                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 4"+"\nProducto: Maiz"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
                        }
                       
                       
@@ -885,7 +958,7 @@ public class Carcamo_David_ProyectoTienda {
                        //Comprobador de compra mayor
                        if(totalproducto>mayorCompra){
                            mayorCompra=totalproducto;
-                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
                        }
                        
                        
@@ -913,7 +986,7 @@ public class Carcamo_David_ProyectoTienda {
                       //Comprobador de compra mayor
                        if(totalproducto>mayorCompra){
                            mayorCompra=totalproducto;
-                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 3"+"\nProducto: Trigo"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
                        }
                       
                       
@@ -973,7 +1046,7 @@ public class Carcamo_David_ProyectoTienda {
                        //Comprobador de compra mayor
                        if(totalproducto>mayorCompra){
                            mayorCompra=totalproducto;
-                           info_mayorCompra= info_mayorCompra +"\nCodigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto;
+                           info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
                        }
                        
                        
@@ -1021,31 +1094,23 @@ public class Carcamo_David_ProyectoTienda {
            
            
            //Determinar lo que es el producto estrella
-           if(cantAzucar>cantEstrella){
+           if(cantAzucar>cantAvena && cantAzucar>cantTrigo && cantAzucar>cantMaiz){
                cantEstrella=cantAzucar;
                producto_Estrella=" Azucar con "+cantAzucar+" kg vendidos";
-           }else if(cantAvena>cantEstrella){
+           }else if(cantAvena>cantAzucar && cantAvena>cantTrigo && cantAvena>cantMaiz){
                cantEstrella=cantAvena;
-               producto_Estrella=" Avena con "+cantAvena+" kg vendidos";;
-           }else if(cantTrigo>cantEstrella){
+                producto_Estrella=" Avena con "+cantAvena+" kg vendidos";
+           }else if(cantTrigo>cantAzucar && cantTrigo>cantAvena && cantTrigo>cantMaiz){
                cantEstrella=cantTrigo;
-               producto_Estrella=" Trigo con "+cantTrigo+" kg vendidos";;
-           }else if(cantMaiz>cantEstrella){
+               producto_Estrella=" Trigo con "+cantTrigo+" kg vendidos";
+           }else if(cantMaiz>cantAzucar && cantMaiz>cantAvena && cantMaiz>cantTrigo){
                cantEstrella=cantMaiz;
-               producto_Estrella=" Maiz con "+cantMaiz+" kg vendidos";;
+               producto_Estrella=" Maiz con "+cantMaiz+" kg vendidos";
            }
+ 
            
-           //Caso en el que el producto no sea mayor al producto estrella, pero si igual
-           if(cantAzucar==cantEstrella){
-               producto_Estrella+= "\nTambien producto estrella: Azucar";
-           }else if(cantAvena==cantEstrella){
-               producto_Estrella+= "\nTambien producto estrella: Avena";
-           }else if(cantTrigo == cantEstrella){
-               producto_Estrella+= "\nTambien producto estrella: Trigo";
-           }else if(cantMaiz==cantEstrella){
-               producto_Estrella+= "\nTambien producto estrella: Maiz";
-           }//Evaluar en caso que sea necesita el segundo comprobador
            
+           //Impresion de reporte
            System.out.println("******REPORTE******");
            System.out.println("Cantidad Actual en Caja: "+efectivoCaja);
            System.out.println("");
@@ -1066,6 +1131,7 @@ public class Carcamo_David_ProyectoTienda {
            System.out.println(info_mayorCompra);
            System.out.println("");
            System.out.println("Producto Estrella:"+producto_Estrella);
+           System.out.println("");
            
            
            

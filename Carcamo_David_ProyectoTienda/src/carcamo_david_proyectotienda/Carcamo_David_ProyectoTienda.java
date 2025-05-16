@@ -239,15 +239,15 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("");
                    }else{
                      
-                   System.out.println("");
-                   System.out.println("**Informacion de producto**");
-                   System.out.println("Codigo: 1"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
+                    System.out.println("");
+                    System.out.println("**Informacion de producto**");
+                    System.out.println("Codigo: 1"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
                    
-                   boolean checkkilograms=false;
-                   double cantidad=0;
+                    boolean checkkilograms=false;
+                    double cantidad=0;
                    
-                   //Ciclo controlador de ingreso en kilogramos
-                   while(checkkilograms!=true){
+                    //Ciclo controlador de ingreso en kilogramos
+                    while(checkkilograms!=true){
                        
                     System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                    
@@ -273,9 +273,9 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("Opcion Invalida");
                        System.out.println("");
                        lea.next();
-                   }//Fin ciclo verificador
+                   }
                    
-                   }//Fin ciclo while
+                   }//Fin ciclo verificador de kilogramos
                    
                    
                    //Pregunta para proseguir a facturar
@@ -309,19 +309,34 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("");
                    }else{
                     
-                    
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
-                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
                    
-                   //Suma a cantidad de producto
-                   cantAzucar+= cantidad;
+                   boolean checkkilograms=false;
+                   double cantidad=0;
                    
+                   //Ciclo validador para ingreso de kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       if(lea.hasNextDouble()){
+                           cantidad= lea.nextDouble();
+                           if(cantidad<=0){
+                               System.out.println("");
+                               System.out.println("Cantidad Invalida");
+                           }else if(cantidad>0){
+                               subtotalVenta= subtotalVenta+(cantidad*25);
+                               //Suma a cantidad de producto
+                               cantAzucar+= cantidad;
+                               checkkilograms=true;
+                           } 
+                       }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }  
+                   }//Fin ciclo validador para ingreso de kilogramos
                    
-                   
-                   subtotalVenta= subtotalVenta+(cantidad*25);
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
                    String selec= lea.next();
@@ -355,15 +370,33 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
-                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
+                   boolean checkkilograms=false;
+                   double cantidad=0;
                    
                    
-                   //Suma a cantidad de producto
-                   cantTrigo+= cantidad;
-                   
-                   
-                   subtotalVenta= subtotalVenta+ (cantidad*32);
+                   //Ciclo validador de ingreso kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                        cantidad= lea.nextDouble();
+                        if(cantidad<=0){
+                            System.out.println("");
+                            System.out.println("Cantidad Invalida");
+                        }else if(cantidad>0){
+                            subtotalVenta= subtotalVenta+ (cantidad*32);
+                            
+                             //Suma a cantidad de producto
+                            cantTrigo+= cantidad;
+                            checkkilograms=true;
+                        }
+                       
+                     }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                   }//Fin ciclo validador de ingreso kilogramos
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
                    String selec= lea.next();
@@ -396,14 +429,38 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
-                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
                    
-                   //Suma a cantidad de producto
-                   cantMaiz+=cantidad;
+                   boolean checkkilograms=false;
+                   double cantidad=0;
                    
                    
-                   subtotalVenta= subtotalVenta +(cantidad*20);
+                   //Ciclo validador de ingreso kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                        cantidad= lea.nextDouble();
+                        if(cantidad<=0){
+                            System.out.println("");
+                            System.out.println("Cantidad Invalida");
+                        }else if(cantidad>0){
+                            subtotalVenta= subtotalVenta+ (cantidad*20);
+                            
+                             //Suma a cantidad de producto
+                            cantMaiz+= cantidad;
+                            checkkilograms=true;
+                        }
+                       
+                     }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                   }//Fin ciclo validador de ingreso kilogramos
+                   
+                   
+                   
+                  
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
                     String selec= lea.next();
@@ -520,14 +577,36 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 1"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
-                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
                    
-                   //Suma a cantidad de producto
-                   cantAzucar+=cantidad;
+                   boolean checkkilograms=false;
+                   double cantidad=0;
                    
                    
-                   subtotalVenta= subtotalVenta+(cantidad*30);
+                   //Ciclo validador de ingreso kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                        cantidad= lea.nextDouble();
+                        if(cantidad<=0){
+                            System.out.println("");
+                            System.out.println("Cantidad Invalida");
+                        }else if(cantidad>0){
+                            subtotalVenta= subtotalVenta+ (cantidad*30);
+                            
+                             //Suma a cantidad de producto
+                            cantAzucar+= cantidad;
+                            checkkilograms=true;
+                        }
+                       
+                     }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                   }//Fin ciclo validador de ingreso kilogramos
+                   
+                   
                    //Pregunta para proseguir a facturar
                     System.out.println("¿Desea agregar otro producto? Y/N");
                     String selec= lea.next();
@@ -558,13 +637,35 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
-                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
                    
-                   //Suma a cantidad de producto
-                   cantAvena+=cantidad;
+                   boolean checkkilograms=false;
+                   double cantidad=0;
                    
-                   subtotalVenta= subtotalVenta+(cantidad*25);
+                   
+                   //Ciclo validador de ingreso kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                        cantidad= lea.nextDouble();
+                        if(cantidad<=0){
+                            System.out.println("");
+                            System.out.println("Cantidad Invalida");
+                        }else if(cantidad>0){
+                            subtotalVenta= subtotalVenta+ (cantidad*25);
+                            
+                             //Suma a cantidad de producto
+                            cantAvena+= cantidad;
+                            checkkilograms=true;
+                        }
+                       
+                     }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                   }//Fin ciclo validador de ingreso kilogramos
+                  
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
                    String selec= lea.next();
@@ -594,14 +695,36 @@ public class Carcamo_David_ProyectoTienda {
                    System.out.println("");
                    System.out.println("**Informacion de producto**");
                    System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
-                   System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
                    
-                   //Suma a cantidad de producto
-                   cantTrigo+= cantidad;
+                   boolean checkkilograms=false;
+                   double cantidad=0;
                    
                    
-                   subtotalVenta= subtotalVenta+ (cantidad*32);
+                   //Ciclo validador de ingreso kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                        cantidad= lea.nextDouble();
+                        if(cantidad<=0){
+                            System.out.println("");
+                            System.out.println("Cantidad Invalida");
+                        }else if(cantidad>0){
+                            subtotalVenta= subtotalVenta+ (cantidad*32);
+                            
+                             //Suma a cantidad de producto
+                            cantTrigo+= cantidad;
+                            checkkilograms=true;
+                        }
+                       
+                     }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                   }//Fin ciclo validador de ingreso kilogramos
+                   
+                
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
                    String selec= lea.next();
@@ -724,16 +847,40 @@ public class Carcamo_David_ProyectoTienda {
                     System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                     System.out.println("");
                 }
+                
                 System.out.println("");
                 System.out.println("**Informacion de producto**");
                 System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
-                System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-                double cantidad= lea.nextDouble();
                 
-                //Suma a cantidad de producto
-                cantMaiz+= cantidad;
+                    boolean checkkilograms=false;
+                    double cantidad=0;
+                   
+                   
+                   //Ciclo validador de ingreso kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                        cantidad= lea.nextDouble();
+                        if(cantidad<=0){
+                            System.out.println("");
+                            System.out.println("Cantidad Invalida");
+                        }else if(cantidad>0){
+                            subtotalVenta= subtotalVenta+ (cantidad*20);
+                            
+                             //Suma a cantidad de producto
+                            cantMaiz+= cantidad;
+                            checkkilograms=true;
+                        }
+                       
+                     }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                   }//Fin ciclo validador de ingreso kilogramos
                 
-                subtotalVenta= subtotalVenta+(cantidad*20);
+                
                 //Pregunta para proseguir a facturar
                 System.out.println("¿Desea agregar otro producto? Y/N");
                 String selec= lea.next();
@@ -834,7 +981,7 @@ public class Carcamo_David_ProyectoTienda {
        }else if (opcion ==3){
            //Seleccion de Proveedor
            System.out.println("Porfavor seleccione el proveedor al que desea comprar(A,B,C): ");
-           System.out.println("1.Proveedor A"+"\n2.Proveedor B"+"\n3.Proveedor C");
+           System.out.println("Proveedor A"+"\nProveedor B"+"\nProveedor C");
            String seleccionProveedor= lea.next();
            String proveedor= seleccionProveedor.toLowerCase();
            
@@ -857,9 +1004,34 @@ public class Carcamo_David_ProyectoTienda {
                
               
                if (producto==1){
-                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
-                   totalproducto= cantidad*25;
+                   
+                   boolean checkkilograms=false;
+                   double cantidad=0;
+                   
+                   //Ciclo validador de kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                           cantidad= lea.nextDouble();
+                           
+                           if(cantidad<=0){
+                               System.out.println("");
+                               System.out.println("Cantidad Invalida");
+                           }else if(cantidad>0){
+                               totalproducto= cantidad*25;
+                               checkkilograms=true;
+                           }
+                       }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                       
+                   }//Fin ciclo validador de kilogramos
+                   
+                   
+                   
                    if(efectivoCaja>=totalproducto){
                        System.out.println("***Detalles de Compra***");
                        System.out.println("Codigo Producto: 1"+"\nProducto: Azucar"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
@@ -883,9 +1055,33 @@ public class Carcamo_David_ProyectoTienda {
                        checkcompra=true;
                    }
                }else if(producto==4){
-                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble(); 
-                    totalproducto= cantidad*18;
+                   
+                   boolean checkkilograms=false;
+                   double cantidad=0;
+                   
+                   //Ciclo validador de kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                           cantidad= lea.nextDouble();
+                           
+                           if(cantidad<=0){
+                               System.out.println("");
+                               System.out.println("Cantidad Invalida");
+                           }else if(cantidad>0){
+                               totalproducto= cantidad*18;
+                               checkkilograms=true;
+                           }
+                       }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                       
+                   }//Fin ciclo validador de kilogramos
+                   
+                   
                     if(efectivoCaja>=totalproducto){
                       System.out.println("***Detalles de Compra***");
                       System.out.println("Codigo Producto: 4"+"\nProducto: Maiz"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
@@ -941,9 +1137,35 @@ public class Carcamo_David_ProyectoTienda {
                int producto= lea.nextInt();
                
                if (producto==2){
-                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
-                   totalproducto= cantidad*20;
+                   
+              
+                   boolean checkkilograms=false;
+                   double cantidad=0;
+                   
+                   //Ciclo validador de kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                           cantidad= lea.nextDouble();
+                           
+                           if(cantidad<=0){
+                               System.out.println("");
+                               System.out.println("Cantidad Invalida");
+                           }else if(cantidad>0){
+                               totalproducto= cantidad*20;
+                               checkkilograms=true;
+                           }
+                       }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                       
+                   }//Fin ciclo validador de kilogramos
+                   
+                   
+                   
                    if(efectivoCaja>=totalproducto){
                        System.out.println("***Detalles de Compra***");
                        System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
@@ -968,9 +1190,34 @@ public class Carcamo_David_ProyectoTienda {
                        checkcompra=true;
                    }
                }else if(producto==3){
-                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
-                    totalproducto= cantidad*30;
+                   
+             
+                   
+                   boolean checkkilograms=false;
+                   double cantidad=0;
+                   
+                   //Ciclo validador de kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                           cantidad= lea.nextDouble();
+                           
+                           if(cantidad<=0){
+                               System.out.println("");
+                               System.out.println("Cantidad Invalida");
+                           }else if(cantidad>0){
+                               totalproducto= cantidad*30;
+                               checkkilograms=true;
+                           }
+                       }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                       
+                   }//Fin ciclo validador de kilogramos
+                 
                     if(efectivoCaja>=totalproducto){
                       System.out.println("***Detalles de Compra***");
                       System.out.println("Codigo Producto: 3"+"\nProducto: Trigo"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
@@ -1028,9 +1275,34 @@ public class Carcamo_David_ProyectoTienda {
                int producto= lea.nextInt();
                
                if (producto==2){
-                   System.out.println("Ingrese la cantidad (kilogramos) que desea comprar de este producto: ");
-                   double cantidad= lea.nextDouble();
-                   totalproducto= cantidad*22;
+                   
+                
+                   boolean checkkilograms=false;
+                   double cantidad=0;
+                   
+                   //Ciclo validador de kilogramos
+                   while(checkkilograms!=true){
+                       System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                       
+                       if(lea.hasNextDouble()){
+                           cantidad= lea.nextDouble();
+                           
+                           if(cantidad<=0){
+                               System.out.println("");
+                               System.out.println("Cantidad Invalida");
+                           }else if(cantidad>0){
+                               totalproducto= cantidad*22;
+                               checkkilograms=true;
+                           }
+                       }else{
+                           System.out.println("");
+                           System.out.println("Opcion Invalida");
+                           lea.next();
+                       }
+                       
+                   }//Fin ciclo validador de kilogramos
+                   
+                   
                    if(efectivoCaja>=totalproducto){
                        System.out.println("***Detalles de Compra***");
                        System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);

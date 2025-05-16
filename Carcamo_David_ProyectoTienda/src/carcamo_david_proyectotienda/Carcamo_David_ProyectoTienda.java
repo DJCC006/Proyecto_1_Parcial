@@ -1379,12 +1379,13 @@ public class Carcamo_David_ProyectoTienda {
                cantEstrella=cantMaiz;
                producto_Estrella=" Maiz con "+cantMaiz+" kg vendidos";
            }
- 
            
+           //Efectivo caja reducido a dos decimales
+           String efectivoCajaF= String.format("%.2f", efectivoCaja);
            
            //Impresion de reporte
            System.out.println("******REPORTE******");
-           System.out.println("Cantidad Actual en Caja: "+efectivoCaja);
+           System.out.println("Cantidad Actual en Caja: "+efectivoCajaF);
            System.out.println("");
            System.out.println("Numero de Ventas y Compras Efectuadas--");
            System.out.println("Compras: "+numCompras);
@@ -1398,9 +1399,9 @@ public class Carcamo_David_ProyectoTienda {
            System.out.println("Promedio Ventas: "+promedio_VentasF);
            System.out.println("Promedio Compras: "+promedio_ComprasF);
            System.out.println("");
-           System.out.println(info_mayorVenta);
+           System.out.println("La mayor venta fue de: Lps."+mayorVenta);
            System.out.println("");
-           System.out.println(info_mayorCompra);
+           System.out.println("La mayor compra fue de: Lps."+mayorCompra);
            System.out.println("");
            System.out.println("Producto Estrella:"+producto_Estrella);
            System.out.println("");
@@ -1437,29 +1438,36 @@ public class Carcamo_David_ProyectoTienda {
            if(lea.hasNextInt()){
             double depositoIngreso=lea.nextDouble();
            
-            if(depositoIngreso<=topeCaja){
+            if(depositoIngreso<=0){
+                System.out.println("");
+                System.out.println("Cantidad Invalida. No se aceptan valores menores a 0.");
+                
+            }else if(depositoIngreso<=topeCaja){
                double depositoReal=(efectivoCaja*(depositoIngreso/100));
                efectivoBanco+=depositoReal;
                efectivoCaja+=-depositoReal;
                System.out.println("Deposito realizado con éxito");
                System.out.println("");
                statusDeposito=true;
-                
             }else{
-               System.out.println("La cantidad excede el tope del 60%");
-               System.out.println("");
+                System.out.println("");
+                System.out.println("Cantidad Invalida. La cantidad excede el tope del 60%.");
             }
             
             }else{
-                System.out.println("Valor invalido. Porfavor ingrese un valor numerico");
                 System.out.println("");
+                System.out.println("Valor invalido. Solamente se aceptan valores numéricos.");
                 lea.next();
             }
            
            }//Fin ciclo while
+           
+           String efectivoCajaF= String.format("%.2f", efectivoCaja);
+           String efectivoBancoF= String.format("%.2f",efectivoBanco);
            System.out.println("");
-           System.out.println("Efectivo acumulado en Banco: Lps."+efectivoBanco);
-           System.out.println("Cantidad de efectivo en Caja: "+efectivoCaja);
+           System.out.println("Efectivo acumulado en Banco: Lps."+efectivoBancoF);
+           System.out.println("Cantidad de efectivo en Caja: "+efectivoCajaF);
+           System.out.println("");
            
            statusPrograma=false;
            
@@ -1482,7 +1490,7 @@ public class Carcamo_David_ProyectoTienda {
     }//Final controlador de Dias  
         
         
-    }//Final Controlador de Dias
+    }//Final Main
     
     
    }

@@ -1161,274 +1161,319 @@ public class Carcamo_David_ProyectoTienda {
                 String proveedor= seleccionProveedor.toLowerCase();
 
                 if(proveedor.equals("a")){
-                    System.out.println("***Productos Disponibles Para Compra***");
-                    System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
-                    System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.25 | ");
-                    System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.18 | ");
+                    //Seccion para proveedor A
                     System.out.println("");
-
+                    System.out.println("====== Ha seleccionado al Proveedor A ======");
+                    
+                    //Variable que lleva control de la finalización de la compra
                     boolean checkcompra=false;
 
-
+                    //Ciclo que lleva contol de compra
                     while(checkcompra!=true){
+                        System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
+                        if(lea.hasNextInt()){
+                        int producto= lea.nextInt();
 
-                    System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
+                        //Seleccion producto 1
+                        if (producto==1){
+                            boolean checkkilograms=false;
+                            double cantidad=0;
 
-                    if(lea.hasNextInt()){
-                    int producto= lea.nextInt();
-
-
-                    if (producto==1){
-
-                        boolean checkkilograms=false;
-                        double cantidad=0;
-
-                        //Ciclo validador de kilogramos
-                        while(checkkilograms!=true){
-                            System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-
-                            if(lea.hasNextDouble()){
-                                cantidad= lea.nextDouble();
-
-                                if(cantidad<=0){
+                            //Ciclo validador de kilogramos
+                            while(checkkilograms!=true){
+                                System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                                if(lea.hasNextDouble()){
+                                    cantidad= lea.nextDouble();
+                                    if(cantidad<=0){
+                                        System.out.println("");
+                                        System.out.println("Cantidad Inválida. No se aceptan cantidades negativas.");
+                                    }else if(cantidad>0){
+                                        totalproducto= cantidad*25;
+                                        checkkilograms=true;
+                                    }
+                                }else{
                                     System.out.println("");
-                                    System.out.println("Cantidad Invalida");
-                                }else if(cantidad>0){
-                                    totalproducto= cantidad*25;
-                                    checkkilograms=true;
+                                    System.out.println("Dato de tipo inválido. Solamente se aceptan valores numéricos.");
+                                    lea.next();
                                 }
-                            }else{
+
+                            }//Fin ciclo validador de kilogramos
+
+
+                            //Proceso de detalles y facturacion de compra
+                            if(efectivoCaja>=totalproducto){
                                 System.out.println("");
-                                System.out.println("Opcion Invalida");
-                                lea.next();
+                                System.out.println("====== Detalles de Compra ======");
+                                System.out.println("Codigo Producto: 1"+"\nProducto: Azucar"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                                stockAzucar=cantidad;
+                                efectivoCaja=efectivoCaja-totalproducto;
+                                System.out.println("");
+                                System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                                System.out.println("=================================");
+                                System.out.println("");
+                                System.out.println("");
+                                
+                                //Se indica que la compra ha finalizado
+                                checkcompra=true;
+                                
+                                //Se incrementa el numero de compras
+                                numCompras++;
+                                //Se incrementa el volumen de compras
+                                volCompras+=totalproducto;
+
+                                //Comprobador de compra mayor
+                                if(totalproducto>mayorCompra){
+                                    mayorCompra=totalproducto;
+                                    info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
+                                }
+
+                            }else{
+                                //Mensaje en caso que la cantidad de efectivo en caja haya sido insuficiente para realizar la compra
+                                System.out.println("");
+                                System.out.println("Efectivo insuficiente en caja. No se pudo pagar la compra.");
+                                checkcompra=true;
                             }
+                            
+                        }else if(producto==4){
+                            //Seleccion producto 4
+                            boolean checkkilograms=false;
+                            double cantidad=0;
 
-                        }//Fin ciclo validador de kilogramos
+                            //Ciclo validador de kilogramos
+                            while(checkkilograms!=true){
+                                System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                                if(lea.hasNextDouble()){
+                                    cantidad= lea.nextDouble();
+                                    if(cantidad<=0){
+                                        System.out.println("");
+                                        System.out.println("Cantidad Invalida. No se aceptan cantidades negativas.");
+                                    }else if(cantidad>0){
+                                        totalproducto= cantidad*18;
+                                        checkkilograms=true;
+                                    }
+                                }else{
+                                    System.out.println("");
+                                    System.out.println("Dato de tipo inválido. Solamente se aceptan valores numéricos.");
+                                    lea.next();
+                                }
+                            }//Fin ciclo validador de kilogramos
+
+                            //Proceso de detalles y facturación de commpra
+                             if(efectivoCaja>=totalproducto){
+                               System.out.println("====== Detalles de Compra ======");
+                               System.out.println("Codigo Producto: 4"+"\nProducto: Maiz"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                               stockMaiz=cantidad;
+                               efectivoCaja=efectivoCaja-totalproducto;
+                               System.out.println("");
+                               System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                               System.out.println("=================================");
+                               System.out.println("");
+                               System.out.println("");
+                               
+                               //Indica que la compra ha finalizado
+                               checkcompra=true;
+                               
+                               //Incrementa el numero de compras
+                               numCompras++;
+                               //Incrementa el volumen de compras
+                               volCompras+=totalproducto;
+
+                               //Comprobador de compra mayor
+                                if(totalproducto>mayorCompra){
+                                    mayorCompra=totalproducto;
+                                    info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
+                                }
 
 
 
-                        if(efectivoCaja>=totalproducto){
-                            System.out.println("***Detalles de Compra***");
-                            System.out.println("Codigo Producto: 1"+"\nProducto: Azucar"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
-                            stockAzucar=cantidad;
-                            efectivoCaja=efectivoCaja-totalproducto;
-                            System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                            }else{
+                                 System.out.println("");
+                                System.out.println("Efectivo insuficiente en caja. No se pudo realizar la compra.");
+                                checkcompra=true;
+                         }
+                        }else if(producto<=0){
+                            //Caso en el que se introduzca un numero negativo o igual a cero
                             System.out.println("");
-                            checkcompra=true;
-                            numCompras++;
-                            volCompras+=totalproducto;
-
-                            //Comprobador de compra mayor
-                            if(totalproducto>mayorCompra){
-                                mayorCompra=totalproducto;
-                                info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
-                            }
-
-
+                            System.out.println("Opción Invalida.");
+                            
                         }else{
-                            System.out.println("No se puede pagar Compra");
-                            checkcompra=true;
+                            //Caso en el que se introduzca otro codigo que es distinto a los productos ofrecidos por el proveedor
+                            System.out.println("");
+                            System.out.println("El proveedor no vende dicho producto.");
                         }
-                    }else if(producto==4){
-
-                        boolean checkkilograms=false;
-                        double cantidad=0;
-
-                        //Ciclo validador de kilogramos
-                        while(checkkilograms!=true){
-                            System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-
-                            if(lea.hasNextDouble()){
-                                cantidad= lea.nextDouble();
-
-                                if(cantidad<=0){
-                                    System.out.println("");
-                                    System.out.println("Cantidad Invalida");
-                                }else if(cantidad>0){
-                                    totalproducto= cantidad*18;
-                                    checkkilograms=true;
-                                }
-                            }else{
-                                System.out.println("");
-                                System.out.println("Opcion Invalida");
-                                lea.next();
-                            }
-
-                        }//Fin ciclo validador de kilogramos
-
-
-                         if(efectivoCaja>=totalproducto){
-                           System.out.println("***Detalles de Compra***");
-                           System.out.println("Codigo Producto: 4"+"\nProducto: Maiz"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
-                           stockMaiz=cantidad;
-                           efectivoCaja=efectivoCaja-totalproducto;
-                           System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
-                           System.out.println("");
-                           checkcompra=true;
-                           numCompras++;
-                           volCompras+=totalproducto;
-
-                           //Comprobador de compra mayor
-                            if(totalproducto>mayorCompra){
-                                mayorCompra=totalproducto;
-                                info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
-                            }
-
-
 
                         }else{
-                            System.out.println("No se puede pagar Compra");
-                            checkcompra=true;
-                     }
-                    }else if(producto<=0){
-                        System.out.println("Opcion no Valida");
-                        System.out.println("");
-                    }else{
-                        System.out.println("Proveedor no vende dicho Producto");
-                        System.out.println("");
-                        checkcompra=true;
-                    }
-
-                    }else{
-                        System.out.println("Opcion no Valida");
-                        lea.next();
-                    }//Fin evaluador
+                            //Caso en el que se introduzca algun caracter no numérico
+                            System.out.println("");
+                            System.out.println("Opción no válida. Solamente se aceptan valores tipo numérico.");
+                            lea.next();
+                        }//Fin evaluador
 
                     }//Fin ciclo while
 
                 }else if(proveedor.equals("b")){
-                    System.out.println("***Productos Disponibles***");
-                    System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
-                    System.out.println("|   2    |"+" |  Avena   | "+" | Lps.20 | ");
-                    System.out.println("|   3    |"+" |  Trigo   | "+" | Lps.30 | ");
-
+                    //Seleccion proveedor B
+                    
+                    System.out.println("");
+                    System.out.println("====== Ha seleccionado al Proveedor B ======");
+                 
+                    //Variable que lleva control de la finalizacion de la compra
                     boolean checkcompra=false;
 
                     while(checkcompra!=true){
+                        System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
 
-                    System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
+                        if(lea.hasNextInt()){
+                        int producto= lea.nextInt();
 
-                    if(lea.hasNextInt()){
-                    int producto= lea.nextInt();
+                        if (producto==2){
+                            //Seleccion producto 2
 
-                    if (producto==2){
+                            //Variable que lleva control de la cantidad ingresada
+                            boolean checkkilograms=false;
+                            double cantidad=0;
 
-
-                        boolean checkkilograms=false;
-                        double cantidad=0;
-
-                        //Ciclo validador de kilogramos
-                        while(checkkilograms!=true){
-                            System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-
-                            if(lea.hasNextDouble()){
-                                cantidad= lea.nextDouble();
-
-                                if(cantidad<=0){
+                            //Ciclo validador de kilogramos
+                            while(checkkilograms!=true){
+                                System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                                //Comprueba que lea contenga un dato de tipo double
+                                if(lea.hasNextDouble()){
+                                    cantidad= lea.nextDouble();
+                                    if(cantidad<=0){
+                                        //Caso en que la cantidad introducida es negativa
+                                        System.out.println("");
+                                        System.out.println("Cantidad Inválida. No se aceptan cantidades negativas.");
+                                    }else if(cantidad>0){
+                                        //Caso correcto
+                                        totalproducto= cantidad*20;
+                                        checkkilograms=true;
+                                    }
+                                }else{
+                                    //Caso en el que no se introduzca un dato numérico
                                     System.out.println("");
-                                    System.out.println("Cantidad Invalida");
-                                }else if(cantidad>0){
-                                    totalproducto= cantidad*20;
-                                    checkkilograms=true;
+                                    System.out.println("Dato de tipo inválido. Solamente se aceptan valores numéricos.");
+                                    lea.next();
                                 }
-                            }else{
+
+                            }//Fin ciclo validador de kilogramos
+
+
+                            //Proceso de detlalle y facturacion de compra
+                            if(efectivoCaja>=totalproducto){
+                                System.out.println("====== Detalles de Compra ======");
+                                System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                                stockAvena=cantidad;
+                                efectivoCaja=efectivoCaja-totalproducto;
                                 System.out.println("");
-                                System.out.println("Opcion Invalida");
-                                lea.next();
+                                System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                                System.out.println("=================================");
+                                System.out.println("");
+                                System.out.println("");
+
+                                //Indica que la compra ha finalizado
+                                checkcompra=true;
+
+                                //Incrementa el numero de compra
+                                numCompras++;
+                                //Incrementa el volumen de compras
+                                volCompras+=totalproducto;
+
+                                //Comprobador de compra mayor
+                                if(totalproducto>mayorCompra){
+                                    mayorCompra=totalproducto;
+                                    info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
+                                }
+
+
+
+                            }else{
+                                //Caso en el que no haya suficiente efectivo para realizar la compra
+                                System.out.println("");
+                                System.out.println("Efectivo insuficiente en caja. No se pudo pagar la compra.");
+                                checkcompra=true;
                             }
 
-                        }//Fin ciclo validador de kilogramos
+                        }else if(producto==3){
+                            //Seleccion de producto 3
+
+                            //Variable que lleva control de la validacion de datos introducidos en cantidad
+                            boolean checkkilograms=false;
+                            double cantidad=0;
+
+                            //Ciclo validador de kilogramos
+                            while(checkkilograms!=true){
+                                System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+
+                                if(lea.hasNextDouble()){
+                                    cantidad= lea.nextDouble();
+                                    if(cantidad<=0){
+                                        //Caso en que se introduzca una cantidad negativa
+                                        System.out.println("");
+                                        System.out.println("Cantidad inválida. No se aceptan cantidades negativas.");
+                                    }else if(cantidad>0){
+                                        totalproducto= cantidad*30;
+                                        checkkilograms=true;
+                                    }
+                                }else{
+                                    //Caso en que se introduzca un dato de tipo no numérico
+                                    System.out.println("");
+                                    System.out.println("Dato de tipo inválido. Solamente se aceptan valores numéricos.");
+                                    lea.next();
+                                }
+                            }//Fin ciclo validador de kilogramos
+
+                            //Proceso de detalles y facturacion de compra
+                            if(efectivoCaja>=totalproducto){
+                               System.out.println("====== Detalles de Compra ======");
+                               System.out.println("Codigo Producto: 3"+"\nProducto: Trigo"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                               stockTrigo=cantidad;
+                               efectivoCaja=efectivoCaja-totalproducto;
+                               System.out.println("");
+                               System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                               System.out.println("=================================");
+                               System.out.println("");
+                               System.out.println("");
+
+                               //Indica que la compra ha finalizado
+                               checkcompra=true;
+
+                               //Incrementa el numero de compra
+                               numCompras++;
+
+                               //Incrementa el volumen de compra
+                               volCompras+=totalproducto;
 
 
+                               //Comprobador de compra mayor
+                                if(totalproducto>mayorCompra){
+                                    mayorCompra=totalproducto;
+                                    info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
+                                }
 
-                        if(efectivoCaja>=totalproducto){
-                            System.out.println("***Detalles de Compra***");
-                            System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
-                            stockAvena=cantidad;
-                            efectivoCaja=efectivoCaja-totalproducto;
-                            System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+
+                            }else{
+                                System.out.println("Efectivo insuficiente en caja. No se pudo pagar la compra.");
+                                checkcompra=true;
+                            }
+
+                        }else if(producto<=0){
+                            //Caso en el que se introduzca un dato negativo
                             System.out.println("");
-                            checkcompra=true;
-                            numCompras++;
-                            volCompras+=totalproducto;
-
-                            //Comprobador de compra mayor
-                            if(totalproducto>mayorCompra){
-                                mayorCompra=totalproducto;
-                                info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
-                            }
-
-
+                            System.out.println("Opcion Invalida");
 
                         }else{
-                            System.out.println("No se puede pagar Compra");
-                            checkcompra=true;
+                            //Caso en el que se introduzca un codigo distinto a los ofrecido por el proveedor
+                            System.out.println("");
+                            System.out.println("Proveedor no vende dicho producto");
+
                         }
-                    }else if(producto==3){
-
-
-
-                        boolean checkkilograms=false;
-                        double cantidad=0;
-
-                        //Ciclo validador de kilogramos
-                        while(checkkilograms!=true){
-                            System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-
-                            if(lea.hasNextDouble()){
-                                cantidad= lea.nextDouble();
-
-                                if(cantidad<=0){
-                                    System.out.println("");
-                                    System.out.println("Cantidad Invalida");
-                                }else if(cantidad>0){
-                                    totalproducto= cantidad*30;
-                                    checkkilograms=true;
-                                }
-                            }else{
-                                System.out.println("");
-                                System.out.println("Opcion Invalida");
-                                lea.next();
-                            }
-
-                        }//Fin ciclo validador de kilogramos
-
-                         if(efectivoCaja>=totalproducto){
-                           System.out.println("***Detalles de Compra***");
-                           System.out.println("Codigo Producto: 3"+"\nProducto: Trigo"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
-                           stockTrigo=cantidad;
-                           efectivoCaja=efectivoCaja-totalproducto;
-                           System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
-                           System.out.println("");
-                           checkcompra=true;
-                           numCompras++;
-                           volCompras+=totalproducto;
-
-
-                           //Comprobador de compra mayor
-                            if(totalproducto>mayorCompra){
-                                mayorCompra=totalproducto;
-                                info_mayorCompra= info_mayorCompra +"\nLa mayor compra fue de: Lps."+mayorCompra;
-                            }
-
 
                         }else{
-                            System.out.println("No se puede pagar Compra");
-                            checkcompra=true;
-                     }
-                    }else if(producto<=0){
-                        System.out.println("Opcion Invalida");
-                        System.out.println("");
-                    }else{
-                        System.out.println("Proveedor no vende dicho producto");
-                        System.out.println("");
-                    }
-
-                    }else{
-                        System.out.println("Opcion Invalida");
-                        System.out.println("");
-                        lea.next();
-                    }//Fin comprobador
+                            //Caso en el que se introduzca un dato de tipo no numérico
+                            System.out.println("");
+                            System.out.println("Dato de tipo inválido. Solamente se aceptan datos de tipo numérico.");
+                            lea.next();
+                        }//Fin comprobador
 
                     }//Fin ciclo while
 
@@ -1436,22 +1481,22 @@ public class Carcamo_David_ProyectoTienda {
 
 
                 }else if(proveedor.equals("c")){
-                    System.out.println("***Productos Disponibles***");
-                    System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
-                    System.out.println("|   2    |"+" |  Avena   | "+" | Lps.22 | ");
-
+                    //Seleccion proveedor C
+                    
+                    System.out.println("");
+                    System.out.println("====== Ha seleccionado al Proveedor C ======");
+                    
+                    //Variable que lleva el control de compra finalizada
                     boolean checkcompra=false;
 
 
                     while(checkcompra!=true){
                     System.out.println("Porfavor ingrese el codigo del producto que desea comprar: ");
-
                     if(lea.hasNextInt()){
                     int producto= lea.nextInt();
 
                     if (producto==2){
-
-
+                        //Variable que lleva control de la cantidad introducida
                         boolean checkkilograms=false;
                         double cantidad=0;
 
@@ -1461,17 +1506,17 @@ public class Carcamo_David_ProyectoTienda {
 
                             if(lea.hasNextDouble()){
                                 cantidad= lea.nextDouble();
-
                                 if(cantidad<=0){
+                                    //Caso en el que se introduzca una cantidad negativa
                                     System.out.println("");
-                                    System.out.println("Cantidad Invalida");
+                                    System.out.println("Cantidad inválida. No se aceptan cantidades negativas.");
                                 }else if(cantidad>0){
                                     totalproducto= cantidad*22;
                                     checkkilograms=true;
                                 }
                             }else{
                                 System.out.println("");
-                                System.out.println("Opcion Invalida");
+                                System.out.println("Dato de tipo inválido. Solamente se aceptan valores numéricos.");
                                 lea.next();
                             }
 
@@ -1479,15 +1524,23 @@ public class Carcamo_David_ProyectoTienda {
 
 
                         if(efectivoCaja>=totalproducto){
-                            System.out.println("***Detalles de Compra***");
+                            System.out.println("====== Detalles de Compra ======");
                             System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
                             stockAvena=cantidad;
                             efectivoCaja=efectivoCaja-totalproducto;
                             System.out.println("");
                             System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                            System.out.println("=================================");
                             System.out.println("");
+                            System.out.println("");
+                            
+                            //Indica que la compra ha finalizado
                             checkcompra=true;
+                            
+                            //Incrementa el numero de compras
                             numCompras++;
+                            
+                            //Incrementa el volumen de compras
                             volCompras+=totalproducto;
 
                             //Comprobador de compra mayor
@@ -1499,27 +1552,32 @@ public class Carcamo_David_ProyectoTienda {
 
 
                         }else{
-                            System.out.println("No se puede pagar Compra");
+                            //Caso que haya insuficiente efectivo
+                            System.out.println("Efectivo insuficiente en caja. No se pudo pagar la compra.");
                             checkcompra=true;
                         }
                     }else if(producto<=0){
-                        System.out.println("Opcion Invalida");
+                        //Caso en el que se haya introducido un valor negativo
                         System.out.println("");
+                        System.out.println("Opción inválida");
+                        
                     }else{
-                        System.out.println("Proveedor no vende dicho producto");
+                        //Caso en el que se haya introducido un código distinto a los que ofrezca el proveedor
                         System.out.println("");
+                        System.out.println("Proveedor no vende dicho producto");
+                        
                     }
                     }else{
-                        System.out.println("Opcion Invalida");
                         System.out.println("");
+                        System.out.println("Dato de tipo inválido. Solamente se aceptan datos de tipo numérico.");
                         lea.next();
-                    }//Fin ceccion validacion 
+                    }//Fin seccion validacion 
 
-                    }//Fin ciclo WHile
-
+                    }//Fin ciclo While
 
                 }else {
-                    System.out.println("Opcion no valida. Porfavor vuelva a intentar");
+                    //Caso que no coincida con los proveedores
+                    System.out.println("Opción no válida. Porfavor, vuelva a intentar.");
                 }//Fin parte 3
 
             }else if (opcion == 4){

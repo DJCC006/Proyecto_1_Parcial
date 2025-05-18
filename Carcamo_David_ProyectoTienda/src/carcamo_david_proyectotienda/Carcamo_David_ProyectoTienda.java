@@ -213,364 +213,373 @@ public class Carcamo_David_ProyectoTienda {
 
 
                 }else{
-                 System.out.println("Porfavor seleccione tipo de cliente al que desea vender(A,B,C): ");
+                    
+                    
+                     //Interfaz de lista de productos disponibles para la venta
+                System.out.println("");
+                System.out.println("=========================================   Venta de Productos   ===================================================");
+                System.out.println("|| Código || "+" || Producto || "+" ||         Precio        || "+" || Disponible Para || "+" || Stock Disponible ||");
+                System.out.println("--------------------------------------------------------------------------------------------------------------------");
+                System.out.println("||   1    || "+" ||  Azúcar  || "+" ||         Lps.30        || "+" ||      A  y  B    || "+" ||  "+stockAzucar+" ||");
+                System.out.println("--------------------------------------------------------------------------------------------------------------------");
+                System.out.println("||   2    || "+" ||   Avena  || "+" ||         Lps.25        || "+" ||      A  y  B    || "+" ||   "+stockAvena+" ||");
+                System.out.println("--------------------------------------------------------------------------------------------------------------------");
+                System.out.println("||   3    || "+" ||   Trigo  || "+" ||         Lps.32        || "+" ||      A  y  B    || "+" ||   "+stockTrigo+" ||");
+                System.out.println("--------------------------------------------------------------------------------------------------------------------");
+                System.out.println("||   4    || "+" ||   Maíz   || "+" ||         Lps.20        || "+" ||      A  y  C    || "+" ||   "+stockMaiz+"  ||");
+                System.out.println("=====================================================================================================================");
+                    
+                    
+                 System.out.println("Proveedores disponibles para venta:");
                  System.out.println("Cliente A"+"\nCliente B"+"\nCliente C");
+                 System.out.println("Porfavor introduzca la letra del cliente al que desea vender(A,B,C): ");
                  String seleccionCliente= lea.next();
                  String cliente= seleccionCliente.toLowerCase();
 
                  if(cliente.equals("a")){
-                    System.out.println("***Productos Disponibles Para Venta***");
-                    System.out.println("| Codigo |"+" | Producto | "+" | Precio | "+"Cantidad Disponible");
-                    System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.30 | "+    stockAzucar);
-                    System.out.println("|   2    |"+" |   Avena  | "+" | Lps.25 | "+    stockAvena);
-                    System.out.println("|   3    |"+" |   Trigo  | "+" | Lps.32 | "+    stockTrigo);
-                    System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | "+    stockMaiz);
-                    System.out.println("");
-
-                    boolean facturar =false;
+                     //Seleccion de Cliente A
+                     System.out.println("");
+                     System.out.println("========= Ha seleccionado al Cliente A ==========");
+                    
+                    
 
 
 
                     //Ciclo que permite el reingreso de productos antes de facturar
                     String productList= "--Detalle de Productos--"; //Variable String que llevara registro de los productos seleccionados mediante la anexion de texto
+                    
+                    //Variable que lleva control del proceso de factuacion 
+                    boolean facturar =false;
+                    
+                    //Ciclo que lleva control de la facturacion
                     while(facturar==false){
+                       System.out.println("Porfavor, ingrese el código del producto que desea vender: ");
 
-                     System.out.println("Porfavor ingrese el codigo del producto que desea vender: ");
+                      
+                      if(lea.hasNextInt()){
+                        int producto=lea.nextInt();
 
+                        if(producto==1){
 
-
-                   if(lea.hasNextInt()){
-
-                     int producto=lea.nextInt();
-
-                     if(producto==1){
-
-                        //Comprobador de stock disponible
-                        if(stockAzucar<=0){
+                           //Comprobador de stock disponible
+                           if(stockAzucar<=0){
+                               //Mensaje en case de no haber stock del producto seleccionado
+                               System.out.println("");
+                               System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                           }else{
                             System.out.println("");
-                            System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
-                            System.out.println("");
-                        }else{
+                            System.out.println("====== Informacion de producto ======");
+                            System.out.println("Codigo: 1"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
+                            
+                            //Variable que lleva control del tipo de dato ingresado en cantidad
+                            boolean checkkilograms=false;
+                            double cantidad=0;
 
-                         System.out.println("");
-                         System.out.println("**Informacion de producto**");
-                         System.out.println("Codigo: 1"+"\nNombre de Producto: Azucar"+"\nPrecio unitario: Lps.30");
+                            //Ciclo controlador de ingreso en kilogramos
+                            while(checkkilograms!=true){
+                                System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                                if(lea.hasNextDouble()){
+                                    cantidad= lea.nextDouble();
+                                    if(cantidad<0){
+                                       System.out.println("");
+                                       System.out.println("Cantidad inválida. No se aceptan cantidades negativas.");
+                                    }else if(cantidad>=0){
+                                        
+                                       //Comprobante si hay una cantidad suficiente en stock para cubrir la demanda pedida por el cliente
+                                       if(stockAzucar<cantidad){
+                                           System.out.println("");
+                                           System.out.println("No hay una cantidad suficiente para realizar la venta.");
 
-                         boolean checkkilograms=false;
-                         double cantidad=0;
+                                       }else{
+                                           //Calculo de subtotal
+                                           subtotalVenta= subtotalVenta+(cantidad*30);
 
-                         //Ciclo controlador de ingreso en kilogramos
-                         while(checkkilograms!=true){
+                                            //Suma a cantidad de producto
+                                            cantAzucar+= cantidad;
 
-                         System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                                            //Resta la cantidad al stock existente
+                                            stockAzucar= stockAzucar-cantidad;
+                                            checkkilograms=true;
+                                       }
 
-                         if(lea.hasNextDouble()){
+                                    }
+                                }else{
+                                    //Caso en el que no se introduzca un valor de tipo numérico
+                                   System.out.println("");
+                                   System.out.println("Dato de tipo inválido. Solamente se aceptan valores numéricos.");
+                                   lea.next();
+                               }
+                           }//Fin ciclo verificador de kilogramos
 
-                         cantidad= lea.nextDouble();
 
-                         if(cantidad<0){
-                            System.out.println("Cantidad Invalida.");
-                            System.out.println("");
-                         }else if(cantidad>=0){
+                           //Verificador del stock existente de producto
+                            if(stockAzucar<0){
+                                stockAzucar=0;
+                            }//Este if solamente sirve para evitar que el stock quede en una cantidad negativa, si llegase a pasar.
 
-                            //Comprobante si hay una cantidad suficiente en stock para cubrir la demanda pedida por el cliente
-                            if(stockAzucar<cantidad){
+
+
+                           //Pregunta para proseguir a facturar
+                            System.out.println("¿Desea agregar otro producto? (Y/N)");
+                            String selec= lea.next();
+                            String seleccion= selec.toLowerCase();
+                            //Evaluacion para proceder a facturar
+                            if(seleccion.equals("y")){
                                 System.out.println("");
-                                System.out.println("No hay una cantidad suficiente para realizar la venta.");
+                                productList= productList + ("\n|Codigo: 1| "+" |Nombre de Producto: Azucar| "+" |Cantidad: "+cantidad+" kg| "+" | Precio unitario: Lps.30|");//Anexion a lista de productos
+                                productList= productList + ("\n---------------------------------------------------------------------------");
 
-                            }else{
-                                subtotalVenta= subtotalVenta+(cantidad*30);
+                            }else{//caso respuesta de n
+                                System.out.println("");
+                                productList= productList + ("\n|Codigo: 1| "+" |Nombre de Producto: Azucar| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.30|");
+                                productList= productList + ("\n---------------------------------------------------------------------------");
+                                //Indica que se procede a la facturación 
+                                facturar=true;
+                            }
+                           }//Fin de If de control de stock
 
-                                 //Suma a cantidad de producto
-                                 cantAzucar+= cantidad;
+                        }else if(producto==2){
 
-                                 //Resta la cantidad al stock existente
-                                 stockAzucar= stockAzucar-cantidad;
-                                 checkkilograms=true;
+
+                           //If controlador de stock 
+                           if(stockAvena<=0){
+                               System.out.println("");
+                               System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                               System.out.println("");
+                           }else{
+
+                           System.out.println("");
+                           System.out.println("**Informacion de producto**");
+                           System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
+
+                           boolean checkkilograms=false;
+                           double cantidad=0;
+
+                           //Ciclo validador para ingreso de kilogramos
+                           while(checkkilograms!=true){
+                               System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+                               if(lea.hasNextDouble()){
+                                   cantidad= lea.nextDouble();
+                                   if(cantidad<0){
+                                       System.out.println("");
+                                       System.out.println("Cantidad Invalida");
+                                   }else if(cantidad>=0){
+
+                                       //Condicional verificadora del stock y cantidad
+                                       if(stockAvena<cantidad){
+                                           System.out.println("");
+                                           System.out.println("No hay una cantidad suficiente para poder realizar la venta.");
+                                       }else{
+
+                                            subtotalVenta= subtotalVenta+(cantidad*25);
+                                             //Suma a cantidad de producto
+                                             cantAzucar+= cantidad;
+
+                                             //Resta la cantidad al stock del producto
+                                             stockAvena= stockAvena-cantidad;
+                                            checkkilograms=true;
+                                       }
+
+
+                                   } 
+                               }else{
+                                   System.out.println("");
+                                   System.out.println("Opcion Invalida");
+                                   lea.next();
+                               }  
+                           }//Fin ciclo validador para ingreso de kilogramos
+
+                           //Verificador de cantidad existente en stock
+                           if(stockAvena<0){
+                               stockAvena=0;
+                           }
+
+
+                           System.out.println("¿Desea agregar otro producto? Y/N");
+                           String selec= lea.next();
+                           String seleccion= selec.toLowerCase();
+                            //Evaluacion para proceder a facturar
+                           if(seleccion.equals("y")){
+                                System.out.println("");
+                                productList= productList + ("\n|Codigo: 2| "+" |Nombre de Producto: Avena| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.25|");//Anexion a lista de productos
+                                productList= productList + ("\n---------------------------------------------------------------------------");
+
+                           }else{
+
+                                System.out.println("");
+                                productList= productList + ("\n|Codigo: 2| "+" |Nombre de Producto: Avena| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.25|");
+                                productList= productList + ("\n---------------------------------------------------------------------------");
+
+                                facturar=true;
                             }
 
-                         }
+                           }//Fin if comprobador de stock
+
+                        }else if(producto==3){
 
 
-                         }else{
-                            System.out.println("Opcion Invalida");
-                            System.out.println("");
-                            lea.next();
-                        }
-
-                        }//Fin ciclo verificador de kilogramos
-
-
-                        //Verificador del stock existente de producto
-                         if(stockAzucar<0){
-                             stockAzucar=0;
-                         }//Este if solamente sirve para evitar que el stock quede en una cantidad negativa, si llegase a pasar.
+                           //If controlador de stock
+                           if(stockTrigo==0){
+                               System.out.println("");
+                               System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                               System.out.println("");
+                           }else{
+                           System.out.println("");
+                           System.out.println("**Informacion de producto**");
+                           System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
+                           boolean checkkilograms=false;
+                           double cantidad=0;
 
 
+                           //Ciclo validador de ingreso kilogramos
+                           while(checkkilograms!=true){
+                               System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
 
-                        //Pregunta para proseguir a facturar
-                         System.out.println("¿Desea agregar otro producto? Y/N");
-                         String selec= lea.next();
-                         String seleccion= selec.toLowerCase();
-                         //Evaluacion para proceder a facturar
-                         if(seleccion.equals("y")){
-                             System.out.println("");
-                             productList= productList + ("\n|Codigo: 1| "+" |Nombre de Producto: Azucar| "+" |Cantidad: "+cantidad+" kg| "+" | Precio unitario: Lps.30|");//Anexion a lista de productos
-                             productList= productList + ("\n---------------------------------------------------------------------------");
+                               if(lea.hasNextDouble()){
+                                cantidad= lea.nextDouble();
 
-                         }else{//caso respuesta de n
-
-                             System.out.println("");
-                             productList= productList + ("\n|Codigo: 1| "+" |Nombre de Producto: Azucar| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.30|");
-                             productList= productList + ("\n---------------------------------------------------------------------------");
-
-                             facturar=true;
-                         }
-
-                        }//Fin de If de control de stock
-
-                     }else if(producto==2){
+                                if(cantidad<0){
+                                    System.out.println("");
+                                    System.out.println("Cantidad Invalida");
+                                }else if(cantidad>=0){
 
 
-                        //If controlador de stock 
-                        if(stockAvena<=0){
-                            System.out.println("");
-                            System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
-                            System.out.println("");
-                        }else{
+                                    if(stockTrigo<cantidad){
+                                        System.out.println("");
+                                        System.out.println("No hay una cantidad suficiente para realizar la venta.");
+                                    }else{
+                                        subtotalVenta= subtotalVenta+ (cantidad*32);
 
-                        System.out.println("");
-                        System.out.println("**Informacion de producto**");
-                        System.out.println("Codigo: 2"+"\nNombre de Producto: Avena"+"\nPrecio unitario: Lps.25");
+                                        //Suma a cantidad de producto
+                                        cantTrigo+= cantidad;
 
-                        boolean checkkilograms=false;
-                        double cantidad=0;
+                                        //Resta a cantidad de stock del producto
+                                        stockTrigo= stockTrigo-cantidad;
+                                        checkkilograms=true;
+                                    }
 
-                        //Ciclo validador para ingreso de kilogramos
-                        while(checkkilograms!=true){
-                            System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-                            if(lea.hasNextDouble()){
+
+                                }
+
+                             }else{
+                                   System.out.println("");
+                                   System.out.println("Opcion Invalida");
+                                   lea.next();
+                               }
+                           }//Fin ciclo validador de ingreso kilogramos
+
+                           //Ciclo verificador de cantidad negativa en stock
+                           if(stockTrigo<0){
+                               stockTrigo=0;
+                           }
+
+                           System.out.println("¿Desea agregar otro producto? Y/N");
+                           String selec= lea.next();
+                           String seleccion= selec.toLowerCase();
+                            //Evaluacion para proceder a facturar
+                           if(seleccion.equals("y")){
+                                System.out.println("");
+                                productList= productList + ("\n|Codigo: 3| "+" |Nombre de Producto: Trigo| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.32|");//Anexion a lista de productos
+                                productList= productList + ("\n---------------------------------------------------------------------------");
+
+                           }else{
+
+                                System.out.println("");
+                                productList= productList + ("\n|Codigo: 3| "+" |Nombre de Producto: Trigo| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.32|");
+                                productList= productList + ("\n---------------------------------------------------------------------------");
+
+                                facturar=true;
+                           }
+
+                           }//Fin If controlador de stock
+
+                        }else if(producto==4){
+
+                           //If controlador de stock
+                           if(stockMaiz==0){
+                               System.out.println("");
+                               System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                               System.out.println("");
+                           }else{
+                           System.out.println("");
+                           System.out.println("**Informacion de producto**");
+                           System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
+
+                           boolean checkkilograms=false;
+                           double cantidad=0;
+
+
+                           //Ciclo validador de ingreso kilogramos
+                           while(checkkilograms!=true){
+                               System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
+
+                               if(lea.hasNextDouble()){
                                 cantidad= lea.nextDouble();
                                 if(cantidad<0){
                                     System.out.println("");
                                     System.out.println("Cantidad Invalida");
                                 }else if(cantidad>=0){
 
-                                    //Condicional verificadora del stock y cantidad
-                                    if(stockAvena<cantidad){
+                                    if(stockMaiz<cantidad){
                                         System.out.println("");
-                                        System.out.println("No hay una cantidad suficiente para poder realizar la venta.");
+                                        System.out.println("No hay cantidad suficiente para poder realizar la venta");
                                     }else{
+                                        subtotalVenta= subtotalVenta+ (cantidad*20);
 
-                                         subtotalVenta= subtotalVenta+(cantidad*25);
-                                          //Suma a cantidad de producto
-                                          cantAzucar+= cantidad;
+                                         //Suma a cantidad de producto
+                                        cantMaiz+= cantidad;
 
-                                          //Resta la cantidad al stock del producto
-                                          stockAvena= stockAvena-cantidad;
-                                         checkkilograms=true;
+                                        //Resta a la cantidad en stock
+                                        stockMaiz=stockMaiz-cantidad;
+                                        checkkilograms=true;
                                     }
 
+                                }
 
-                                } 
-                            }else{
+                             }else{
+                                   System.out.println("");
+                                   System.out.println("Opcion Invalida");
+                                   lea.next();
+                               }
+                           }//Fin ciclo validador de ingreso kilogramos
+
+
+                           //Condicional regulador de cantidad en stock
+                           if(stockMaiz<0){
+                               stockMaiz=0;
+                           }
+
+
+
+
+                           System.out.println("¿Desea agregar otro producto? Y/N");
+                            String selec= lea.next();
+                            String seleccion= selec.toLowerCase();
+                            //Evaluacion para proceder a facturar
+                           if(seleccion.equals("y")){
                                 System.out.println("");
-                                System.out.println("Opcion Invalida");
-                                lea.next();
-                            }  
-                        }//Fin ciclo validador para ingreso de kilogramos
+                                productList= productList + ("\n|Codigo: 4| "+" |Nombre de Producto: Maíz| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.20|");//Anexion a lista de productos
+                                productList= productList + ("\n---------------------------------------------------------------------------");
 
-                        //Verificador de cantidad existente en stock
-                        if(stockAvena<0){
-                            stockAvena=0;
-                        }
+                           }else{
 
-
-                        System.out.println("¿Desea agregar otro producto? Y/N");
-                        String selec= lea.next();
-                        String seleccion= selec.toLowerCase();
-                         //Evaluacion para proceder a facturar
-                        if(seleccion.equals("y")){
-                             System.out.println("");
-                             productList= productList + ("\n|Codigo: 2| "+" |Nombre de Producto: Avena| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.25|");//Anexion a lista de productos
-                             productList= productList + ("\n---------------------------------------------------------------------------");
-
-                        }else{
-
-                             System.out.println("");
-                             productList= productList + ("\n|Codigo: 2| "+" |Nombre de Producto: Avena| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.25|");
-                             productList= productList + ("\n---------------------------------------------------------------------------");
-
-                             facturar=true;
-                         }
-
-                        }//Fin if comprobador de stock
-
-                     }else if(producto==3){
-
-
-                        //If controlador de stock
-                        if(stockTrigo==0){
-                            System.out.println("");
-                            System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
-                            System.out.println("");
-                        }else{
-                        System.out.println("");
-                        System.out.println("**Informacion de producto**");
-                        System.out.println("Codigo: 3"+"\nNombre de Producto: Trigo"+"\nPrecio unitario: Lps.32");
-                        boolean checkkilograms=false;
-                        double cantidad=0;
-
-
-                        //Ciclo validador de ingreso kilogramos
-                        while(checkkilograms!=true){
-                            System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-
-                            if(lea.hasNextDouble()){
-                             cantidad= lea.nextDouble();
-
-                             if(cantidad<0){
-                                 System.out.println("");
-                                 System.out.println("Cantidad Invalida");
-                             }else if(cantidad>=0){
-
-
-                                 if(stockTrigo<cantidad){
-                                     System.out.println("");
-                                     System.out.println("No hay una cantidad suficiente para realizar la venta.");
-                                 }else{
-                                     subtotalVenta= subtotalVenta+ (cantidad*32);
-
-                                     //Suma a cantidad de producto
-                                     cantTrigo+= cantidad;
-
-                                     //Resta a cantidad de stock del producto
-                                     stockTrigo= stockTrigo-cantidad;
-                                     checkkilograms=true;
-                                 }
-
-
-                             }
-
-                          }else{
                                 System.out.println("");
-                                System.out.println("Opcion Invalida");
-                                lea.next();
-                            }
-                        }//Fin ciclo validador de ingreso kilogramos
+                                productList= productList + ("\n|Codigo: 4| "+" |Nombre de Producto: Maíz| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.20|");
+                                productList= productList + ("\n---------------------------------------------------------------------------");
 
-                        //Ciclo verificador de cantidad negativa en stock
-                        if(stockTrigo<0){
-                            stockTrigo=0;
-                        }
+                                facturar=true;
+                           }
+                           }//Fin If controlador de stock
 
-                        System.out.println("¿Desea agregar otro producto? Y/N");
-                        String selec= lea.next();
-                        String seleccion= selec.toLowerCase();
-                         //Evaluacion para proceder a facturar
-                        if(seleccion.equals("y")){
-                             System.out.println("");
-                             productList= productList + ("\n|Codigo: 3| "+" |Nombre de Producto: Trigo| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.32|");//Anexion a lista de productos
-                             productList= productList + ("\n---------------------------------------------------------------------------");
-
-                        }else{
-
-                             System.out.println("");
-                             productList= productList + ("\n|Codigo: 3| "+" |Nombre de Producto: Trigo| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.32|");
-                             productList= productList + ("\n---------------------------------------------------------------------------");
-
-                             facturar=true;
-                        }
-
-                        }//Fin If controlador de stock
-
-                     }else if(producto==4){
-
-                        //If controlador de stock
-                        if(stockMaiz==0){
+                        }else if(producto<=0){
+                            System.out.println("Opcion Invalida");
                             System.out.println("");
-                            System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
-                            System.out.println("");
-                        }else{
-                        System.out.println("");
-                        System.out.println("**Informacion de producto**");
-                        System.out.println("Codigo: 4"+"\nNombre de Producto: Maiz"+"\nPrecio unitario: Lps.20");
-
-                        boolean checkkilograms=false;
-                        double cantidad=0;
-
-
-                        //Ciclo validador de ingreso kilogramos
-                        while(checkkilograms!=true){
-                            System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
-
-                            if(lea.hasNextDouble()){
-                             cantidad= lea.nextDouble();
-                             if(cantidad<0){
-                                 System.out.println("");
-                                 System.out.println("Cantidad Invalida");
-                             }else if(cantidad>=0){
-
-                                 if(stockMaiz<cantidad){
-                                     System.out.println("");
-                                     System.out.println("No hay cantidad suficiente para poder realizar la venta");
-                                 }else{
-                                     subtotalVenta= subtotalVenta+ (cantidad*20);
-
-                                      //Suma a cantidad de producto
-                                     cantMaiz+= cantidad;
-
-                                     //Resta a la cantidad en stock
-                                     stockMaiz=stockMaiz-cantidad;
-                                     checkkilograms=true;
-                                 }
-
-                             }
-
-                          }else{
-                                System.out.println("");
-                                System.out.println("Opcion Invalida");
-                                lea.next();
-                            }
-                        }//Fin ciclo validador de ingreso kilogramos
-
-
-                        //Condicional regulador de cantidad en stock
-                        if(stockMaiz<0){
-                            stockMaiz=0;
                         }
-
-
-
-
-                        System.out.println("¿Desea agregar otro producto? Y/N");
-                         String selec= lea.next();
-                         String seleccion= selec.toLowerCase();
-                         //Evaluacion para proceder a facturar
-                        if(seleccion.equals("y")){
-                             System.out.println("");
-                             productList= productList + ("\n|Codigo: 4| "+" |Nombre de Producto: Maíz| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.20|");//Anexion a lista de productos
-                             productList= productList + ("\n---------------------------------------------------------------------------");
-
-                        }else{
-
-                             System.out.println("");
-                             productList= productList + ("\n|Codigo: 4| "+" |Nombre de Producto: Maíz| "+" |Cantidad: "+cantidad+" kg|"+" |Precio unitario: Lps.20|");
-                             productList= productList + ("\n---------------------------------------------------------------------------");
-
-                             facturar=true;
-                        }
-                        }//Fin If controlador de stock
-
-                     }else if(producto<=0){
-                         System.out.println("Opcion Invalida");
-                         System.out.println("");
-                     }
-                    }else{
-                       System.out.println("Opcion Invalida");
-                       System.out.println("");
-                       lea.next();
-                    } //Fin ciclo comprobador if
+                       }else{
+                          System.out.println("Opcion Invalida");
+                          System.out.println("");
+                          lea.next();
+                       } //Fin ciclo comprobador if
 
 
                     }//Fin ciclo While

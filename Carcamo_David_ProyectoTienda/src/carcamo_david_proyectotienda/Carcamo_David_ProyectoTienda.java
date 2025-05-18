@@ -1154,8 +1154,9 @@ public class Carcamo_David_ProyectoTienda {
                 
                 
                 //Seleccion de Proveedor
-                System.out.println("Porfavor seleccione el proveedor al que desea comprar(A,B,C): ");
+                System.out.println("Proveedores disponibles para comprar: ");
                 System.out.println("Proveedor A"+"\nProveedor B"+"\nProveedor C");
+                System.out.println("Porfavor, introduzca la letra del proveedor al que desea comprar(A,B,C): ");
                 String seleccionProveedor= lea.next();
                 String proveedor= seleccionProveedor.toLowerCase();
 

@@ -192,7 +192,8 @@ public class Carcamo_David_ProyectoTienda {
            System.out.println("Efectivo en Caja: "+efectivoCaja);
            
           
-       }else if (opcion==2){//Desarrollo de seccion ventas
+       }else if (opcion==2){
+           //Desarrollo de seccion ventas
            double subtotalVenta=0;
            numfacturas++;
            
@@ -613,7 +614,8 @@ public class Carcamo_David_ProyectoTienda {
 
                      //Sumatoria a caja
                      efectivoCaja= efectivoCaja+totalVenta;
-                     System.out.println("Dinero en caja: "+efectivoCaja);
+                     String efectivoCajaF= String.format("%.2f",efectivoCaja);
+                     System.out.println("Dinero en caja: "+efectivoCajaF);
                      numVentas++;
                      volVentas+=(volVentas+totalVenta);
 
@@ -924,7 +926,8 @@ public class Carcamo_David_ProyectoTienda {
 
                     //Sumatoria a caja
                     efectivoCaja= efectivoCaja+totalVenta;
-                    System.out.println("Dinero en caja: "+efectivoCaja);
+                    String efectivoCajaF= String.format("%.2f",efectivoCaja);
+                    System.out.println("Dinero en caja: "+efectivoCajaF);
                     numVentas++;
                     volVentas+=(volVentas+totalVenta);
 
@@ -1090,7 +1093,8 @@ public class Carcamo_David_ProyectoTienda {
 
                //Sumatoria a caja
                efectivoCaja= efectivoCaja+totalVenta;
-               System.out.println("Dinero en caja: "+efectivoCaja);
+               String efectivoCajaF= String.format("%.2f",efectivoCaja);
+               System.out.println("Dinero en caja: "+efectivoCajaF);
                numVentas++;
                volVentas+=(volVentas+totalVenta);
 
@@ -1568,13 +1572,16 @@ public class Carcamo_David_ProyectoTienda {
            //Incremento de dia
            numDia++;
            
+           String efectivoCajaF= String.format("%.2f", efectivoCaja);
+           
+           
            //Calculo del tope de deposito a banco del 60%
            double topeCaja=(efectivoCaja*0.6);
            boolean statusDeposito=false;
            
            System.out.println("");
            System.out.println("****Cierre de Dia "+numDia+"****");
-           System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCaja);
+           System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCajaF);
            System.out.println("");
            
            
@@ -1610,7 +1617,7 @@ public class Carcamo_David_ProyectoTienda {
            
            }//Fin ciclo while
            
-           String efectivoCajaF= String.format("%.2f", efectivoCaja);
+           
            String efectivoBancoF= String.format("%.2f",efectivoBanco);
            System.out.println("");
            System.out.println("Efectivo acumulado en Banco: Lps."+efectivoBancoF);

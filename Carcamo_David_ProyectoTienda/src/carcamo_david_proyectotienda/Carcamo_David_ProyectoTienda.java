@@ -1494,62 +1494,67 @@ public class Carcamo_David_ProyectoTienda {
            
            //Seccion reporte
            
+           //Validador para no realizar reporte en caso que toda la informacion se encuentre en 0
+           if(numCompras==0 && numVentas==0){
+               System.out.println("");
+               System.out.println("Reporte no disponible. Porfavor realize por lo menos una compra o venta para generar reporte.");
+           }else{
            
-           //Calculo de margen de ganancias
-           double margenganancia=(volVentas-volCompras);
-           String margengananciaF= String.format("%.2f",margenganancia);
+                //Calculo de margen de ganancias
+                double margenganancia=(volVentas-volCompras);
+                String margengananciaF= String.format("%.2f",margenganancia);
+
+                //Calculo de promedios
+                double promedio_Ventas=(volVentas/numVentas);
+                double promedio_Compras=(volCompras/numCompras);
+
+                String promedio_VentasF= String.format("%.2f",promedio_Ventas);
+                String promedio_ComprasF=String.format("%.2f",promedio_Compras);
+
+
+
+                //Determinar lo que es el producto estrella
+                if(cantAzucar>cantAvena && cantAzucar>cantTrigo && cantAzucar>cantMaiz){
+                    cantEstrella=cantAzucar;
+                    producto_Estrella=" Azucar con "+cantAzucar+" kg vendidos";
+                }else if(cantAvena>cantAzucar && cantAvena>cantTrigo && cantAvena>cantMaiz){
+                    cantEstrella=cantAvena;
+                     producto_Estrella=" Avena con "+cantAvena+" kg vendidos";
+                }else if(cantTrigo>cantAzucar && cantTrigo>cantAvena && cantTrigo>cantMaiz){
+                    cantEstrella=cantTrigo;
+                    producto_Estrella=" Trigo con "+cantTrigo+" kg vendidos";
+                }else if(cantMaiz>cantAzucar && cantMaiz>cantAvena && cantMaiz>cantTrigo){
+                    cantEstrella=cantMaiz;
+                    producto_Estrella=" Maiz con "+cantMaiz+" kg vendidos";
+                }
+
+                //Efectivo caja reducido a dos decimales
+                String efectivoCajaF= String.format("%.2f", efectivoCaja);
+
+                //Impresion de reporte
+                System.out.println("******REPORTE******");
+                System.out.println("Cantidad Actual en Caja: "+efectivoCajaF);
+                System.out.println("");
+                System.out.println("Numero de Ventas y Compras Efectuadas--");
+                System.out.println("Compras: "+numCompras);
+                System.out.println("Ventas: "+numVentas);
+                System.out.println("---------------------------------------");
+                System.out.println("");
+                System.out.println("Volumen de Compras: "+volCompras);
+                System.out.println("Volumen de Ventas: "+volVentas);
+                System.out.println("Margen de ganancia: "+margengananciaF);
+                System.out.println("");
+                System.out.println("Promedio Ventas: "+promedio_VentasF);
+                System.out.println("Promedio Compras: "+promedio_ComprasF);
+                System.out.println("");
+                System.out.println("La mayor venta fue de: Lps."+mayorVenta);
+                System.out.println("");
+                System.out.println("La mayor compra fue de: Lps."+mayorCompra);
+                System.out.println("");
+                System.out.println("Producto Estrella:"+producto_Estrella);
+                System.out.println("");
            
-           //Calculo de promedios
-           double promedio_Ventas=(volVentas/numVentas);
-           double promedio_Compras=(volCompras/numCompras);
-           
-           String promedio_VentasF= String.format("%.2f",promedio_Ventas);
-           String promedio_ComprasF=String.format("%.2f",promedio_Compras);
-           
-           
-           
-           //Determinar lo que es el producto estrella
-           if(cantAzucar>cantAvena && cantAzucar>cantTrigo && cantAzucar>cantMaiz){
-               cantEstrella=cantAzucar;
-               producto_Estrella=" Azucar con "+cantAzucar+" kg vendidos";
-           }else if(cantAvena>cantAzucar && cantAvena>cantTrigo && cantAvena>cantMaiz){
-               cantEstrella=cantAvena;
-                producto_Estrella=" Avena con "+cantAvena+" kg vendidos";
-           }else if(cantTrigo>cantAzucar && cantTrigo>cantAvena && cantTrigo>cantMaiz){
-               cantEstrella=cantTrigo;
-               producto_Estrella=" Trigo con "+cantTrigo+" kg vendidos";
-           }else if(cantMaiz>cantAzucar && cantMaiz>cantAvena && cantMaiz>cantTrigo){
-               cantEstrella=cantMaiz;
-               producto_Estrella=" Maiz con "+cantMaiz+" kg vendidos";
-           }
-           
-           //Efectivo caja reducido a dos decimales
-           String efectivoCajaF= String.format("%.2f", efectivoCaja);
-           
-           //Impresion de reporte
-           System.out.println("******REPORTE******");
-           System.out.println("Cantidad Actual en Caja: "+efectivoCajaF);
-           System.out.println("");
-           System.out.println("Numero de Ventas y Compras Efectuadas--");
-           System.out.println("Compras: "+numCompras);
-           System.out.println("Ventas: "+numVentas);
-           System.out.println("---------------------------------------");
-           System.out.println("");
-           System.out.println("Volumen de Compras: "+volCompras);
-           System.out.println("Volumen de Ventas: "+volVentas);
-           System.out.println("Margen de ganancia: "+margengananciaF);
-           System.out.println("");
-           System.out.println("Promedio Ventas: "+promedio_VentasF);
-           System.out.println("Promedio Compras: "+promedio_ComprasF);
-           System.out.println("");
-           System.out.println("La mayor venta fue de: Lps."+mayorVenta);
-           System.out.println("");
-           System.out.println("La mayor compra fue de: Lps."+mayorCompra);
-           System.out.println("");
-           System.out.println("Producto Estrella:"+producto_Estrella);
-           System.out.println("");
-           
-           
+           }//Fin validador para habilitar reportes
            
            
            

@@ -233,7 +233,7 @@ public class Carcamo_David_ProyectoTienda {
                 if(producto==1){
                     
                    //Comprobador de stock disponible
-                   if(stockAzucar==0){
+                   if(stockAzucar<=0){
                        System.out.println("");
                        System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                        System.out.println("");
@@ -259,13 +259,23 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("Cantidad Invalida.");
                        System.out.println("");
                     }else if(cantidad>0){
-                       subtotalVenta= subtotalVenta+(cantidad*30);
+                        
+                       //Comprobante si hay una cantidad suficiente en stock para cubrir la demanda pedida por el cliente
+                       if(stockAzucar<cantidad){
+                           System.out.println("");
+                           System.out.println("No hay una cantidad suficiente para realizar la venta.");
+                           
+                       }else{
+                           subtotalVenta= subtotalVenta+(cantidad*30);
                        
-                       //Suma a cantidad de producto
-                       cantAzucar+= cantidad;
+                            //Suma a cantidad de producto
+                            cantAzucar+= cantidad;
+                            
+                            //Resta la cantidad al stock existente
+                            stockAzucar= stockAzucar-cantidad;
+                            checkkilograms=true;
+                       }
                        
-                       
-                       checkkilograms=true;
                     }
                    
                    
@@ -277,6 +287,13 @@ public class Carcamo_David_ProyectoTienda {
                    
                    }//Fin ciclo verificador de kilogramos
                    
+                    
+                   //Verificador del stock existente de producto
+                    if(stockAzucar<0){
+                        stockAzucar=0;
+                    }//Este if solamente sirve para evitar que el stock quede en una cantidad negativa, si llegase a pasar.
+                    
+                    
                    
                    //Pregunta para proseguir a facturar
                     System.out.println("¿Desea agregar otro producto? Y/N");
@@ -303,7 +320,7 @@ public class Carcamo_David_ProyectoTienda {
                     
                     
                    //If controlador de stock 
-                   if(stockAvena==0){
+                   if(stockAvena<=0){
                        System.out.println("");
                        System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                        System.out.println("");
@@ -325,10 +342,23 @@ public class Carcamo_David_ProyectoTienda {
                                System.out.println("");
                                System.out.println("Cantidad Invalida");
                            }else if(cantidad>0){
-                               subtotalVenta= subtotalVenta+(cantidad*25);
-                               //Suma a cantidad de producto
-                               cantAzucar+= cantidad;
-                               checkkilograms=true;
+                               
+                               //Condicional verificadora del stock y cantidad
+                               if(stockAvena<cantidad){
+                                   System.out.println("");
+                                   System.out.println("No hay una cantidad suficiente para poder realizar la venta.");
+                               }else{
+                                   
+                                    subtotalVenta= subtotalVenta+(cantidad*25);
+                                     //Suma a cantidad de producto
+                                     cantAzucar+= cantidad;
+                                     
+                                     //Resta la cantidad al stock del producto
+                                     stockAvena= stockAvena-cantidad;
+                                    checkkilograms=true;
+                               }
+                               
+                              
                            } 
                        }else{
                            System.out.println("");
@@ -336,6 +366,11 @@ public class Carcamo_David_ProyectoTienda {
                            lea.next();
                        }  
                    }//Fin ciclo validador para ingreso de kilogramos
+                   
+                   //Verificador de cantidad existente en stock
+                   if(stockAvena<0){
+                       stockAvena=0;
+                   }
                    
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
@@ -380,15 +415,28 @@ public class Carcamo_David_ProyectoTienda {
                        
                        if(lea.hasNextDouble()){
                         cantidad= lea.nextDouble();
+                        
                         if(cantidad<=0){
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
                         }else if(cantidad>0){
-                            subtotalVenta= subtotalVenta+ (cantidad*32);
                             
-                             //Suma a cantidad de producto
-                            cantTrigo+= cantidad;
-                            checkkilograms=true;
+                            
+                            if(stockTrigo<cantidad){
+                                System.out.println("");
+                                System.out.println("No hay una cantidad suficiente para realizar la venta.");
+                            }else{
+                                subtotalVenta= subtotalVenta+ (cantidad*32);
+                            
+                                //Suma a cantidad de producto
+                                cantTrigo+= cantidad;
+                                
+                                //Resta a cantidad de stock del producto
+                                stockTrigo= stockTrigo-cantidad;
+                                checkkilograms=true;
+                            }
+                            
+                        
                         }
                        
                      }else{
@@ -397,6 +445,11 @@ public class Carcamo_David_ProyectoTienda {
                            lea.next();
                        }
                    }//Fin ciclo validador de ingreso kilogramos
+                   
+                   //Ciclo verificador de cantidad negativa en stock
+                   if(stockTrigo<0){
+                       stockTrigo=0;
+                   }
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
                    String selec= lea.next();
@@ -444,11 +497,21 @@ public class Carcamo_David_ProyectoTienda {
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
                         }else if(cantidad>0){
-                            subtotalVenta= subtotalVenta+ (cantidad*20);
                             
-                             //Suma a cantidad de producto
-                            cantMaiz+= cantidad;
-                            checkkilograms=true;
+                            if(stockMaiz<cantidad){
+                                System.out.println("");
+                                System.out.println("No hay cantidad suficiente para poder realizar la venta");
+                            }else{
+                                subtotalVenta= subtotalVenta+ (cantidad*20);
+                            
+                                 //Suma a cantidad de producto
+                                cantMaiz+= cantidad;
+                                
+                                //Resta a la cantidad en stock
+                                stockMaiz=stockMaiz-cantidad;
+                                checkkilograms=true;
+                            }
+                       
                         }
                        
                      }else{
@@ -458,6 +521,11 @@ public class Carcamo_David_ProyectoTienda {
                        }
                    }//Fin ciclo validador de ingreso kilogramos
                    
+                   
+                   //Condicional regulador de cantidad en stock
+                   if(stockMaiz<0){
+                       stockMaiz=0;
+                   }
                    
                    
                   
@@ -569,7 +637,7 @@ public class Carcamo_David_ProyectoTienda {
                 if(producto==1){
                     
                    //If controlador de Stock
-                   if(stockAzucar==0){
+                   if(stockAzucar<=0){
                        System.out.println("");
                        System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                        System.out.println("");
@@ -592,11 +660,21 @@ public class Carcamo_David_ProyectoTienda {
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
                         }else if(cantidad>0){
-                            subtotalVenta= subtotalVenta+ (cantidad*30);
                             
-                             //Suma a cantidad de producto
-                            cantAzucar+= cantidad;
-                            checkkilograms=true;
+                            if(stockAzucar<cantidad){
+                                System.out.println("");
+                                System.out.println("No hay una cantidad suficiente para realizar la venta");
+                            }else{
+                                subtotalVenta= subtotalVenta+ (cantidad*30);
+                            
+                                //Suma a cantidad de producto
+                                cantAzucar+= cantidad;
+                                
+                                //Restar cantidad a la cantidad en stock
+                                stockAzucar=stockAzucar-cantidad;
+                                checkkilograms=true; 
+                            }
+                          
                         }
                        
                      }else{
@@ -605,6 +683,11 @@ public class Carcamo_David_ProyectoTienda {
                            lea.next();
                        }
                    }//Fin ciclo validador de ingreso kilogramos
+                   
+                   //Condicional controlador de cantdiad en stock
+                   if(stockAzucar<0){
+                       stockAzucar=0;
+                   }
                    
                    
                    //Pregunta para proseguir a facturar
@@ -629,7 +712,7 @@ public class Carcamo_David_ProyectoTienda {
                     
                    //If controlador de Stock
                    
-                   if(stockAvena==0){
+                   if(stockAvena<=0){
                        System.out.println("");
                        System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                        System.out.println("");
@@ -652,11 +735,21 @@ public class Carcamo_David_ProyectoTienda {
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
                         }else if(cantidad>0){
-                            subtotalVenta= subtotalVenta+ (cantidad*25);
                             
-                             //Suma a cantidad de producto
-                            cantAvena+= cantidad;
-                            checkkilograms=true;
+                            if(stockAvena<cantidad){
+                                System.out.println("");
+                                System.out.println("No hay una cantidad suficiente para realizar la venta.");
+                            }else{
+                                subtotalVenta= subtotalVenta+ (cantidad*25);
+                            
+                                //Suma a cantidad de producto
+                                cantAvena+= cantidad;
+                                
+                                //Resta a la cantidad de stock
+                                stockAvena=stockAvena-cantidad;
+                                checkkilograms=true;
+                            }
+                          
                         }
                        
                      }else{
@@ -666,6 +759,9 @@ public class Carcamo_David_ProyectoTienda {
                        }
                    }//Fin ciclo validador de ingreso kilogramos
                   
+                   if(stockAvena<0){
+                       stockAvena=0;
+                   }
                    
                    System.out.println("¿Desea agregar otro producto? Y/N");
                    String selec= lea.next();
@@ -710,11 +806,21 @@ public class Carcamo_David_ProyectoTienda {
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
                         }else if(cantidad>0){
-                            subtotalVenta= subtotalVenta+ (cantidad*32);
                             
-                             //Suma a cantidad de producto
-                            cantTrigo+= cantidad;
-                            checkkilograms=true;
+                            if(stockTrigo<cantidad){
+                                System.out.println("");
+                                System.out.println("No hay una cantidad suficiente para realizar la venta.");
+                            }else{
+                                subtotalVenta= subtotalVenta+ (cantidad*32);
+                            
+                                //Suma a cantidad de producto
+                                cantTrigo+= cantidad;
+                                
+                                //Resta de cantidad a la cantidad en stock
+                                stockTrigo=stockTrigo-cantidad;
+                                checkkilograms=true; 
+                            }
+                           
                         }
                        
                      }else{
@@ -866,11 +972,21 @@ public class Carcamo_David_ProyectoTienda {
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
                         }else if(cantidad>0){
-                            subtotalVenta= subtotalVenta+ (cantidad*20);
                             
-                             //Suma a cantidad de producto
-                            cantMaiz+= cantidad;
-                            checkkilograms=true;
+                            
+                            if(stockMaiz<cantidad){
+                                System.out.println("");
+                                System.out.println("No hay una cantidad suficiente para realizar la venta");
+                            }else{
+                                subtotalVenta= subtotalVenta+ (cantidad*20);
+                                 //Suma a cantidad de producto
+                                cantMaiz+= cantidad;
+                                
+                                //Resta la cantidad a la cantidad de stock
+                                stockMaiz=stockMaiz-cantidad;
+                                checkkilograms=true;
+                            }
+                            
                         }
                        
                      }else{
@@ -979,6 +1095,7 @@ public class Carcamo_David_ProyectoTienda {
            
            
        }else if (opcion ==3){
+           //Seccion Compra
            //Seleccion de Proveedor
            System.out.println("Porfavor seleccione el proveedor al que desea comprar(A,B,C): ");
            System.out.println("Proveedor A"+"\nProveedor B"+"\nProveedor C");

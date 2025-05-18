@@ -197,8 +197,10 @@ public class Carcamo_David_ProyectoTienda {
            numfacturas++;
            
            if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
-           System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
-           System.out.println("");//Mensaje en caso que stock este vacio
+               System.out.println("");//Mensaje en caso que stock este vacio
+               System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
+           
+           
            }else{
             System.out.println("Porfavor seleccione tipo de cliente al que desea vender(A,B,C): ");
             System.out.println("Cliente A"+"\nCliente B"+"\nCliente C");
@@ -207,11 +209,11 @@ public class Carcamo_David_ProyectoTienda {
             
             if(cliente.equals("a")){
                System.out.println("***Productos Disponibles Para Venta***");
-               System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
-               System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.30 | ");
-               System.out.println("|   2    |"+" |   Avena  | "+" | Lps.25 | ");
-               System.out.println("|   3    |"+" |   Trigo  | "+" | Lps.32 | ");
-               System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | ");
+               System.out.println("| Codigo |"+" | Producto | "+" | Precio | "+"Cantidad Disponible");
+               System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.30 | "+    stockAzucar);
+               System.out.println("|   2    |"+" |   Avena  | "+" | Lps.25 | "+    stockAvena);
+               System.out.println("|   3    |"+" |   Trigo  | "+" | Lps.32 | "+    stockTrigo);
+               System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | "+    stockMaiz);
                System.out.println("");
                
                boolean facturar =false;
@@ -258,7 +260,7 @@ public class Carcamo_David_ProyectoTienda {
                     if(cantidad<0){
                        System.out.println("Cantidad Invalida.");
                        System.out.println("");
-                    }else if(cantidad>0){
+                    }else if(cantidad>=0){
                         
                        //Comprobante si hay una cantidad suficiente en stock para cubrir la demanda pedida por el cliente
                        if(stockAzucar<cantidad){
@@ -338,10 +340,10 @@ public class Carcamo_David_ProyectoTienda {
                        System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                        if(lea.hasNextDouble()){
                            cantidad= lea.nextDouble();
-                           if(cantidad<=0){
+                           if(cantidad<0){
                                System.out.println("");
                                System.out.println("Cantidad Invalida");
-                           }else if(cantidad>0){
+                           }else if(cantidad>=0){
                                
                                //Condicional verificadora del stock y cantidad
                                if(stockAvena<cantidad){
@@ -416,10 +418,10 @@ public class Carcamo_David_ProyectoTienda {
                        if(lea.hasNextDouble()){
                         cantidad= lea.nextDouble();
                         
-                        if(cantidad<=0){
+                        if(cantidad<0){
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
-                        }else if(cantidad>0){
+                        }else if(cantidad>=0){
                             
                             
                             if(stockTrigo<cantidad){
@@ -493,10 +495,10 @@ public class Carcamo_David_ProyectoTienda {
                        
                        if(lea.hasNextDouble()){
                         cantidad= lea.nextDouble();
-                        if(cantidad<=0){
+                        if(cantidad<0){
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
-                        }else if(cantidad>0){
+                        }else if(cantidad>=0){
                             
                             if(stockMaiz<cantidad){
                                 System.out.println("");
@@ -562,65 +564,75 @@ public class Carcamo_David_ProyectoTienda {
                 
                }//Fin ciclo While
                
-               //Evaluaciones de descuentos
-               double descuento=0;
-               int porcentaje=0;
-               if (subtotalVenta>=1000 && subtotalVenta<=5000){
-                   descuento=subtotalVenta*0.05;
-                   porcentaje=5;
-               }else if(subtotalVenta>5000){
-                   descuento=subtotalVenta*0.10;
-                   porcentaje=10;
-               }else if(subtotalVenta<1000){
-                   descuento=0;
-                   porcentaje=0;
-               }
                
                
+               //Comprobador de subtotal=0
+               if(subtotalVenta==0){
+                   System.out.println("");
+                   System.out.println("Factura no generada. La actual venta no sumó ninguna cantidad.");
+               }else{
                
-               //Subtotal con descuento aplicado
-               double subtotalaplicado=(subtotalVenta-descuento);
-               
-               //Evaluacion de impuesto
-               double impuesto=subtotalaplicado*0.07;
-               String impuestoRedondeado= String.format("%.2f",impuesto);
-               
-               //Evaluacion del total
-               double totalVenta=subtotalaplicado+impuesto;
-               String totalVredondeado= String.format("%.2f",totalVenta);
-               
-               //Procedimiento de facturacion
-                System.out.println("");
-                System.out.println("***Detalle de Factura***");
-                System.out.println("Numero de Factura: "+numfacturas);
-                System.out.println(productList);
-                System.out.println("Subtotal: Lps."+subtotalVenta);
-                System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
-                System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
-                System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
-                System.out.println("Total a pagar: Lps."+totalVredondeado);
-                System.out.println("");
+                    //Evaluaciones de descuentos
+                    double descuento=0;
+                    int porcentaje=0;
+                    if (subtotalVenta>=1000 && subtotalVenta<=5000){
+                        descuento=subtotalVenta*0.05;
+                        porcentaje=5;
+                    }else if(subtotalVenta>5000){
+                        descuento=subtotalVenta*0.10;
+                        porcentaje=10;
+                    }else if(subtotalVenta<1000){
+                        descuento=0;
+                        porcentaje=0;
+                    }
+
+
+
+                    //Subtotal con descuento aplicado
+                    double subtotalaplicado=(subtotalVenta-descuento);
+
+                    //Evaluacion de impuesto
+                    double impuesto=subtotalaplicado*0.07;
+                    String impuestoRedondeado= String.format("%.2f",impuesto);
+
+                    //Evaluacion del total
+                    double totalVenta=subtotalaplicado+impuesto;
+                    String totalVredondeado= String.format("%.2f",totalVenta);
+
+                    //Procedimiento de facturacion
+                     System.out.println("");
+                     System.out.println("***Detalle de Factura***");
+                     System.out.println("Numero de Factura: "+numfacturas);
+                     System.out.println(productList);
+                     System.out.println("Subtotal: Lps."+subtotalVenta);
+                     System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
+                     System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
+                     System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
+                     System.out.println("Total a pagar: Lps."+totalVredondeado);
+                     System.out.println("");
+
+                     //Sumatoria a caja
+                     efectivoCaja= efectivoCaja+totalVenta;
+                     System.out.println("Dinero en caja: "+efectivoCaja);
+                     numVentas++;
+                     volVentas+=(volVentas+totalVenta);
+
+
+                     //Comprobador de mayor Venta
+                     if(totalVenta>mayorVenta){
+                         mayorVenta=totalVenta;
+                         info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
+                     }
                 
-                //Sumatoria a caja
-                efectivoCaja= efectivoCaja+totalVenta;
-                System.out.println("Dinero en caja: "+efectivoCaja);
-                numVentas++;
-                volVentas+=(volVentas+totalVenta);
-                
-                
-                //Comprobador de mayor Venta
-                if(totalVenta>mayorVenta){
-                    mayorVenta=totalVenta;
-                    info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
-                }
+               }//Fin ciclo de evaluacion de subtotal=0
                
                
            }else if(cliente.equals("b")){
                System.out.println("***Productos Disponibles Para Venta***");
-               System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
-               System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.30 | ");
-               System.out.println("|   2    |"+" |   Avena  | "+" | Lps.25 | ");
-               System.out.println("|   3    |"+" |   Trigo  | "+" | Lps.32 | ");
+               System.out.println("| Codigo |"+" | Producto | "+" | Precio | "+"Cantidad Disponible");
+               System.out.println("|   1    |"+" |  Azucar  | "+" | Lps.30 | "+    stockAzucar);
+               System.out.println("|   2    |"+" |   Avena  | "+" | Lps.25 | "+    stockAvena);
+               System.out.println("|   3    |"+" |   Trigo  | "+" | Lps.32 | "+    stockTrigo);
                System.out.println("");
                boolean facturar =false;
                
@@ -656,10 +668,10 @@ public class Carcamo_David_ProyectoTienda {
                        
                        if(lea.hasNextDouble()){
                         cantidad= lea.nextDouble();
-                        if(cantidad<=0){
+                        if(cantidad<0){
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
-                        }else if(cantidad>0){
+                        }else if(cantidad>=0){
                             
                             if(stockAzucar<cantidad){
                                 System.out.println("");
@@ -731,10 +743,10 @@ public class Carcamo_David_ProyectoTienda {
                        
                        if(lea.hasNextDouble()){
                         cantidad= lea.nextDouble();
-                        if(cantidad<=0){
+                        if(cantidad<0){
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
-                        }else if(cantidad>0){
+                        }else if(cantidad>=0){
                             
                             if(stockAvena<cantidad){
                                 System.out.println("");
@@ -802,10 +814,10 @@ public class Carcamo_David_ProyectoTienda {
                        
                        if(lea.hasNextDouble()){
                         cantidad= lea.nextDouble();
-                        if(cantidad<=0){
+                        if(cantidad<0){
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
-                        }else if(cantidad>0){
+                        }else if(cantidad>=0){
                             
                             if(stockTrigo<cantidad){
                                 System.out.println("");
@@ -864,60 +876,66 @@ public class Carcamo_David_ProyectoTienda {
                 
                }//Fin Cilco While
                 
+                //Ciclo evaluador de subtotal¿0
+                if(subtotalVenta==0){
+                    System.out.println("");
+                    System.out.println("Factura no generada. La actual venta no sumó ninguna cantidad.");
+                }else{
+                    //Evaluaciones de descuentos
+                   double descuento=0;
+                   int porcentaje=0;
+                   if (subtotalVenta>=1000 && subtotalVenta<=5000){
+                       descuento=subtotalVenta*0.05;
+                       porcentaje=5;
+                   }else if(subtotalVenta>5000){
+                       descuento=subtotalVenta*0.10;
+                       porcentaje=10;
+                   }else if(subtotalVenta<1000){
+                       descuento=0;
+                       porcentaje=0;
+                   }
+
+
+                   //Subtotal con descuento aplicado
+                   double subtotalaplicado=(subtotalVenta-descuento);
+
+                   //Evaluacion de impuesto
+                   double impuesto=subtotalaplicado*0.07;
+                   String impuestoRedondeado= String.format("%.2f",impuesto);
+
+                   //Evaluacion del total
+                   double totalVenta=subtotalaplicado+impuesto;
+                   String totalVredondeado= String.format("%.2f",totalVenta);
+
+                   //Procedimiento de facturacion
+                    System.out.println("");
+                    System.out.println("***Detalle de Factura***");
+                    System.out.println("Numero de Factura: "+numfacturas);
+                    System.out.println(productList);
+                    System.out.println("Subtotal: Lps."+subtotalVenta);
+                    System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
+                    System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
+                    System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
+                    System.out.println("Total a pagar: Lps."+totalVredondeado);
+                    System.out.println("");
+
+
+
+
+                    //Sumatoria a caja
+                    efectivoCaja= efectivoCaja+totalVenta;
+                    System.out.println("Dinero en caja: "+efectivoCaja);
+                    numVentas++;
+                    volVentas+=(volVentas+totalVenta);
+
+
+                    //Comprobador de mayor Venta
+                    if(totalVenta>mayorVenta){
+                       mayorVenta=totalVenta;
+                       info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
+                    }
                 
-                //Evaluaciones de descuentos
-               double descuento=0;
-               int porcentaje=0;
-               if (subtotalVenta>=1000 && subtotalVenta<=5000){
-                   descuento=subtotalVenta*0.05;
-                   porcentaje=5;
-               }else if(subtotalVenta>5000){
-                   descuento=subtotalVenta*0.10;
-                   porcentaje=10;
-               }else if(subtotalVenta<1000){
-                   descuento=0;
-                   porcentaje=0;
-               }
-               
-               
-               //Subtotal con descuento aplicado
-               double subtotalaplicado=(subtotalVenta-descuento);
-               
-               //Evaluacion de impuesto
-               double impuesto=subtotalaplicado*0.07;
-               String impuestoRedondeado= String.format("%.2f",impuesto);
-               
-               //Evaluacion del total
-               double totalVenta=subtotalaplicado+impuesto;
-               String totalVredondeado= String.format("%.2f",totalVenta);
-               
-               //Procedimiento de facturacion
-                System.out.println("");
-                System.out.println("***Detalle de Factura***");
-                System.out.println("Numero de Factura: "+numfacturas);
-                System.out.println(productList);
-                System.out.println("Subtotal: Lps."+subtotalVenta);
-                System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
-                System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
-                System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
-                System.out.println("Total a pagar: Lps."+totalVredondeado);
-                System.out.println("");
-               
-               
-               
-               
-                //Sumatoria a caja
-                efectivoCaja= efectivoCaja+totalVenta;
-                System.out.println("Dinero en caja: "+efectivoCaja);
-                numVentas++;
-                volVentas+=(volVentas+totalVenta);
-                
-                
-                //Comprobador de mayor Venta
-                if(totalVenta>mayorVenta){
-                   mayorVenta=totalVenta;
-                   info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
-                }
+                }//Fin ciclo verificador de subtotal=0
                
                
                
@@ -930,8 +948,8 @@ public class Carcamo_David_ProyectoTienda {
                        
            }else if(cliente.equals("c")){
                System.out.println("***Productos Disponibles Para Venta***");
-               System.out.println("| Codigo |"+" | Producto | "+" | Precio | ");
-               System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | ");
+               System.out.println("| Codigo |"+" | Producto | "+" | Precio | "+"Cantidad disponible");
+               System.out.println("|   4    |"+" |   Maiz   | "+" | Lps.20 | "+     stockMaiz);
                System.out.println("");
                
             boolean facturar =false;
@@ -968,10 +986,10 @@ public class Carcamo_David_ProyectoTienda {
                        
                        if(lea.hasNextDouble()){
                         cantidad= lea.nextDouble();
-                        if(cantidad<=0){
+                        if(cantidad<0){
                             System.out.println("");
                             System.out.println("Cantidad Invalida");
-                        }else if(cantidad>0){
+                        }else if(cantidad>=0){
                             
                             
                             if(stockMaiz<cantidad){
@@ -1025,64 +1043,72 @@ public class Carcamo_David_ProyectoTienda {
             
             }//Fin de ciclo While
             
-             //Evaluaciones de descuentos
-            double descuento=0;
-            int porcentaje=0;
-            if (subtotalVenta>=1000 && subtotalVenta<=5000){
-                descuento=subtotalVenta*0.05;
-                porcentaje=5;
-            }else if(subtotalVenta>5000){
-                descuento=subtotalVenta*0.10;
-                porcentaje=10;
-            }else if(subtotalVenta<1000){
-                descuento=0;
-                porcentaje=0;
-            }
-               
-               
-            //Subtotal con descuento aplicado
-               double subtotalaplicado=(subtotalVenta-descuento);
-               
-            //Evaluacion de impuesto
-            double impuesto=subtotalaplicado*0.07;
-            String impuestoRedondeado= String.format("%.2f",impuesto);
-               
-            //Evaluacion del total
-            double totalVenta=subtotalaplicado+impuesto;
-            String totalVredondeado= String.format("%.2f",totalVenta);
-               
-            //Procedimiento de facturacion
-            System.out.println("");
-            System.out.println("***Detalle de Factura***");
-            System.out.println("Numero de Factura: "+numfacturas);
-            System.out.println(productList);
-            System.out.println("Subtotal: Lps."+subtotalVenta);
-            System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
-            System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
-            System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
-            System.out.println("Total a pagar: Lps."+totalVredondeado);
-            System.out.println("");
-               
-            //Sumatoria a caja
-            efectivoCaja= efectivoCaja+totalVenta;
-            System.out.println("Dinero en caja: "+efectivoCaja);
-            numVentas++;
-            volVentas+=(volVentas+totalVenta);
-               
             
-            //Comprobador de mayor Venta
-            if(totalVenta>mayorVenta){
-                mayorVenta=totalVenta;
-                info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
-            }
+            //If verificador de subtotal=0
+            if(subtotalVenta==0){
+                System.out.println("");
+                System.out.println("Factura no generada. La actual venta no sumó ninguna cantidad.");
+            }else{
+            
+                //Evaluaciones de descuentos
+               double descuento=0;
+               int porcentaje=0;
+               if (subtotalVenta>=1000 && subtotalVenta<=5000){
+                   descuento=subtotalVenta*0.05;
+                   porcentaje=5;
+               }else if(subtotalVenta>5000){
+                   descuento=subtotalVenta*0.10;
+                   porcentaje=10;
+               }else if(subtotalVenta<1000){
+                   descuento=0;
+                   porcentaje=0;
+               }
+
+
+               //Subtotal con descuento aplicado
+                  double subtotalaplicado=(subtotalVenta-descuento);
+
+               //Evaluacion de impuesto
+               double impuesto=subtotalaplicado*0.07;
+               String impuestoRedondeado= String.format("%.2f",impuesto);
+
+               //Evaluacion del total
+               double totalVenta=subtotalaplicado+impuesto;
+               String totalVredondeado= String.format("%.2f",totalVenta);
+
+               //Procedimiento de facturacion
+               System.out.println("");
+               System.out.println("***Detalle de Factura***");
+               System.out.println("Numero de Factura: "+numfacturas);
+               System.out.println(productList);
+               System.out.println("Subtotal: Lps."+subtotalVenta);
+               System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
+               System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
+               System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
+               System.out.println("Total a pagar: Lps."+totalVredondeado);
+               System.out.println("");
+
+               //Sumatoria a caja
+               efectivoCaja= efectivoCaja+totalVenta;
+               System.out.println("Dinero en caja: "+efectivoCaja);
+               numVentas++;
+               volVentas+=(volVentas+totalVenta);
+
+
+               //Comprobador de mayor Venta
+               if(totalVenta>mayorVenta){
+                   mayorVenta=totalVenta;
+                   info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
+               }
+            
+            }//Fin ciclo verificador subtotal=0
                
            }else{
                 System.out.println("Valor no valido");
            }
-            
-            
-          
-          }
+           
+          }//Fin seccion ventas
+           
            
         
            

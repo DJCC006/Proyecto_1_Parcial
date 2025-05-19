@@ -199,7 +199,7 @@ public class Carcamo_David_ProyectoTienda {
                 double dineroExtra=lea.nextDouble();
                 efectivoCaja= efectivoCaja+dineroExtra;
                 System.out.println("Efectivo Guardado Exitosamente");
-                System.out.println("Efectivo en Caja: "+efectivoCaja);
+                System.out.println("Efectivo en Caja: Lps."+efectivoCaja);
 
 
             }else if (opcion==2){
@@ -714,7 +714,7 @@ public class Carcamo_David_ProyectoTienda {
                           System.out.println("=======================================================================================================");
                           System.out.println("Subtotal: Lps."+subtotalVenta);
                           System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
-                          System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
+                          System.out.println("Subtotal con descuento aplicado: Lps."+subtotalaplicado);
                           System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
                           System.out.println("Total a pagar: Lps."+totalVredondeado);
                           System.out.println("");
@@ -731,7 +731,7 @@ public class Carcamo_David_ProyectoTienda {
                           //Comprobador de mayor Venta
                           if(totalVenta>mayorVenta){
                               mayorVenta=totalVenta;
-                              info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
+                              info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVredondeado;
                           }
 
                     }//Fin ciclo de evaluacion de subtotal=0
@@ -1074,7 +1074,7 @@ public class Carcamo_David_ProyectoTienda {
                          System.out.println("=======================================================================================================");
                          System.out.println("Subtotal: Lps."+subtotalVenta);
                          System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
-                         System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
+                         System.out.println("Subtotal con descuento aplicado: Lps."+subtotalaplicado);
                          System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
                          System.out.println("Total a pagar: Lps."+totalVredondeado);
                          System.out.println("");
@@ -1094,7 +1094,7 @@ public class Carcamo_David_ProyectoTienda {
                          //Comprobador de mayor Venta
                          if(totalVenta>mayorVenta){
                             mayorVenta=totalVenta;
-                            info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
+                            info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVredondeado;
                          }
 
                      }//Fin ciclo verificador de subtotal=0
@@ -1265,7 +1265,7 @@ public class Carcamo_David_ProyectoTienda {
                     System.out.println("=======================================================================================================");
                     System.out.println("Subtotal: Lps."+subtotalVenta);
                     System.out.println("Descuento del "+porcentaje+"%: Lps."+descuento);
-                    System.out.println("Subtotal con descuento aplicado: "+subtotalaplicado);
+                    System.out.println("Subtotal con descuento aplicado: Lps."+subtotalaplicado);
                     System.out.println("I.S.V 7%: Lps."+impuestoRedondeado);
                     System.out.println("Total a pagar: Lps."+totalVredondeado);
                     System.out.println("");
@@ -1282,7 +1282,7 @@ public class Carcamo_David_ProyectoTienda {
                     //Comprobador de mayor Venta
                     if(totalVenta>mayorVenta){
                         mayorVenta=totalVenta;
-                        info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVenta;
+                        info_mayorVenta+= "\nLa mayor venta fue de Lps."+totalVredondeado;
                     }
 
                  }//Fin ciclo verificador subtotal=0
@@ -1372,7 +1372,7 @@ public class Carcamo_David_ProyectoTienda {
                                     cantidad= lea.nextDouble();
                                     if(cantidad<=0){
                                         System.out.println("");
-                                        System.out.println("Cantidad Inválida. No se aceptan cantidades negativas.");
+                                        System.out.println("Cantidad Inválida. No se aceptan cantidades negativas o iguales a 0.");
                                     }else if(cantidad>0){
                                         totalproducto= cantidad*25;
                                         checkkilograms=true;
@@ -1390,11 +1390,12 @@ public class Carcamo_David_ProyectoTienda {
                             if(efectivoCaja>=totalproducto){
                                 System.out.println("");
                                 System.out.println("====== Detalles de Compra ======");
-                                System.out.println("Codigo Producto: 1"+"\nProducto: Azucar"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                                System.out.println("Codigo Producto: 1"+"\nProducto: Azucar"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: Lps."+totalproducto);
                                 stockAzucar=cantidad;
                                 efectivoCaja=efectivoCaja-totalproducto;
+                                String efectivoCajaF= String.format("%.2f", efectivoCaja);
                                 System.out.println("");
-                                System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                                System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCajaF);
                                 System.out.println("=================================");
                                 System.out.println("");
                                 System.out.println("");
@@ -1432,7 +1433,7 @@ public class Carcamo_David_ProyectoTienda {
                                     cantidad= lea.nextDouble();
                                     if(cantidad<=0){
                                         System.out.println("");
-                                        System.out.println("Cantidad Invalida. No se aceptan cantidades negativas.");
+                                        System.out.println("Cantidad Invalida. No se aceptan cantidades negativas o iguales a 0.");
                                     }else if(cantidad>0){
                                         totalproducto= cantidad*18;
                                         checkkilograms=true;
@@ -1450,8 +1451,9 @@ public class Carcamo_David_ProyectoTienda {
                                System.out.println("Codigo Producto: 4"+"\nProducto: Maiz"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
                                stockMaiz=cantidad;
                                efectivoCaja=efectivoCaja-totalproducto;
+                               String efectivoCajaF= String.format("%.2f", efectivoCaja);
                                System.out.println("");
-                               System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                               System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCajaF);
                                System.out.println("=================================");
                                System.out.println("");
                                System.out.println("");
@@ -1528,7 +1530,7 @@ public class Carcamo_David_ProyectoTienda {
                                     if(cantidad<=0){
                                         //Caso en que la cantidad introducida es negativa
                                         System.out.println("");
-                                        System.out.println("Cantidad Inválida. No se aceptan cantidades negativas.");
+                                        System.out.println("Cantidad Inválida. No se aceptan cantidades negativas o iguales a 0.");
                                     }else if(cantidad>0){
                                         //Caso correcto
                                         totalproducto= cantidad*20;
@@ -1547,11 +1549,12 @@ public class Carcamo_David_ProyectoTienda {
                             //Proceso de detlalle y facturacion de compra
                             if(efectivoCaja>=totalproducto){
                                 System.out.println("====== Detalles de Compra ======");
-                                System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                                System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: Lps."+totalproducto);
                                 stockAvena=cantidad;
                                 efectivoCaja=efectivoCaja-totalproducto;
+                                String efectivoCajaF= String.format("%.2f", efectivoCaja);
                                 System.out.println("");
-                                System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                                System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCajaF);
                                 System.out.println("=================================");
                                 System.out.println("");
                                 System.out.println("");
@@ -1595,7 +1598,7 @@ public class Carcamo_David_ProyectoTienda {
                                     if(cantidad<=0){
                                         //Caso en que se introduzca una cantidad negativa
                                         System.out.println("");
-                                        System.out.println("Cantidad inválida. No se aceptan cantidades negativas.");
+                                        System.out.println("Cantidad inválida. No se aceptan cantidades negativas o iguales a 0.");
                                     }else if(cantidad>0){
                                         totalproducto= cantidad*30;
                                         checkkilograms=true;
@@ -1614,8 +1617,9 @@ public class Carcamo_David_ProyectoTienda {
                                System.out.println("Codigo Producto: 3"+"\nProducto: Trigo"+"\nCantidad"+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
                                stockTrigo=cantidad;
                                efectivoCaja=efectivoCaja-totalproducto;
+                               String efectivoCajaF= String.format("%.2f", efectivoCaja);
                                System.out.println("");
-                               System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                               System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCajaF);
                                System.out.println("=================================");
                                System.out.println("");
                                System.out.println("");
@@ -1695,7 +1699,7 @@ public class Carcamo_David_ProyectoTienda {
                                 if(cantidad<=0){
                                     //Caso en el que se introduzca una cantidad negativa
                                     System.out.println("");
-                                    System.out.println("Cantidad inválida. No se aceptan cantidades negativas.");
+                                    System.out.println("Cantidad inválida. No se aceptan cantidades negativas o iguales a 0.");
                                 }else if(cantidad>0){
                                     totalproducto= cantidad*22;
                                     checkkilograms=true;
@@ -1711,11 +1715,12 @@ public class Carcamo_David_ProyectoTienda {
 
                         if(efectivoCaja>=totalproducto){
                             System.out.println("====== Detalles de Compra ======");
-                            System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: "+totalproducto);
+                            System.out.println("Codigo Producto: 2"+"\nProducto: Avena"+"\nCantidad: "+cantidad+" kilogramos"+"\nTotal: Lps."+totalproducto);
                             stockAvena=cantidad;
                             efectivoCaja=efectivoCaja-totalproducto;
+                            String efectivoCajaF= String.format("%.2f", efectivoCaja);
                             System.out.println("");
-                            System.out.println("Cantidad de Efectivo en Caja: "+efectivoCaja);
+                            System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCajaF);
                             System.out.println("=================================");
                             System.out.println("");
                             System.out.println("");
@@ -1810,11 +1815,13 @@ public class Carcamo_David_ProyectoTienda {
 
                      //Efectivo caja reducido a dos decimales
                      String efectivoCajaF= String.format("%.2f", efectivoCaja);
+                     String mayorVentaF=String.format("%.2f",mayorVenta);
+                     String mayorCompraF=String.format("%.2f", mayorCompra);
 
                      //Impresion de reporte
                      System.out.println("");
                      System.out.println("================ REPORTE =================");
-                     System.out.println("Cantidad Actual en Caja: "+efectivoCajaF);
+                     System.out.println("Cantidad Actual en Caja: Lps."+efectivoCajaF);
                      System.out.println("");
                      System.out.println("No. Compras Realizadas: "+numCompras);
                      System.out.println("No. Ventas Realizadas: "+numVentas);
@@ -1826,9 +1833,9 @@ public class Carcamo_David_ProyectoTienda {
                      System.out.println("Promedio Ventas: Lps."+promedio_VentasF);
                      System.out.println("Promedio Compras: Lps."+promedio_ComprasF);
                      System.out.println("");
-                     System.out.println("La mayor venta fue de: Lps."+mayorVenta);
+                     System.out.println("La mayor venta fue de: Lps."+mayorVentaF);
                      System.out.println("");
-                     System.out.println("La mayor compra fue de: Lps."+mayorCompra);
+                     System.out.println("La mayor compra fue de: Lps."+mayorCompraF);
                      System.out.println("");
                      System.out.println("Producto Estrella: "+producto_Estrella);
                      System.out.println("");

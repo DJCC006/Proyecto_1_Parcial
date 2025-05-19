@@ -2160,6 +2160,11 @@ public class Carcamo_David_ProyectoTienda {
                 
                 //Redondeo del efectivo en caja
                 String efectivoCajaF= String.format("%.2f", efectivoCaja);
+                
+                //Calculo de margen de ganancia
+                 //Calculo de margen de ganancias
+                 double margenganancia=(volVentas-volCompras);
+                 String margengananciaF= String.format("%.2f",margenganancia);
 
 
                 //Calculo del tope de deposito a banco del 60%
@@ -2169,6 +2174,7 @@ public class Carcamo_David_ProyectoTienda {
                 System.out.println("");
                 System.out.println("======= Cierre de Dia "+numDia+" =======");
                 System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCajaF);
+                System.out.println("Ganancia obtenida durante el dia: Lps."+margengananciaF);
                 System.out.println("");
 
 
@@ -2179,24 +2185,30 @@ public class Carcamo_David_ProyectoTienda {
                 //Agregar validacion asi 
                 if(lea.hasNextInt()){
                  double depositoIngreso=lea.nextDouble();
-
-                 if(depositoIngreso<=0){
+                 
+                 //Delimitador de ingreso de porcentaje
+                 if(depositoIngreso>60){
                      System.out.println("");
-                     System.out.println("Cantidad Invalida. No se aceptan valores menores o iguales a 0.");
-
-                 }else if(depositoIngreso<=topeCaja){
-                    double depositoReal=(efectivoCaja*(depositoIngreso/100));
-                    efectivoBanco+=depositoReal;
-                    efectivoCaja+=-depositoReal;
-                    System.out.println("");    
-                    System.out.println("Deposito realizado con éxito");
-                    System.out.println("");
-                    statusDeposito=true;
+                     System.out.println("El porcentaje se excede al 60%");
                  }else{
-                     System.out.println("");
-                     System.out.println("Cantidad Invalida. La cantidad excede el tope del 60%.");
-                 }
+                    if(depositoIngreso<=0){
+                      System.out.println("");
+                      System.out.println("Cantidad Invalida. No se aceptan valores menores o iguales a 0.");
 
+                    }else if(depositoIngreso<=topeCaja){
+                     double depositoReal=(efectivoCaja*(depositoIngreso/100));
+                     efectivoBanco+=depositoReal;
+                     efectivoCaja+=-depositoReal;
+                     System.out.println("");    
+                     System.out.println("Deposito realizado con éxito");
+                     System.out.println("");
+                     statusDeposito=true;
+                    }else{
+                      System.out.println("");
+                      System.out.println("Cantidad Invalida. La cantidad excede el tope del 60%.");
+                    }  
+                 }
+                 
                  }else{
                      System.out.println("");
                      System.out.println("Valor invalido. Solamente se aceptan valores numéricos.");
@@ -2205,7 +2217,7 @@ public class Carcamo_David_ProyectoTienda {
 
                 }//Fin ciclo while
 
-
+                //Impresion
                 String efectivoBancoF= String.format("%.2f",efectivoBanco);
                 System.out.println("");
                 System.out.println("Efectivo acumulado en Banco: Lps."+efectivoBancoF);

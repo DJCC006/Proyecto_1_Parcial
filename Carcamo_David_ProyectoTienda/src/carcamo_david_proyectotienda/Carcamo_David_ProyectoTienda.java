@@ -205,7 +205,7 @@ public class Carcamo_David_ProyectoTienda {
             }else if (opcion==2){
                 //Desarrollo de seccion ventas
                 double subtotalVenta=0;
-                numfacturas++;
+                
 
                 if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
                     System.out.println("");//Mensaje en caso que stock este vacio
@@ -613,7 +613,9 @@ public class Carcamo_David_ProyectoTienda {
                          //Evaluacion del total
                          double totalVenta=subtotalaplicado+impuesto;
                          String totalVredondeado= String.format("%.2f",totalVenta);
-
+                         
+                         //Incremento de numero de facturas
+                         numfacturas++;
                          //Procedimiento de facturacion
                           System.out.println("");
                           System.out.println("===================================== Detalle de Factura =============================================");
@@ -922,6 +924,9 @@ public class Carcamo_David_ProyectoTienda {
                         double totalVenta=subtotalaplicado+impuesto;
                         String totalVredondeado= String.format("%.2f",totalVenta);
 
+                        //Incremento de numero de facturas
+                         numfacturas++;
+                         
                         //Procedimiento de facturacion
                          System.out.println("");
                          System.out.println("===================================== Detalle de Factura =============================================");
@@ -1094,6 +1099,9 @@ public class Carcamo_David_ProyectoTienda {
                     double totalVenta=subtotalaplicado+impuesto;
                     String totalVredondeado= String.format("%.2f",totalVenta);
 
+                    //Incremento de numero de facturas
+                    numfacturas++;
+                         
                     //Procedimiento de facturacion
                     System.out.println("");
                     System.out.println("===================================== Detalle de Factura =============================================");
@@ -1669,7 +1677,8 @@ public class Carcamo_David_ProyectoTienda {
 
                 //Incremento de dia
                 numDia++;
-
+                
+                //Redondeo del efectivo en caja
                 String efectivoCajaF= String.format("%.2f", efectivoCaja);
 
 
@@ -1678,14 +1687,14 @@ public class Carcamo_David_ProyectoTienda {
                 boolean statusDeposito=false;
 
                 System.out.println("");
-                System.out.println("****Cierre de Dia "+numDia+"****");
+                System.out.println("======= Cierre de Dia "+numDia+" =======");
                 System.out.println("Cantidad de Efectivo en Caja: Lps."+efectivoCajaF);
                 System.out.println("");
 
 
                 //Ciclo que lleva control del ingreso a banco
                 while(statusDeposito==false){
-                System.out.println("Ingrese en porcentaje la cantidad que desea guardar del efectivo en caja en banco (TOPE MAXIMO DEL 60%): ");
+                System.out.println("Especifique el porcentaje del efectivo de caja a depositar en el banco. Porcentaje Máximo 60%: ");
 
                 //Agregar validacion asi 
                 if(lea.hasNextInt()){
@@ -1693,12 +1702,13 @@ public class Carcamo_David_ProyectoTienda {
 
                  if(depositoIngreso<=0){
                      System.out.println("");
-                     System.out.println("Cantidad Invalida. No se aceptan valores menores a 0.");
+                     System.out.println("Cantidad Invalida. No se aceptan valores menores o iguales a 0.");
 
                  }else if(depositoIngreso<=topeCaja){
                     double depositoReal=(efectivoCaja*(depositoIngreso/100));
                     efectivoBanco+=depositoReal;
                     efectivoCaja+=-depositoReal;
+                    System.out.println("");    
                     System.out.println("Deposito realizado con éxito");
                     System.out.println("");
                     statusDeposito=true;
@@ -1732,7 +1742,8 @@ public class Carcamo_David_ProyectoTienda {
 
 
             }else if (opcion ==6){
-                System.out.println("Aqui se inicia el procedimiento de salir ");
+                System.out.println("");
+                System.out.println("======== Satus Programa: Cerrado ======== ");
                 controladorDias=false;
                 break; 
             }   

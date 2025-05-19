@@ -1596,7 +1596,8 @@ public class Carcamo_David_ProyectoTienda {
                 //Validador para no realizar reporte en caso que toda la informacion se encuentre en 0
                 if(numCompras==0 && numVentas==0){
                     System.out.println("");
-                    System.out.println("Reporte no disponible. Porfavor realize por lo menos una compra o venta para generar reporte.");
+                    System.out.println("Reporte no disponible. Porfavor, realize por lo menos una compra o venta para generar reporte.");
+                    System.out.println("");
                 }else{
 
                      //Calculo de margen de ganancias
@@ -1607,6 +1608,7 @@ public class Carcamo_David_ProyectoTienda {
                      double promedio_Ventas=(volVentas/numVentas);
                      double promedio_Compras=(volCompras/numCompras);
 
+                     //Formateo de variables necesarios
                      String promedio_VentasF= String.format("%.2f",promedio_Ventas);
                      String promedio_ComprasF=String.format("%.2f",promedio_Compras);
 
@@ -1631,26 +1633,27 @@ public class Carcamo_David_ProyectoTienda {
                      String efectivoCajaF= String.format("%.2f", efectivoCaja);
 
                      //Impresion de reporte
-                     System.out.println("******REPORTE******");
+                     System.out.println("");
+                     System.out.println("================ REPORTE =================");
                      System.out.println("Cantidad Actual en Caja: "+efectivoCajaF);
                      System.out.println("");
-                     System.out.println("Numero de Ventas y Compras Efectuadas--");
-                     System.out.println("Compras: "+numCompras);
-                     System.out.println("Ventas: "+numVentas);
-                     System.out.println("---------------------------------------");
+                     System.out.println("No. Compras Realizadas: "+numCompras);
+                     System.out.println("No. Ventas Realizadas: "+numVentas);
                      System.out.println("");
-                     System.out.println("Volumen de Compras: "+volCompras);
-                     System.out.println("Volumen de Ventas: "+volVentas);
-                     System.out.println("Margen de ganancia: "+margengananciaF);
+                     System.out.println("Volumen de Compras: Lps."+volCompras);
+                     System.out.println("Volumen de Ventas: Lps."+volVentas);
+                     System.out.println("Margen de ganancia: Lps."+margengananciaF);
                      System.out.println("");
-                     System.out.println("Promedio Ventas: "+promedio_VentasF);
-                     System.out.println("Promedio Compras: "+promedio_ComprasF);
+                     System.out.println("Promedio Ventas: Lps."+promedio_VentasF);
+                     System.out.println("Promedio Compras: Lps."+promedio_ComprasF);
                      System.out.println("");
                      System.out.println("La mayor venta fue de: Lps."+mayorVenta);
                      System.out.println("");
                      System.out.println("La mayor compra fue de: Lps."+mayorCompra);
                      System.out.println("");
-                     System.out.println("Producto Estrella:"+producto_Estrella);
+                     System.out.println("Producto Estrella: "+producto_Estrella);
+                     System.out.println("");
+                     System.out.println("===========================================");
                      System.out.println("");
 
                 }//Fin validador para habilitar reportes

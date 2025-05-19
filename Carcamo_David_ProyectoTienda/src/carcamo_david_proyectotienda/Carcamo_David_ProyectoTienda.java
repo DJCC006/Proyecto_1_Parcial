@@ -93,7 +93,7 @@ public class Carcamo_David_ProyectoTienda {
             while (statusPrograma==true){
             // Creación de Menu Inicial y lectura
              System.out.print("===========  Menu Principal  =========== ");
-             System.out.println("\n     1. Abrir Caja/Introducir Efectivo"
+             System.out.println("\n     1. Abrir Caja/Introducir Efectivo Extra"
              +"\n               2.Venta"+"\n               3.Compra"+"\n               4.Reporte"+"\n             5.Cierre Caja"+"\n               6.Salir");
              System.out.println("========================================");
 

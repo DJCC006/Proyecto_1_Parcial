@@ -34,6 +34,11 @@ public class Carcamo_David_ProyectoTienda {
         double efectivoCaja=0;
         double efectivoBanco=0;
         
+        //Contadores de Stock
+        double stockAzucar=0;
+        double stockAvena=0;
+        double stockTrigo=0;
+        double stockMaiz=0;
         
          
         
@@ -52,13 +57,7 @@ public class Carcamo_David_ProyectoTienda {
             //Creación de variable que lleva seguimiento del estatus de la caja
             boolean statusCaja= false; 
             boolean statusPrograma=true;
-
-            //Contadores de Stock
-            double stockAzucar=0;
-            double stockAvena=0;
-            double stockTrigo=0;
-            double stockMaiz=0;
-
+            
             //Controladores de cantidades de cada producto
             double cantAzucar=0;
             double cantAvena=0;

@@ -282,6 +282,38 @@ public class Carcamo_David_ProyectoTienda {
                                //Mensaje en case de no haber stock del producto seleccionado
                                System.out.println("");
                                System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
+                               
+                               //Ciclo Verificador de pregunta
+                                boolean verificador_facturar=false;
+                                String seleccion="";
+                                while(verificador_facturar!=true){
+                                //Pregunta para proseguir a facturar
+                                System.out.println("");
+                                System.out.println("¿Desea agregar otro producto? (Y/N)");
+
+                                String selec= lea.next();
+                                String seleccionL= selec.toLowerCase();
+                                if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                    seleccion=seleccionL;
+                                    verificador_facturar=true;
+                                    }else{
+                                        System.out.println("");
+                                        System.out.println("Opción Inválida");
+                                    }
+                                }
+                                       
+                                //Evaluacion para proceder a facturar
+                                if(seleccion.equals("y")){
+                                System.out.println("");
+
+                                }else{//caso respuesta de n
+                                System.out.println("");
+
+                                //Indica que se procede a la facturación 
+                                facturar=true;
+                                }
+                               
+                               
                            }else{
                             System.out.println("");
                             System.out.println("====== Informacion de producto ======");
@@ -296,15 +328,20 @@ public class Carcamo_David_ProyectoTienda {
                                 System.out.println("Ingrese la cantidad (en kilogramos) que desea vender de este producto: ");
                                 if(lea.hasNextDouble()){
                                     cantidad= lea.nextDouble();
-                                    if(cantidad<0){
+                                    if(cantidad<=0){
                                        System.out.println("");
-                                       System.out.println("Cantidad inválida. No se aceptan cantidades negativas.");
-                                    }else if(cantidad>=0){
+                                       System.out.println("Cantidad inválida. No se aceptan cantidades negativas o iguales a 0.");
+                                       
+                                       
+                                        
+                                       
+                                    }else if(cantidad>0){
                                         
                                        //Comprobante si hay una cantidad suficiente en stock para cubrir la demanda pedida por el cliente
                                        if(stockAzucar<cantidad){
                                            System.out.println("");
                                            System.out.println("No hay una cantidad suficiente para realizar la venta.");
+                                           checkkilograms=true;
 
                                        }else{
                                            //Calculo de subtotal
@@ -379,6 +416,38 @@ public class Carcamo_David_ProyectoTienda {
                                System.out.println("");
                                System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                                System.out.println("");
+                               
+                               
+                               //Ciclo Verificador de pregunta
+                                boolean verificador_facturar=false;
+                                String seleccion="";
+                                while(verificador_facturar!=true){
+                                //Pregunta para proseguir a facturar
+                                System.out.println("");
+                                System.out.println("¿Desea agregar otro producto? (Y/N)");
+
+                                String selec= lea.next();
+                                String seleccionL= selec.toLowerCase();
+                                if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                    seleccion=seleccionL;
+                                    verificador_facturar=true;
+                                    }else{
+                                        System.out.println("");
+                                        System.out.println("Opción Inválida");
+                                    }
+                                }
+                                       
+                                //Evaluacion para proceder a facturar
+                                if(seleccion.equals("y")){
+                                System.out.println("");
+
+                                }else{//caso respuesta de n
+                                System.out.println("");
+
+                                //Indica que se procede a la facturación 
+                                facturar=true;
+                                }
+                               
                            }else{
 
                            System.out.println("");
@@ -393,10 +462,10 @@ public class Carcamo_David_ProyectoTienda {
                                System.out.println("Ingrese la cantidad (en kilogramos) que desea comprar de este producto: ");
                                if(lea.hasNextDouble()){
                                    cantidad= lea.nextDouble();
-                                   if(cantidad<0){
+                                   if(cantidad<=0){
                                        System.out.println("");
-                                       System.out.println("Cantidad Invalida");
-                                   }else if(cantidad>=0){
+                                       System.out.println("Cantidad Invalida. No se aceptan cantidades negativas o iguales a 0.");
+                                   }else if(cantidad>0){
 
                                        //Condicional verificadora del stock y cantidad
                                        if(stockAvena<cantidad){
@@ -471,6 +540,40 @@ public class Carcamo_David_ProyectoTienda {
                                System.out.println("");
                                System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                                System.out.println("");
+                               
+                               //Ciclo Verificador de pregunta
+                                boolean verificador_facturar=false;
+                                String seleccion="";
+                                while(verificador_facturar!=true){
+                                //Pregunta para proseguir a facturar
+                                System.out.println("");
+                                System.out.println("¿Desea agregar otro producto? (Y/N)");
+
+                                String selec= lea.next();
+                                String seleccionL= selec.toLowerCase();
+                                if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                    seleccion=seleccionL;
+                                    verificador_facturar=true;
+                                    }else{
+                                        System.out.println("");
+                                        System.out.println("Opción Inválida");
+                                    }
+                                }
+                                       
+                                //Evaluacion para proceder a facturar
+                                if(seleccion.equals("y")){
+                                System.out.println("");
+
+                                }else{//caso respuesta de n
+                                System.out.println("");
+
+                                //Indica que se procede a la facturación 
+                                facturar=true;
+                                }
+                               
+                               
+                               
+                               
                            }else{
                            System.out.println("");
                            System.out.println("**Informacion de producto**");
@@ -486,9 +589,9 @@ public class Carcamo_David_ProyectoTienda {
                                if(lea.hasNextDouble()){
                                 cantidad= lea.nextDouble();
 
-                                if(cantidad<0){
+                                if(cantidad<=0){
                                     System.out.println("");
-                                    System.out.println("Cantidad Invalida");
+                                    System.out.println("Cantidad Invalida. No se aceptan cantidades negativas o iguales a 0.");
                                 }else if(cantidad>=0){
 
 
@@ -565,6 +668,39 @@ public class Carcamo_David_ProyectoTienda {
                                System.out.println("");
                                System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                                System.out.println("");
+                               
+                               //Ciclo Verificador de pregunta
+                                boolean verificador_facturar=false;
+                                String seleccion="";
+                                while(verificador_facturar!=true){
+                                //Pregunta para proseguir a facturar
+                                System.out.println("");
+                                System.out.println("¿Desea agregar otro producto? (Y/N)");
+
+                                String selec= lea.next();
+                                String seleccionL= selec.toLowerCase();
+                                if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                    seleccion=seleccionL;
+                                    verificador_facturar=true;
+                                    }else{
+                                        System.out.println("");
+                                        System.out.println("Opción Inválida");
+                                    }
+                                }
+                                       
+                                //Evaluacion para proceder a facturar
+                                if(seleccion.equals("y")){
+                                System.out.println("");
+
+                                }else{//caso respuesta de n
+                                System.out.println("");
+
+                                //Indica que se procede a la facturación 
+                                facturar=true;
+                                }
+                               
+                               
+                               
                            }else{
                            System.out.println("");
                            System.out.println("**Informacion de producto**");
@@ -580,10 +716,10 @@ public class Carcamo_David_ProyectoTienda {
 
                                if(lea.hasNextDouble()){
                                 cantidad= lea.nextDouble();
-                                if(cantidad<0){
+                                if(cantidad<=0){
                                     System.out.println("");
-                                    System.out.println("Cantidad Invalida");
-                                }else if(cantidad>=0){
+                                    System.out.println("Cantidad Invalida. No se aceptan cantidades negativas o iguales a 0.");
+                                }else if(cantidad>0){
 
                                     if(stockMaiz<cantidad){
                                         System.out.println("");
@@ -760,6 +896,38 @@ public class Carcamo_David_ProyectoTienda {
                             System.out.println("");
                             System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                             System.out.println("");
+                            
+                            //Ciclo Verificador de pregunta
+                            boolean verificador_facturar=false;
+                            String seleccion="";
+                            while(verificador_facturar!=true){
+                            //Pregunta para proseguir a facturar
+                            System.out.println("");
+                            System.out.println("¿Desea agregar otro producto? (Y/N)");
+
+                            String selec= lea.next();
+                            String seleccionL= selec.toLowerCase();
+                            if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                seleccion=seleccionL;
+                                verificador_facturar=true;
+                            }else{
+                                System.out.println("");
+                                System.out.println("Opción Inválida");
+                                }
+                            }
+                                       
+                            //Evaluacion para proceder a facturar
+                            if(seleccion.equals("y")){
+                            System.out.println("");
+
+                            }else{//caso respuesta de n
+                            System.out.println("");
+
+                            //Indica que se procede a la facturación 
+                            facturar=true;
+                            }
+                            
+                            
                         }else{
                         System.out.println("");
                         System.out.println("====== Informacion de producto ======");
@@ -775,10 +943,43 @@ public class Carcamo_David_ProyectoTienda {
 
                             if(lea.hasNextDouble()){
                              cantidad= lea.nextDouble();
-                             if(cantidad<0){
+                             if(cantidad<=0){
                                  System.out.println("");
-                                 System.out.println("Cantidad inválida. No se aceptan cantidades negativas.");
-                             }else if(cantidad>=0){
+                                 System.out.println("Cantidad inválida. No se aceptan cantidades negativas o iguales a 0.");
+                                 
+                                 //Ciclo Verificador de pregunta
+                                boolean verificador_facturar=false;
+                                String seleccion="";
+                                while(verificador_facturar!=true){
+                                //Pregunta para proseguir a facturar
+                                System.out.println("");
+                                System.out.println("¿Desea agregar otro producto? (Y/N)");
+
+                                String selec= lea.next();
+                                String seleccionL= selec.toLowerCase();
+                                if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                    seleccion=seleccionL;
+                                    verificador_facturar=true;
+                                    }else{
+                                        System.out.println("");
+                                        System.out.println("Opción Inválida");
+                                    }
+                                }
+                                       
+                                //Evaluacion para proceder a facturar
+                                if(seleccion.equals("y")){
+                                System.out.println("");
+
+                                }else{//caso respuesta de n
+                                System.out.println("");
+
+                                //Indica que se procede a la facturación 
+                                facturar=true;
+                                }
+                                 
+                                 
+                                 
+                             }else if(cantidad>0){
 
                                  if(stockAzucar<cantidad){
                                      System.out.println("");
@@ -849,6 +1050,40 @@ public class Carcamo_David_ProyectoTienda {
                             System.out.println("");
                             System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                             System.out.println("");
+                            
+                            //Ciclo Verificador de pregunta
+                                boolean verificador_facturar=false;
+                                String seleccion="";
+                                while(verificador_facturar!=true){
+                                //Pregunta para proseguir a facturar
+                                System.out.println("");
+                                System.out.println("¿Desea agregar otro producto? (Y/N)");
+
+                                String selec= lea.next();
+                                String seleccionL= selec.toLowerCase();
+                                if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                    seleccion=seleccionL;
+                                    verificador_facturar=true;
+                                    }else{
+                                        System.out.println("");
+                                        System.out.println("Opción Inválida");
+                                    }
+                                }
+                                       
+                                //Evaluacion para proceder a facturar
+                                if(seleccion.equals("y")){
+                                System.out.println("");
+
+                                }else{//caso respuesta de n
+                                System.out.println("");
+
+                                //Indica que se procede a la facturación 
+                                facturar=true;
+                                }
+                            
+                            
+                            
+                            
                         }else{
                         System.out.println("");
                         System.out.println("====== Informacion de producto ======");
@@ -864,11 +1099,11 @@ public class Carcamo_David_ProyectoTienda {
 
                             if(lea.hasNextDouble()){
                              cantidad= lea.nextDouble();
-                             if(cantidad<0){
+                             if(cantidad<=0){
                                  System.out.println("");
-                                 System.out.println("Cantidad inválida. No se aceptan cantidades negativas.");
+                                 System.out.println("Cantidad inválida. No se aceptan cantidades negativas o iguales a 0.");
                                  
-                             }else if(cantidad>=0){
+                             }else if(cantidad>0){
                                  if(stockAvena<cantidad){
                                      System.out.println("");
                                      System.out.println("No hay una cantidad suficiente para realizar la venta.");
@@ -936,6 +1171,40 @@ public class Carcamo_David_ProyectoTienda {
                             System.out.println("");
                             System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                             System.out.println("");
+                            
+                             //Ciclo Verificador de pregunta
+                            boolean verificador_facturar=false;
+                            String seleccion="";
+                            while(verificador_facturar!=true){
+                            //Pregunta para proseguir a facturar
+                            System.out.println("");
+                            System.out.println("¿Desea agregar otro producto? (Y/N)");
+
+                            String selec= lea.next();
+                            String seleccionL= selec.toLowerCase();
+                            if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                seleccion=seleccionL;
+                                verificador_facturar=true;
+                            }else{
+                                System.out.println("");
+                                System.out.println("Opción Inválida");
+                                }
+                            }
+                                       
+                            //Evaluacion para proceder a facturar
+                            if(seleccion.equals("y")){
+                            System.out.println("");
+
+                            }else{//caso respuesta de n
+                            System.out.println("");
+
+                            //Indica que se procede a la facturación 
+                            facturar=true;
+                            }
+
+                            
+                            
+                            
                         }else{
                         System.out.println("");
                         System.out.println("====== Informacion de producto ======");
@@ -951,11 +1220,11 @@ public class Carcamo_David_ProyectoTienda {
 
                             if(lea.hasNextDouble()){
                              cantidad= lea.nextDouble();
-                             if(cantidad<0){
+                             if(cantidad<=0){
                                  System.out.println("");
-                                 System.out.println("Cantidad inválida. No se aceptan cantidades negativas.");
+                                 System.out.println("Cantidad inválida. No se aceptan cantidades negativas o iguales a 0.");
                                  
-                             }else if(cantidad>=0){
+                             }else if(cantidad>0){
                                  if(stockTrigo<cantidad){
                                      System.out.println("");
                                      System.out.println("No hay una cantidad suficiente para realizar la venta.");
@@ -1131,6 +1400,40 @@ public class Carcamo_David_ProyectoTienda {
                          System.out.println("");
                          System.out.println("Venta no realizada. No hay unidades disponibles de este producto.");
                          System.out.println("");
+                         
+                          //Ciclo Verificador de pregunta
+                            boolean verificador_facturar=false;
+                            String seleccion="";
+                            while(verificador_facturar!=true){
+                            //Pregunta para proseguir a facturar
+                            System.out.println("");
+                            System.out.println("¿Desea agregar otro producto? (Y/N)");
+
+                            String selec= lea.next();
+                            String seleccionL= selec.toLowerCase();
+                            if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                seleccion=seleccionL;
+                                verificador_facturar=true;
+                            }else{
+                                System.out.println("");
+                                System.out.println("Opción Inválida");
+                                }
+                            }
+                                       
+                            //Evaluacion para proceder a facturar
+                            if(seleccion.equals("y")){
+                            System.out.println("");
+
+                            }else{//caso respuesta de n
+                            System.out.println("");
+
+                            //Indica que se procede a la facturación 
+                            facturar=true;
+                            }
+
+                         
+                         
+                         
                      }
 
                      System.out.println("");
@@ -1147,10 +1450,10 @@ public class Carcamo_David_ProyectoTienda {
 
                             if(lea.hasNextDouble()){
                              cantidad= lea.nextDouble();
-                             if(cantidad<0){
+                             if(cantidad<=0){
                                  System.out.println("");
-                                 System.out.println("Dato de tipo inválido. No se aceptan cantidades negativas.");
-                             }else if(cantidad>=0){
+                                 System.out.println("Dato de tipo inválido. No se aceptan cantidades negativas o iguales a 0.");
+                             }else if(cantidad>0){
 
 
                                  if(stockMaiz<cantidad){

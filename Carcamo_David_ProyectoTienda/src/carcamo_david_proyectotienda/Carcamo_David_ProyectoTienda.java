@@ -209,7 +209,8 @@ public class Carcamo_David_ProyectoTienda {
 
                 if(stockAzucar==0 && stockAvena==0 && stockTrigo==0 && stockMaiz==0){
                     System.out.println("");//Mensaje en caso que stock este vacio
-                    System.out.println("*AVISO* NO HAY PRODUCTOS EN STOCK ");
+                    System.out.println("== NO HAY PRODUCTOS EN STOCK ==");
+                    System.out.println("");
 
 
                 }else{
@@ -232,10 +233,25 @@ public class Carcamo_David_ProyectoTienda {
                     
                  System.out.println("Clientes disponibles para venta:");
                  System.out.println("Cliente A"+"\nCliente B"+"\nCliente C");
-                 System.out.println("Porfavor introduzca la letra del cliente al que desea vender(A,B,C): ");
-                 String seleccionCliente= lea.next();
-                 String cliente= seleccionCliente.toLowerCase();
-
+                 
+                 //Ciclo verificador de tipo cliente
+                 boolean verificador_cliente=false;
+                 String cliente="";
+                 while(verificador_cliente!=true){
+                     System.out.println("");
+                     System.out.println("Porfavor, introduzca la letra del cliente al que desea vender(A,B,C): ");
+                     String seleccionCliente= lea.next();
+                     String clienteL= seleccionCliente.toLowerCase();
+                     
+                     if(clienteL.equalsIgnoreCase("a") || clienteL.equalsIgnoreCase("b") || clienteL.equalsIgnoreCase("c")){
+                         cliente=clienteL;
+                         verificador_cliente=true;
+                     }else{
+                         System.out.println("");
+                         System.out.println("Opción inválida.");
+                     }
+                 }//Fin ciclo verificador de tipo cliente
+                 
                  if(cliente.equals("a")){
                      //Seleccion de Cliente A
                      System.out.println("");
@@ -319,10 +335,27 @@ public class Carcamo_David_ProyectoTienda {
 
 
 
-                           //Pregunta para proseguir a facturar
-                            System.out.println("¿Desea agregar otro producto? (Y/N)");
-                            String selec= lea.next();
-                            String seleccion= selec.toLowerCase();
+                           
+                            
+                            //Ciclo Verificador de pregunta
+                            boolean verificador_facturar=false;
+                            String seleccion="";
+                            while(verificador_facturar!=true){
+                                //Pregunta para proseguir a facturar
+                                System.out.println("");
+                                System.out.println("¿Desea agregar otro producto? (Y/N)");
+                                
+                                String selec= lea.next();
+                                String seleccionL= selec.toLowerCase();
+                                if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                    seleccion=seleccionL;
+                                    verificador_facturar=true;
+                                }else{
+                                    System.out.println("");
+                                    System.out.println("Opción Inválida");
+                                }
+                            }
+                            
                             //Evaluacion para proceder a facturar
                             if(seleccion.equals("y")){
                                 System.out.println("");
@@ -394,10 +427,27 @@ public class Carcamo_David_ProyectoTienda {
                                stockAvena=0;
                            }
 
-
-                           System.out.println("¿Desea agregar otro producto? Y/N");
-                           String selec= lea.next();
-                           String seleccion= selec.toLowerCase();
+                           //Ciclo Verificador de pregunta
+                           boolean verificador_facturar=false;
+                           String seleccion="";
+                           while(verificador_facturar!=true){
+                                //Pregunta para proseguir a facturar
+                                System.out.println("");
+                                System.out.println("¿Desea agregar otro producto? (Y/N)");
+                                
+                                String selec= lea.next();
+                                String seleccionL= selec.toLowerCase();
+                                if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                    seleccion=seleccionL;
+                                    verificador_facturar=true;
+                                }else{
+                                    System.out.println("");
+                                    System.out.println("Opción Inválida");
+                                }
+                            }//Fin ciclo verificador
+                           
+                           
+                           
                             //Evaluacion para proceder a facturar
                            if(seleccion.equals("y")){
                                 System.out.println("");
@@ -471,9 +521,28 @@ public class Carcamo_David_ProyectoTienda {
                                stockTrigo=0;
                            }
 
-                           System.out.println("¿Desea agregar otro producto? Y/N");
-                           String selec= lea.next();
-                           String seleccion= selec.toLowerCase();
+                           //Ciclo Verificador de pregunta
+                           boolean verificador_facturar=false;
+                           String seleccion="";
+                           while(verificador_facturar!=true){
+                               //Pregunta para proseguir a facturar
+                               System.out.println("");
+                               System.out.println("¿Desea agregar otro producto? (Y/N)");
+                                
+                               String selec= lea.next();
+                               String seleccionL= selec.toLowerCase();
+                               if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                   seleccion=seleccionL;
+                                   verificador_facturar=true;
+                               }else{
+                                    System.out.println("");
+                                    System.out.println("Opción Inválida");
+                               }
+                            }//Fin ciclo verificador
+                           
+                           
+                           
+                           
                             //Evaluacion para proceder a facturar
                            if(seleccion.equals("y")){
                                 System.out.println("");
@@ -548,9 +617,27 @@ public class Carcamo_David_ProyectoTienda {
 
 
 
-                           System.out.println("¿Desea agregar otro producto? Y/N");
+                           //Ciclo Verificador de pregunta
+                           boolean verificador_facturar=false;
+                           String seleccion="";
+                           while(verificador_facturar!=true){
+                            //Pregunta para proseguir a facturar
+                            System.out.println("");
+                            System.out.println("¿Desea agregar otro producto? (Y/N)");
+                                
                             String selec= lea.next();
-                            String seleccion= selec.toLowerCase();
+                            String seleccionL= selec.toLowerCase();
+                            if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                seleccion=seleccionL;
+                                verificador_facturar=true;
+                            }else{
+                                System.out.println("");
+                                System.out.println("Opción Inválida");
+                                }
+                            }//Fin ciclo verificador
+                            
+                            
+                            
                             //Evaluacion para proceder a facturar
                            if(seleccion.equals("y")){
                                 System.out.println("");
@@ -722,10 +809,26 @@ public class Carcamo_David_ProyectoTienda {
                         }
 
 
-                        //Pregunta para proseguir a facturar
-                         System.out.println("¿Desea agregar otro producto? Y/N");
-                         String selec= lea.next();
-                         String seleccion= selec.toLowerCase();
+                        //Ciclo Verificador de pregunta
+                        boolean verificador_facturar=false;
+                        String seleccion="";
+                        while(verificador_facturar!=true){
+                            //Pregunta para proseguir a facturar
+                            System.out.println("");
+                            System.out.println("¿Desea agregar otro producto? (Y/N)");
+                                
+                            String selec= lea.next();
+                            String seleccionL= selec.toLowerCase();
+                            if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                seleccion=seleccionL;
+                                verificador_facturar=true;
+                            }else{
+                                System.out.println("");
+                                System.out.println("Opción Inválida");
+                            }
+                        }//Fin ciclo verificador
+                         
+                         
                          //Evaluacion para proceder a facturar
                          if(seleccion.equals("y")){
                              System.out.println("");
@@ -794,9 +897,26 @@ public class Carcamo_David_ProyectoTienda {
                             stockAvena=0;
                         }
 
-                        System.out.println("¿Desea agregar otro producto? Y/N");
-                        String selec= lea.next();
-                        String seleccion= selec.toLowerCase();
+                        //Ciclo Verificador de pregunta
+                        boolean verificador_facturar=false;
+                        String seleccion="";
+                        while(verificador_facturar!=true){
+                            //Pregunta para proseguir a facturar
+                            System.out.println("");
+                            System.out.println("¿Desea agregar otro producto? (Y/N)");
+                                
+                            String selec= lea.next();
+                            String seleccionL= selec.toLowerCase();
+                            if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                seleccion=seleccionL;
+                                verificador_facturar=true;
+                            }else{
+                                System.out.println("");
+                                System.out.println("Opción Inválida");
+                            }
+                        }//Fin ciclo verificador
+                        
+                        
                          //Evaluacion para proceder a facturar
                         if(seleccion.equals("y")){
                              System.out.println("");
@@ -862,9 +982,26 @@ public class Carcamo_David_ProyectoTienda {
 
 
 
-                        System.out.println("¿Desea agregar otro producto? Y/N");
-                        String selec= lea.next();
-                        String seleccion= selec.toLowerCase();
+                        //Ciclo Verificador de pregunta
+                        boolean verificador_facturar=false;
+                        String seleccion="";
+                        while(verificador_facturar!=true){
+                            //Pregunta para proseguir a facturar
+                            System.out.println("");
+                            System.out.println("¿Desea agregar otro producto? (Y/N)");
+                                
+                            String selec= lea.next();
+                            String seleccionL= selec.toLowerCase();
+                            if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                seleccion=seleccionL;
+                                verificador_facturar=true;
+                            }else{
+                                System.out.println("");
+                                System.out.println("Opción Inválida");
+                            }
+                        }//Fin ciclo verificador
+                        
+                        
                          //Evaluacion para proceder a facturar
                         if(seleccion.equals("y")){
                              System.out.println("");
@@ -1039,10 +1176,26 @@ public class Carcamo_David_ProyectoTienda {
                         }//Fin ciclo validador de ingreso kilogramos
 
 
-                     //Pregunta para proseguir a facturar
-                     System.out.println("¿Desea agregar otro producto? Y/N");
-                     String selec= lea.next();
-                     String seleccion= selec.toLowerCase();
+                        //Ciclo Verificador de pregunta
+                        boolean verificador_facturar=false;
+                        String seleccion="";
+                        while(verificador_facturar!=true){
+                            //Pregunta para proseguir a facturar
+                            System.out.println("");
+                            System.out.println("¿Desea agregar otro producto? (Y/N)");
+                                
+                            String selec= lea.next();
+                            String seleccionL= selec.toLowerCase();
+                            if(seleccionL.equalsIgnoreCase("y") || seleccionL.equalsIgnoreCase("n")){
+                                seleccion=seleccionL;
+                                verificador_facturar=true;
+                            }else{
+                                System.out.println("");
+                                System.out.println("Opción Inválida");
+                            }
+                        }//Fin ciclo verificador
+                     
+                     
                      //Evaluacion para proceder a facturar
                      if(seleccion.equals("y")){
                          System.out.println("");
@@ -1173,9 +1326,25 @@ public class Carcamo_David_ProyectoTienda {
                 //Seleccion de Proveedor
                 System.out.println("Proveedores disponibles para comprar: ");
                 System.out.println("Proveedor A"+"\nProveedor B"+"\nProveedor C");
-                System.out.println("Porfavor, introduzca la letra del proveedor al que desea comprar(A,B,C): ");
-                String seleccionProveedor= lea.next();
-                String proveedor= seleccionProveedor.toLowerCase();
+                
+                 //Ciclo verificador de tipo proveedor
+                 boolean verificador_proveedor=false;
+                 String proveedor="";
+                 while(verificador_proveedor!=true){
+                     System.out.println("");
+                     System.out.println("Porfavor, introduzca la letra del cliente al que desea vender(A,B,C): ");
+                     String seleccionProveedor= lea.next();
+                     String proveedorL= seleccionProveedor.toLowerCase();
+                     
+                     if(proveedorL.equalsIgnoreCase("a") || proveedorL.equalsIgnoreCase("b") || proveedorL.equalsIgnoreCase("c")){
+                         proveedor=proveedorL;
+                         verificador_proveedor=true;
+                     }else{
+                         System.out.println("");
+                         System.out.println("Opción inválida.");
+                     }
+                 }//Fin ciclo verificador de tipo proveedor
+                
 
                 if(proveedor.equals("a")){
                     //Seccion para proveedor A
@@ -1635,6 +1804,8 @@ public class Carcamo_David_ProyectoTienda {
                      }else if(cantMaiz>cantAzucar && cantMaiz>cantAvena && cantMaiz>cantTrigo){
                          cantEstrella=cantMaiz;
                          producto_Estrella=" Maiz con "+cantMaiz+" kg vendidos";
+                     }else{
+                         producto_Estrella=" Ninguno";
                      }
 
                      //Efectivo caja reducido a dos decimales
